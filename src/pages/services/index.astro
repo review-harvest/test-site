@@ -1,0 +1,57 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import ServicesList from '../../components/services/ServicesList.astro';
+import WhyUs from '../../components/home/WhyUs.astro';
+import { business } from '../../data/business';
+---
+
+<Layout
+  title={`Plumbing Services | ${business.name} | Austin, TX`}
+  description="Drain cleaning, water heaters, leak detection, emergency plumbing, pipe repair, and fixture installation in Austin, TX. Licensed and insured since 2009."
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <ServicesList
+    eyebrow="What We Do"
+    heading="Every service we offer."
+    subtext="Residential and commercial plumbing from a team that has been serving Austin for over 15 years."
+    services={business.services}
+  />
+
+  <WhyUs
+    eyebrow="Why Choose Apex"
+    heading="Quality work, honest pricing, every time."
+    body="Every service we provide comes with a written quote before we start, our 1-year labor warranty, and a commitment to leave your space cleaner than we found it. That's not a marketing claim — it's how we've built our business."
+    features={business.values.slice(0, 4)}
+    ctaHref="/contact"
+  />
+
+  <CallToAction
+    eyebrow="Get a Free Quote"
+    heading="Not sure what you need? Just call us."
+    subtext="We'll diagnose the problem, explain your options, and give you a written quote — before any work begins."
+    phone={business.phone}
+    ctaLabel="Request Online"
+    ctaHref="/contact"
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+  />
+
+</Layout>

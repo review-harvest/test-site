@@ -1,0 +1,105 @@
+---
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  body?: string;
+  radius?: string;
+  centerCity?: string;
+  responseTime?: string;
+  features?: string[];
+}
+
+const {
+  eyebrow = 'Our Coverage',
+  heading = 'Fast response throughout the Austin metro.',
+  body = "We're based in Austin and cover a roughly 30-mile radius from downtown — which means most of the metro is well within our same-day service window. Whether you're in the city or the suburbs, you get the same experienced team, the same prices, and the same guarantee.",
+  radius = '30-mile radius',
+  centerCity = 'Austin, TX',
+  responseTime = 'Same-day service, most areas',
+  features = [
+    'Same pricing regardless of location',
+    'Same-day service for most areas',
+    'Emergency response within 2 hours',
+    'No extra travel fees',
+    'Consistent team across all cities',
+    'Local knowledge of codes and suppliers',
+  ],
+} = Astro.props;
+---
+
+<section class="bg-surface py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+      <!-- Map placeholder -->
+      <div class="lg:col-span-5 order-2 lg:order-1">
+        <div class="relative aspect-square rounded-lg bg-brand-tint border border-border overflow-hidden shadow-md">
+          <div class="w-full h-full flex flex-col items-center justify-center gap-4">
+            <svg class="w-12 h-12 text-brand/20" fill="none" stroke="currentColor" stroke-width="1" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
+            </svg>
+            <p class="font-body text-sm text-text-soft/50">Service area map</p>
+          </div>
+
+          <!-- Center dot -->
+          <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+            <div class="w-4 h-4 rounded-full bg-brand shadow-md ring-4 ring-brand/20"></div>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="mt-4 flex items-center gap-6">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-brand shrink-0"></div>
+            <span class="font-body text-sm text-text-soft">{centerCity}</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-brand-tint border border-brand/30 shrink-0"></div>
+            <span class="font-body text-sm text-text-soft">{radius}</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="lg:col-span-7 order-1 lg:order-2">
+        {eyebrow && (
+          <div class="inline-flex items-center gap-2.5 mb-4">
+            <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+            <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+              {eyebrow}
+            </span>
+          </div>
+        )}
+
+        <h1 class="font-heading text-3xl text-text leading-tight">{heading}</h1>
+        <p class="font-body text-base text-text-soft mt-5 leading-relaxed">{body}</p>
+
+        <!-- Quick stats -->
+        <div class="grid grid-cols-2 gap-4 mt-8">
+          <div class="bg-brand-tint rounded-lg p-4 border border-brand/15">
+            <p class="font-heading text-xl text-text leading-tight">{radius}</p>
+            <p class="font-body text-sm text-text-soft mt-0.5">Service coverage</p>
+          </div>
+          <div class="bg-brand-tint rounded-lg p-4 border border-brand/15">
+            <p class="font-heading text-xl text-text leading-tight">{responseTime}</p>
+            <p class="font-body text-sm text-text-soft mt-0.5">Response time</p>
+          </div>
+        </div>
+
+        <!-- Feature list -->
+        <ul class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {features.map((feature) => (
+            <li class="flex items-center gap-2.5">
+              <svg class="w-4 h-4 text-brand shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+              </svg>
+              <span class="font-body text-sm text-text">{feature}</span>
+            </li>
+          ))}
+        </ul>
+
+      </div>
+
+    </div>
+  </div>
+</section>

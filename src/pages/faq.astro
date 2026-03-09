@@ -1,0 +1,49 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/global/Nav.astro';
+import Footer from '../components/global/Footer.astro';
+import CallToAction from '../components/global/CallToAction.astro';
+import FAQList from '../components/faq/FAQList.astro';
+import { business } from '../data/business';
+---
+
+<Layout
+  title={`FAQ | ${business.name} | Austin, TX`}
+  description={`Frequently asked questions about ${business.name}'s plumbing services, pricing, scheduling, and warranties. Austin, TX plumbers since 2009.`}
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <FAQList
+    eyebrow="Common Questions"
+    heading="Everything you need to know."
+    subtext="Can't find your answer here? Call us at (512) 555-0142 — we're happy to help."
+    categories={business.faqs}
+    titleLevel="h1"
+  />
+
+  <CallToAction
+    eyebrow="Ready to Book?"
+    heading="Questions answered. Let's get started."
+    subtext="Call us for a free quote or submit a request online. We respond within the hour."
+    phone={business.phone}
+    ctaLabel="Send a Message"
+    ctaHref="/contact"
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+  />
+
+</Layout>

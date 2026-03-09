@@ -1,0 +1,185 @@
+---
+interface Props {
+  heading?: string;
+  subtext?: string;
+  services?: string[];
+}
+
+const {
+  heading = 'Request a Free Quote',
+  subtext = "Fill out the form below and we'll call you back to confirm your appointment — usually within the hour.",
+  services = [
+    'Drain Cleaning & Unclogging',
+    'Water Heater Services',
+    'Emergency Plumbing',
+    'Leak Detection & Repair',
+    'Pipe Repair & Repiping',
+    'Fixture Installation',
+    'Other / Not Sure',
+  ],
+} = Astro.props;
+---
+
+<div>
+  <h1 class="font-heading text-2xl lg:text-3xl text-text leading-tight">{heading}</h1>
+  {subtext && (
+    <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+  )}
+
+  <form
+    class="mt-8 space-y-5"
+    action="#"
+    method="POST"
+    novalidate
+  >
+
+    <!-- Name row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="first-name" class="block font-body text-sm font-medium text-text mb-1.5">
+          First Name <span class="text-brand" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="first-name"
+          name="first-name"
+          autocomplete="given-name"
+          required
+          placeholder="Marcus"
+          class="w-full font-body text-base text-text placeholder:text-text-soft/40
+                 bg-surface border border-border rounded-md px-4 py-3
+                 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand
+                 transition-colors"
+        />
+      </div>
+      <div>
+        <label for="last-name" class="block font-body text-sm font-medium text-text mb-1.5">
+          Last Name <span class="text-brand" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="text"
+          id="last-name"
+          name="last-name"
+          autocomplete="family-name"
+          required
+          placeholder="Rivera"
+          class="w-full font-body text-base text-text placeholder:text-text-soft/40
+                 bg-surface border border-border rounded-md px-4 py-3
+                 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand
+                 transition-colors"
+        />
+      </div>
+    </div>
+
+    <!-- Contact row -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div>
+        <label for="phone" class="block font-body text-sm font-medium text-text mb-1.5">
+          Phone Number <span class="text-brand" aria-hidden="true">*</span>
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          autocomplete="tel"
+          required
+          placeholder="(512) 555-0000"
+          class="w-full font-body text-base text-text placeholder:text-text-soft/40
+                 bg-surface border border-border rounded-md px-4 py-3
+                 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand
+                 transition-colors"
+        />
+      </div>
+      <div>
+        <label for="email" class="block font-body text-sm font-medium text-text mb-1.5">
+          Email Address
+        </label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          autocomplete="email"
+          placeholder="you@example.com"
+          class="w-full font-body text-base text-text placeholder:text-text-soft/40
+                 bg-surface border border-border rounded-md px-4 py-3
+                 focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand
+                 transition-colors"
+        />
+      </div>
+    </div>
+
+    <!-- Service select -->
+    <div>
+      <label for="service" class="block font-body text-sm font-medium text-text mb-1.5">
+        What do you need help with? <span class="text-brand" aria-hidden="true">*</span>
+      </label>
+      <select
+        id="service"
+        name="service"
+        required
+        class="w-full font-body text-base text-text bg-surface border border-border rounded-md px-4 py-3
+               focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand
+               transition-colors appearance-none"
+      >
+        <option value="" disabled selected>Select a service…</option>
+        {services.map((service) => (
+          <option value={service}>{service}</option>
+        ))}
+      </select>
+    </div>
+
+    <!-- Preferred contact method -->
+    <div>
+      <p class="font-body text-sm font-medium text-text mb-2">Preferred contact method</p>
+      <div class="flex flex-wrap gap-4">
+        {['Phone call', 'Text message', 'Email'].map((method) => (
+          <label class="flex items-center gap-2 cursor-pointer">
+            <input
+              type="radio"
+              name="contact-method"
+              value={method.toLowerCase().replace(' ', '-')}
+              class="w-4 h-4 accent-brand"
+            />
+            <span class="font-body text-sm text-text">{method}</span>
+          </label>
+        ))}
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div>
+      <label for="message" class="block font-body text-sm font-medium text-text mb-1.5">
+        Describe the issue
+      </label>
+      <textarea
+        id="message"
+        name="message"
+        rows={4}
+        placeholder="Tell us what's going on and we'll give you an accurate quote over the phone…"
+        class="w-full font-body text-base text-text placeholder:text-text-soft/40
+               bg-surface border border-border rounded-md px-4 py-3
+               focus:outline-none focus:ring-2 focus:ring-brand/30 focus:border-brand
+               transition-colors resize-none"
+      ></textarea>
+    </div>
+
+    <!-- Submit -->
+    <div>
+      <button
+        type="submit"
+        class="w-full inline-flex items-center justify-center bg-brand text-brand-fg
+               font-body font-semibold text-base px-7 py-4 rounded-md shadow-sm
+               hover:opacity-90 transition-opacity"
+      >
+        Send My Request
+        <svg class="w-4 h-4 ml-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </button>
+      <p class="font-body text-xs text-text-soft mt-3 text-center">
+        We typically respond within 1 business hour. No spam, ever.
+      </p>
+    </div>
+
+  </form>
+</div>

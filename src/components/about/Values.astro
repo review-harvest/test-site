@@ -1,0 +1,63 @@
+---
+interface Value {
+  title: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subtext?: string;
+  values?: Value[];
+}
+
+const {
+  eyebrow = 'What We Stand For',
+  heading = 'The principles behind every job we take.',
+  subtext = "These aren't marketing words — they're the standards we hold ourselves to every single day.",
+  values = [
+    { title: 'Honest Pricing', description: 'Written quote before work begins. What we quote is what you pay.' },
+    { title: 'Respect Your Space', description: 'Shoe covers, drop cloths, full cleanup after every job.' },
+    { title: 'On-Time, Every Time', description: '1-hour arrival window with a 30-minute heads-up call.' },
+    { title: 'Quality Materials', description: 'Manufacturer-approved parts and code-compliant materials only.' },
+    { title: '1-Year Warranty', description: 'All labor is guaranteed for a full year, no questions asked.' },
+    { title: 'Background-Checked Team', description: 'Every technician is screened, licensed, and insured.' },
+  ],
+} = Astro.props;
+---
+
+<section class="bg-brand-tint py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header -->
+    <div class="max-w-2xl mb-14">
+      {eyebrow && (
+        <div class="inline-flex items-center gap-2.5 mb-4">
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+            {eyebrow}
+          </span>
+        </div>
+      )}
+      <h2 class="font-heading text-3xl text-text leading-tight">{heading}</h2>
+      {subtext && (
+        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+      )}
+    </div>
+
+    <!-- Values grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {values.map((value) => (
+        <div class="bg-surface rounded-lg border border-border p-7 shadow-sm">
+          <!-- Color dot accent -->
+          <div class="w-9 h-9 rounded-md bg-brand-tint border border-brand/20 flex items-center justify-center mb-5" aria-hidden="true">
+            <div class="w-2.5 h-2.5 rounded-full bg-brand"></div>
+          </div>
+          <h3 class="font-body font-semibold text-base text-text">{value.title}</h3>
+          <p class="font-body text-sm text-text-soft mt-2 leading-relaxed">{value.description}</p>
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,99 @@
+---
+/**
+ * ServicesList — detailed services grid used on the /services overview page.
+ * More information-dense than the homepage Services card grid.
+ */
+interface Service {
+  name: string;
+  slug: string;
+  description: string;
+  features: string[];
+  href?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subtext?: string;
+  services?: Service[];
+}
+
+const {
+  eyebrow = 'What We Do',
+  heading = 'Every service we offer.',
+  subtext = 'Residential and commercial service from a team that has been doing this for over 15 years.',
+  services = [],
+} = Astro.props;
+---
+
+<section class="bg-bg py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header -->
+    <div class="max-w-2xl mb-14">
+      {eyebrow && (
+        <div class="inline-flex items-center gap-2.5 mb-4">
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+            {eyebrow}
+          </span>
+        </div>
+      )}
+      <h1 class="font-heading text-3xl text-text leading-tight">{heading}</h1>
+      {subtext && (
+        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+      )}
+    </div>
+
+    <!-- Service cards — 2-column detailed layout -->
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {services.map((service, i) => (
+        <div class="bg-surface border border-border rounded-lg p-8 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col">
+
+          <!-- Number + title row -->
+          <div class="flex items-start gap-4 mb-5">
+            <div class="w-10 h-10 rounded-md bg-brand-tint flex items-center justify-center shrink-0 mt-0.5">
+              <span class="font-body text-sm font-bold text-brand">{String(i + 1).padStart(2, '0')}</span>
+            </div>
+            <div>
+              <h3 class="font-body font-semibold text-lg text-text leading-snug">{service.name}</h3>
+              <p class="font-body text-sm text-text-soft mt-1.5 leading-relaxed">{service.description}</p>
+            </div>
+          </div>
+
+          <!-- Feature list -->
+          <ul class="grid grid-cols-2 gap-x-4 gap-y-2 mb-6">
+            {service.features.map((feature) => (
+              <li class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-brand shrink-0" aria-hidden="true"></span>
+                <span class="font-body text-sm text-text-soft">{feature}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- CTA — push to bottom -->
+          <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
+            <a
+              href={service.href || `/services/${service.slug}`}
+              class="inline-flex items-center gap-1.5 font-body text-sm font-semibold text-brand hover:gap-2.5 transition-all duration-150"
+              aria-label={`Learn more about ${service.name}`}
+            >
+              Full details
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+            <a
+              href="/contact"
+              class="font-body text-sm font-semibold text-text-soft hover:text-brand transition-colors"
+            >
+              Get a quote →
+            </a>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,49 @@
+---
+interface RelatedService {
+  name: string;
+  description: string;
+  href: string;
+}
+
+interface Props {
+  heading?: string;
+  services?: RelatedService[];
+}
+
+const {
+  heading = 'You might also need',
+  services = [],
+} = Astro.props;
+---
+
+{services.length > 0 && (
+  <section class="bg-bg py-16 lg:py-20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+      <h2 class="font-body font-semibold text-sm tracking-widest uppercase text-text-soft mb-8">
+        {heading}
+      </h2>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {services.map((service) => (
+          <a
+            href={service.href}
+            class="group bg-surface border border-border rounded-lg p-6 shadow-sm hover:shadow-md hover:border-brand/30 hover:-translate-y-0.5 transition-all duration-200 flex items-start gap-4"
+          >
+            <div class="w-2 h-2 rounded-full bg-brand mt-2 shrink-0" aria-hidden="true"></div>
+            <div>
+              <p class="font-body font-semibold text-base text-text group-hover:text-brand transition-colors">
+                {service.name}
+              </p>
+              <p class="font-body text-sm text-text-soft mt-1 leading-relaxed">{service.description}</p>
+            </div>
+            <svg class="w-4 h-4 text-text-soft group-hover:text-brand shrink-0 mt-1 ml-auto transition-colors" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </a>
+        ))}
+      </div>
+
+    </div>
+  </section>
+)}

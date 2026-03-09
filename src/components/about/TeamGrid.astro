@@ -1,0 +1,72 @@
+---
+interface TeamMember {
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subtext?: string;
+  members?: TeamMember[];
+}
+
+const {
+  eyebrow = 'Meet the Team',
+  heading = 'The people behind every job.',
+  subtext = "Our team is small by design. You'll deal with experienced professionals on every call — not whoever happens to be available.",
+  members = [
+    { name: 'Owner Name', role: 'Owner & Lead Technician', bio: 'Founded the company after years in the industry. Sets the standard for quality and honesty on every job.', initials: 'ON' },
+    { name: 'Lead Tech', role: 'Senior Technician', bio: 'Specializes in complex diagnostics. Known for solving problems that others miss.', initials: 'LT' },
+    { name: 'Field Tech', role: 'Field Technician', bio: 'Handles emergency calls and routine service. Customers appreciate the clear communication.', initials: 'FT' },
+    { name: 'Office Manager', role: 'Office & Scheduling', bio: 'Keeps everything running behind the scenes from scheduling to follow-ups.', initials: 'OM' },
+  ],
+} = Astro.props;
+---
+
+<section class="bg-bg py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header -->
+    <div class="max-w-2xl mb-14">
+      {eyebrow && (
+        <div class="inline-flex items-center gap-2.5 mb-4">
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+            {eyebrow}
+          </span>
+        </div>
+      )}
+      <h2 class="font-heading text-3xl text-text leading-tight">{heading}</h2>
+      {subtext && (
+        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+      )}
+    </div>
+
+    <!-- Team cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      {members.map((member) => (
+        <div class="bg-surface border border-border rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-200">
+
+          <!-- Avatar placeholder -->
+          <div class="aspect-[4/3] bg-brand-tint flex items-center justify-center">
+            <div class="w-16 h-16 rounded-full bg-brand/15 border-2 border-brand/20 flex items-center justify-center">
+              <span class="font-heading text-xl text-brand">{member.initials}</span>
+            </div>
+          </div>
+
+          <!-- Info -->
+          <div class="p-5">
+            <p class="font-body font-semibold text-base text-text">{member.name}</p>
+            <p class="font-body text-sm text-brand font-medium mt-0.5">{member.role}</p>
+            <p class="font-body text-sm text-text-soft mt-3 leading-relaxed">{member.bio}</p>
+          </div>
+
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>

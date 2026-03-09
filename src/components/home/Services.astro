@@ -1,0 +1,95 @@
+---
+interface Service {
+  name: string;
+  description: string;
+  href?: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subtext?: string;
+  services?: Service[];
+}
+
+const {
+  eyebrow = 'What We Do',
+  heading = 'Our Services',
+  subtext = 'Comprehensive solutions for your home and business.',
+  services = [
+    { name: 'Service One', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
+    { name: 'Service Two', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
+    { name: 'Service Three', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
+    { name: 'Service Four', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
+    { name: 'Service Five', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
+    { name: 'Service Six', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
+  ],
+} = Astro.props;
+---
+
+<section id="services" class="bg-bg py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header -->
+    <div class="max-w-2xl">
+      {eyebrow && (
+        <div class="inline-flex items-center gap-2.5 mb-4">
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+            {eyebrow}
+          </span>
+        </div>
+      )}
+      <h2 class="font-heading text-3xl text-text leading-tight">{heading}</h2>
+      {subtext && (
+        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+      )}
+    </div>
+
+    <!-- Service cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
+      {services.map((service, i) => (
+        <div class="group bg-surface border border-border rounded-lg p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
+
+          <!-- Numbered accent -->
+          <div class="w-8 h-8 rounded-md bg-brand-tint flex items-center justify-center mb-5">
+            <span class="font-body text-xs font-bold text-brand leading-none">
+              {String(i + 1).padStart(2, '0')}
+            </span>
+          </div>
+
+          <h3 class="font-body font-semibold text-lg text-text">{service.name}</h3>
+          <p class="font-body text-sm text-text-soft mt-2 leading-relaxed">{service.description}</p>
+
+          {service.href && (
+            <a
+              href={service.href}
+              class="inline-flex items-center gap-1.5 mt-5 font-body text-sm font-semibold text-brand hover:gap-2.5 transition-all duration-150"
+              aria-label={`Learn more about ${service.name}`}
+            >
+              Learn more
+              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+              </svg>
+            </a>
+          )}
+
+        </div>
+      ))}
+    </div>
+
+    <!-- View all services link -->
+    <div class="mt-10 text-center">
+      <a
+        href="/services"
+        class="inline-flex items-center gap-2 font-body text-sm font-semibold text-brand hover:gap-3 transition-all duration-150"
+      >
+        View all services
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

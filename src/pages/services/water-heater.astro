@@ -1,0 +1,130 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import ServiceDetail from '../../components/services/ServiceDetail.astro';
+import RelatedServices from '../../components/services/RelatedServices.astro';
+import Process from '../../components/home/Process.astro';
+import Testimonials from '../../components/home/Testimonials.astro';
+import FAQList from '../../components/faq/FAQList.astro';
+import { business } from '../../data/business';
+
+const service = business.services.find(s => s.slug === 'water-heater')!;
+
+const relatedServices = business.services
+  .filter(s => s.slug !== 'water-heater')
+  .slice(0, 3)
+  .map(s => ({ name: s.name, description: s.description, href: `/services/${s.slug}` }));
+
+const relatedTestimonials = business.testimonials
+  .filter(t => t.service === 'Water Heater Services')
+  .concat(business.testimonials.filter(t => t.service !== 'Water Heater Services').slice(0, 1))
+  .slice(0, 3);
+
+const faqs = [
+  {
+    category: 'Water Heater Questions',
+    questions: [
+      {
+        question: 'Should I repair or replace my water heater?',
+        answer: "If your water heater is under 8 years old and the issue is a minor part like a thermostat or element, repair usually makes sense. If it's older than 10 years or has a tank leak, replacement is typically the better investment. We'll give you an honest recommendation either way.",
+      },
+      {
+        question: 'How long does a water heater replacement take?',
+        answer: 'Most tank water heater replacements take 2–3 hours. Tankless installations vary more — typically 4–6 hours for a first-time install.',
+      },
+      {
+        question: 'What size water heater do I need?',
+        answer: 'For a family of 2–3, a 40-gallon tank is typically sufficient. For 4+ people, 50–80 gallons is recommended. Tankless sizing depends on flow rate demands. We calculate this during the diagnostic visit.',
+      },
+      {
+        question: 'Is tankless better than a tank water heater?',
+        answer: 'Tankless units are more energy-efficient and last longer (20+ years vs 10–12 for tanks), but cost more upfront. They work best in homes with consistent high hot water demand. We can help you decide which is the better fit for your home and budget.',
+      },
+      {
+        question: 'Do you offer same-day water heater replacement?',
+        answer: 'Yes, in most cases. If we have your unit size in stock (which we usually do for standard 40 and 50-gallon units), we can replace it the same day you call.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title={`Water Heater Repair & Replacement | ${business.name} | Austin, TX`}
+  description="Water heater repair and replacement in Austin, TX. Tank and tankless units, all brands. Same-day service available. Licensed plumbers since 2009."
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <ServiceDetail
+    name={service.name}
+    tagline="All brands serviced · Same-day available"
+    description="A broken water heater is one of those problems you can't put off. Whether your tank is leaking, not heating, or making noises it shouldn't, our licensed plumbers can diagnose and fix it fast. We stock the most common 40 and 50-gallon units for same-day replacements, and we're fully certified on major tankless brands including Rinnai, Navien, and Bradford White."
+    benefits={[
+      'Tank and tankless water heaters serviced',
+      'All major brands: Bradford White, Rheem, Navien, Rinnai',
+      'Same-day replacement on common sizes',
+      'Energy-efficient upgrade recommendations',
+      'Expansion tank installation included when required by code',
+      'Annual flush and maintenance service available',
+    ]}
+    guarantee="All water heater work is backed by our 1-year labor warranty, plus manufacturer warranty on new units."
+  />
+
+  <Process
+    eyebrow="Our Process"
+    heading="How water heater service works."
+    subtext="We diagnose the problem first, then give you all your options — before any work starts."
+    steps={[
+      { number: '01', title: 'Diagnostic Call', description: 'Describe your symptoms and we give you an honest assessment over the phone of whether it sounds like a repair or replacement situation.' },
+      { number: '02', title: 'On-Site Inspection', description: 'We test the unit, check the anode rod, thermostat, elements, and connections to pinpoint the exact issue.' },
+      { number: '03', title: 'Options & Quote', description: 'We present your repair vs. replace options with honest pros/cons and give you a written quote for each.' },
+      { number: '04', title: 'Install & Test', description: 'We do the work, test hot water at every fixture, and clean up completely before leaving.' },
+    ]}
+  />
+
+  <Testimonials
+    eyebrow="From Our Customers"
+    heading="What Austin homeowners say about our water heater service."
+    testimonials={relatedTestimonials}
+  />
+
+  <FAQList
+    eyebrow="Common Questions"
+    heading="Water heater service — answered."
+    subtext="Still have questions? Call us at (512) 555-0142."
+    categories={faqs}
+  />
+
+  <RelatedServices
+    heading="Other services you might need"
+    services={relatedServices}
+  />
+
+  <CallToAction
+    eyebrow="Get Hot Water Today"
+    heading="No hot water is an emergency. Call us."
+    subtext="We offer same-day water heater repair and replacement throughout Austin and the surrounding area."
+    phone={business.phone}
+    ctaLabel="Request Online"
+    ctaHref="/contact"
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+  />
+
+</Layout>

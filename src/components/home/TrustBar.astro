@@ -1,0 +1,36 @@
+---
+interface Item {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  items?: Item[];
+}
+
+const {
+  items = [
+    { value: '20+', label: 'Years Experience' },
+    { value: '1,200+', label: 'Jobs Completed' },
+    { value: '4.9 / 5', label: 'Google Rating' },
+    { value: '24/7', label: 'Emergency Service' },
+  ],
+} = Astro.props;
+---
+
+<div class="bg-brand">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
+    <!--
+      gap-px with a white/10 background creates a clean hairline divider
+      between each stat cell without needing explicit border elements.
+    -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 rounded-lg overflow-hidden">
+      {items.map((item) => (
+        <div class="bg-brand px-6 py-5 text-center">
+          <p class="font-heading text-2xl text-brand-fg leading-none">{item.value}</p>
+          <p class="font-body text-sm text-brand-fg/70 mt-1.5 font-medium">{item.label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

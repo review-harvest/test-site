@@ -1,0 +1,67 @@
+---
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subtext?: string;
+  phone?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
+const {
+  eyebrow = 'Get Started Today',
+  heading = 'Ready to get the job done right?',
+  subtext = 'Call us for a free, no-obligation quote. We answer every call, 24 hours a day.',
+  phone = '(555) 000-0000',
+  ctaLabel = 'Request Online',
+  ctaHref = '/contact',
+} = Astro.props;
+
+const phoneHref = 'tel:+1' + phone.replace(/\D/g, '');
+---
+
+<section class="bg-brand py-20 lg:py-28">
+  <div class="max-w-3xl mx-auto px-6 lg:px-10 text-center">
+
+    {eyebrow && (
+      <p class="font-body text-sm font-semibold tracking-widest uppercase text-brand-fg/60 mb-4">
+        {eyebrow}
+      </p>
+    )}
+
+    <h2 class="font-heading text-3xl lg:text-4xl text-brand-fg leading-tight">
+      {heading}
+    </h2>
+
+    {subtext && (
+      <p class="font-body text-lg text-brand-fg/75 mt-4 leading-relaxed max-w-lg mx-auto">
+        {subtext}
+      </p>
+    )}
+
+    <!-- Phone number — primary conversion point -->
+    <a
+      href={phoneHref}
+      class="inline-block font-heading text-3xl lg:text-hero text-brand-fg mt-8 leading-none hover:opacity-80 transition-opacity"
+      aria-label={`Call us at ${phone}`}
+    >
+      {phone}
+    </a>
+
+    <!-- Secondary online option -->
+    <div class="mt-8">
+      <a
+        href={ctaHref}
+        class="inline-flex items-center gap-2 font-body text-sm font-semibold
+               text-brand-fg border border-brand-fg/30 px-6 py-3 rounded-md
+               hover:bg-brand-fg/10 transition-colors"
+      >
+        {ctaLabel}
+        <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+        </svg>
+      </a>
+    </div>
+
+  </div>
+</section>

@@ -1,0 +1,85 @@
+---
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  body1?: string;
+  body2?: string;
+  founded?: number;
+  accentStat?: { value: string; label: string };
+}
+
+const {
+  eyebrow = 'Our Story',
+  heading = 'Built on honesty. Proven by results.',
+  body1 = "We started this company because we were tired of seeing customers get taken advantage of — overcharged, oversold, and underserved. Our founder spent years watching it happen at larger shops before deciding to do things differently.",
+  body2 = "From day one, the rule has been simple: treat every customer the way we'd want to be treated ourselves. Give an honest quote. Do the work right. Stand behind it completely. That approach has built us from a one-truck operation into a team of specialists that Austin homeowners and businesses trust.",
+  founded = 2009,
+  accentStat = { value: '8,400+', label: 'jobs completed since founding' },
+} = Astro.props;
+---
+
+<section class="bg-surface py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+      <!-- Content -->
+      <div class="lg:col-span-6">
+        {eyebrow && (
+          <div class="inline-flex items-center gap-2.5 mb-5">
+            <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+            <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+              {eyebrow}
+            </span>
+          </div>
+        )}
+
+        <h1 class="font-heading text-3xl lg:text-[2.5rem] text-text leading-tight">
+          {heading}
+        </h1>
+
+        <p class="font-body text-base text-text-soft mt-6 leading-relaxed">
+          {body1}
+        </p>
+        <p class="font-body text-base text-text-soft mt-4 leading-relaxed">
+          {body2}
+        </p>
+
+        <!-- Founded badge -->
+        <div class="inline-flex items-center gap-3 mt-8 px-5 py-3 bg-brand-tint rounded-lg border border-brand/15">
+          <div class="w-1 h-10 bg-brand rounded-full shrink-0" aria-hidden="true"></div>
+          <div>
+            <p class="font-body text-xs font-semibold tracking-widest uppercase text-text-soft">Founded</p>
+            <p class="font-heading text-xl text-text leading-tight">{founded} · Austin, TX</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Image + accent card -->
+      <div class="lg:col-span-6">
+        <div class="relative">
+
+          <!-- Primary image placeholder -->
+          <div class="aspect-[4/3] rounded-lg bg-brand-tint overflow-hidden shadow-md">
+            <div class="w-full h-full flex flex-col items-center justify-center gap-3">
+              <svg class="w-14 h-14 text-brand/20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+              <p class="font-body text-sm text-text-soft/40">Team photo</p>
+            </div>
+          </div>
+
+          <!-- Floating stat card -->
+          <div class="absolute -bottom-5 -right-5 hidden lg:block bg-surface rounded-lg shadow-md border border-border px-5 py-4">
+            <p class="font-heading text-2xl text-text leading-none">{accentStat.value}</p>
+            <p class="font-body text-xs text-text-soft mt-1 max-w-[10rem]">{accentStat.label}</p>
+          </div>
+
+          <!-- Decorative element -->
+          <div class="absolute -top-4 -left-4 w-24 h-24 rounded-full bg-brand/5 -z-10" aria-hidden="true"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,81 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/global/Nav.astro';
+import Footer from '../components/global/Footer.astro';
+import CallToAction from '../components/global/CallToAction.astro';
+import CoverageDetails from '../components/service-area/CoverageDetails.astro';
+import CityGrid from '../components/service-area/CityGrid.astro';
+import { business } from '../data/business';
+
+const cities = [
+  { name: 'Austin', county: 'Travis County', note: 'Our home base' },
+  { name: 'Round Rock', county: 'Williamson County' },
+  { name: 'Cedar Park', county: 'Williamson County' },
+  { name: 'Georgetown', county: 'Williamson County' },
+  { name: 'Pflugerville', county: 'Travis County' },
+  { name: 'Leander', county: 'Williamson County' },
+  { name: 'Kyle', county: 'Hays County' },
+  { name: 'Buda', county: 'Hays County' },
+  { name: 'Lakeway', county: 'Travis County' },
+  { name: 'Bee Cave', county: 'Travis County' },
+  { name: 'Westlake Hills', county: 'Travis County' },
+  { name: 'Rollingwood', county: 'Travis County' },
+];
+---
+
+<Layout
+  title={`Service Area | ${business.name} | Austin Metro, TX`}
+  description={`${business.name} serves Austin, Round Rock, Cedar Park, Georgetown, Pflugerville, Leander, Kyle, Buda, Lakeway, and more. Same-day plumbing service throughout the Austin metro.`}
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <CoverageDetails
+    eyebrow="Our Coverage"
+    heading="Fast response throughout the Austin metro."
+    body="We're based in central Austin and serve a 30-mile radius that covers most of the metro area. Whether you're in the city or the suburbs, you get the same experienced team, the same upfront pricing, and the same 1-year labor warranty. We don't charge travel fees within our coverage zone."
+    radius="30-mile radius"
+    centerCity="Austin, TX"
+    responseTime="Same-day, most areas"
+    features={[
+      'Same pricing regardless of location',
+      'Same-day service for most areas',
+      'Emergency response within 2 hours',
+      'No travel fees within coverage zone',
+      'Consistent, licensed team across all cities',
+      'Local knowledge of Austin-area codes and suppliers',
+    ]}
+  />
+
+  <CityGrid
+    eyebrow="Where We Work"
+    heading="Cities and communities we serve."
+    subtext="Every city in our service area gets the same response time, the same team, and the same guarantee. No second-tier service."
+    cities={cities}
+  />
+
+  <CallToAction
+    eyebrow="In Our Area?"
+    heading="Same-day service throughout the Austin metro."
+    subtext="Call us to schedule or check if we cover your specific neighborhood. We're happy to confirm over the phone."
+    phone={business.phone}
+    ctaLabel="Check Your Area"
+    ctaHref="/contact"
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+  />
+
+</Layout>

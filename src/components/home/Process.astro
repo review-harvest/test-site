@@ -1,0 +1,94 @@
+---
+/**
+ * Process — "How It Works" section with numbered steps.
+ * Used on the homepage and individual service pages.
+ */
+interface Step {
+  number: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  heading?: string;
+  subtext?: string;
+  steps?: Step[];
+}
+
+const {
+  eyebrow = 'How It Works',
+  heading = 'Simple process, great results.',
+  subtext = "We make it easy to get started. Here's exactly what to expect when you call us.",
+  steps = [
+    {
+      number: '01',
+      title: 'Call or Request Online',
+      description: "Reach us by phone or submit a quick online request. We'll confirm your appointment within minutes.",
+    },
+    {
+      number: '02',
+      title: 'We Diagnose the Problem',
+      description: 'Our licensed technician arrives on time, assesses the issue thoroughly, and gives you a clear written quote.',
+    },
+    {
+      number: '03',
+      title: 'We Get to Work',
+      description: 'Once you approve the quote, we fix it right — using quality materials and leaving your space clean.',
+    },
+    {
+      number: '04',
+      title: "You're Covered",
+      description: 'All work is backed by our 1-year labor warranty. If something is off, we come back at no charge.',
+    },
+  ],
+} = Astro.props;
+---
+
+<section class="bg-bg py-20 lg:py-28">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+
+    <!-- Section header -->
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      {eyebrow && (
+        <div class="inline-flex items-center justify-center gap-2.5 mb-4">
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+            {eyebrow}
+          </span>
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+        </div>
+      )}
+      <h2 class="font-heading text-3xl text-text leading-tight">{heading}</h2>
+      {subtext && (
+        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+      )}
+    </div>
+
+    <!-- Steps -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
+
+      <!-- Desktop connector line — sits behind the circles -->
+      <div
+        class="hidden lg:block absolute top-10 left-[calc(12.5%+2.5rem)] right-[calc(12.5%+2.5rem)] h-px border-t border-dashed border-border"
+        aria-hidden="true"
+      ></div>
+
+      {steps.map((step) => (
+        <div class="flex flex-col items-center text-center">
+
+          <!-- Circle with step number -->
+          <div class="relative z-10 w-20 h-20 rounded-full bg-surface border-2 border-brand/20 shadow-sm flex items-center justify-center mb-6 shrink-0">
+            <span class="font-heading text-xl text-brand leading-none">{step.number}</span>
+          </div>
+
+          <h3 class="font-body font-semibold text-base text-text mb-2">{step.title}</h3>
+          <p class="font-body text-sm text-text-soft leading-relaxed">{step.description}</p>
+
+        </div>
+      ))}
+
+    </div>
+
+  </div>
+</section>

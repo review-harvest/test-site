@@ -1,0 +1,115 @@
+---
+interface Stat {
+  value: string;
+  label: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  headline?: string;
+  subtext?: string;
+  primaryCta?: { label: string; href: string };
+  secondaryCta?: { label: string; href: string };
+  stats?: Stat[];
+}
+
+const {
+  eyebrow = 'Licensed & Insured',
+  headline = 'Your Business Name',
+  subtext = 'Professional service you can count on. We show up on time, do the job right, and stand behind our work.',
+  primaryCta = { label: 'Get a Free Quote', href: '/contact' },
+  secondaryCta = { label: 'Our Services', href: '/services' },
+  stats = [
+    { value: '20+', label: 'Years in Business' },
+    { value: '500+', label: 'Jobs Completed' },
+    { value: '4.9★', label: 'Google Rating' },
+  ],
+} = Astro.props;
+---
+
+<section class="bg-surface overflow-hidden">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-24">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+
+      <!-- Content -->
+      <div class="lg:col-span-7 xl:col-span-6">
+
+        {eyebrow && (
+          <div class="inline-flex items-center gap-2.5 mb-6">
+            <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+            <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+              {eyebrow}
+            </span>
+          </div>
+        )}
+
+        <h1 class="font-heading text-hero text-text leading-none tracking-tight">
+          {headline}
+        </h1>
+
+        <p class="font-body text-lg text-text-soft mt-6 leading-relaxed max-w-lg">
+          {subtext}
+        </p>
+
+        <div class="flex flex-wrap gap-3 mt-8">
+          <a
+            href={primaryCta.href}
+            class="inline-flex items-center justify-center bg-brand text-brand-fg
+                   font-body font-semibold text-base px-7 py-3.5 rounded-md shadow-sm
+                   hover:opacity-90 transition-opacity"
+          >
+            {primaryCta.label}
+          </a>
+          {secondaryCta && (
+            <a
+              href={secondaryCta.href}
+              class="inline-flex items-center justify-center text-text
+                     font-body font-medium text-base px-7 py-3.5 rounded-md
+                     border border-border hover:border-brand hover:text-brand transition-colors"
+            >
+              {secondaryCta.label}
+            </a>
+          )}
+        </div>
+
+        {stats.length > 0 && (
+          <div class="flex flex-wrap gap-8 mt-10 pt-8 border-t border-border">
+            {stats.map((stat) => (
+              <div>
+                <p class="font-heading text-2xl text-text leading-none">{stat.value}</p>
+                <p class="font-body text-sm text-text-soft mt-1">{stat.label}</p>
+              </div>
+            ))}
+          </div>
+        )}
+
+      </div>
+
+      <!-- Image -->
+      <div class="lg:col-span-5 xl:col-span-6">
+        <div class="relative">
+
+          <!-- Main image placeholder -->
+          <div class="aspect-[5/4] rounded-lg bg-brand-tint overflow-hidden shadow-md">
+            <div class="w-full h-full flex items-center justify-center">
+              <svg class="w-16 h-16 text-brand/20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </div>
+          </div>
+
+          <!-- Floating accent card -->
+          <div class="absolute -bottom-5 -left-5 hidden lg:block bg-surface rounded-lg shadow-md border border-border p-4">
+            <p class="font-body text-xs font-semibold tracking-wider uppercase text-text-soft">Response Time</p>
+            <p class="font-heading text-xl text-text mt-0.5">Under 2 Hours</p>
+          </div>
+
+          <!-- Decorative circle -->
+          <div class="absolute -top-4 -right-4 w-20 h-20 rounded-full bg-brand/5 -z-10" aria-hidden="true"></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

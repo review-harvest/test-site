@@ -1,0 +1,106 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/global/Nav.astro';
+import Footer from '../components/global/Footer.astro';
+import CallToAction from '../components/global/CallToAction.astro';
+import ReviewStats from '../components/reviews/ReviewStats.astro';
+import PlatformBadges from '../components/reviews/PlatformBadges.astro';
+import ReviewGrid from '../components/reviews/ReviewGrid.astro';
+import { business } from '../data/business';
+---
+
+<Layout
+  title={`Customer Reviews | ${business.name} | Austin, TX`}
+  description={`Read verified customer reviews for ${business.name}. 4.9★ across 847 Google reviews. Austin's trusted plumber since 2009.`}
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <!-- Page header -->
+  <div class="bg-brand-tint border-b border-border py-16 lg:py-20">
+    <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+      <div class="inline-flex items-center justify-center gap-2.5 mb-4">
+        <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+        <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">Customer Reviews</span>
+        <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+      </div>
+      <h1 class="font-heading text-4xl lg:text-5xl text-text leading-tight">
+        4.9 stars across 1,000+ verified reviews.
+      </h1>
+      <p class="font-body text-lg text-text-soft mt-4 leading-relaxed max-w-2xl mx-auto">
+        Real reviews from real customers across Google, Yelp, and Angi. We don't edit or cherry-pick — this is the full picture.
+      </p>
+    </div>
+  </div>
+
+  <ReviewStats
+    rating="4.9"
+    totalReviews={847}
+    breakdown={[
+      { stars: 5, count: 728, pct: 86 },
+      { stars: 4, count: 94, pct: 11 },
+      { stars: 3, count: 17, pct: 2 },
+      { stars: 2, count: 5, pct: 1 },
+      { stars: 1, count: 3, pct: 0 },
+    ]}
+  />
+
+  <PlatformBadges
+    eyebrow="Verified On"
+    heading="Find us on every major review platform."
+    platforms={[
+      {
+        name: 'Google',
+        rating: '4.9',
+        reviewCount: 847,
+        url: '#',
+        description: 'Our primary review profile. Search "Apex Plumbing Austin" on Google Maps to verify.',
+      },
+      {
+        name: 'Yelp',
+        rating: '4.8',
+        reviewCount: 312,
+        url: '#',
+        description: 'Hundreds of detailed reviews from Yelp customers across Austin and the suburbs.',
+      },
+      {
+        name: 'Angi',
+        rating: '4.9',
+        reviewCount: 184,
+        url: '#',
+        description: 'Angi Super Service Award winner. All reviews verified by the platform.',
+      },
+    ]}
+  />
+
+  <ReviewGrid
+    eyebrow="What Our Customers Say"
+    heading="Real reviews from real customers."
+    reviews={business.testimonials}
+  />
+
+  <CallToAction
+    eyebrow="Ready to Experience the Difference?"
+    heading="Join 8,400+ satisfied Austin customers."
+    subtext="Call us for a free quote. We answer every call personally — no voicemail, no runaround."
+    phone={business.phone}
+    ctaLabel="Request Online"
+    ctaHref="/contact"
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+  />
+
+</Layout>

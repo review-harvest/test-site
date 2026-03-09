@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "tokens": {
+    "--color-brand":      { "type": "css-color",  "description": "Primary brand color" },
+    "--color-brand-fg":   { "type": "css-color",  "description": "Text on brand backgrounds" },
+    "--color-brand-tint": { "type": "css-color",  "description": "Light brand surface" },
+    "--color-bg":         { "type": "css-color",  "description": "Page background" },
+    "--color-surface":    { "type": "css-color",  "description": "Card/panel background" },
+    "--color-border":     { "type": "css-color",  "description": "Borders and dividers" },
+    "--color-text":       { "type": "css-color",  "description": "Primary text" },
+    "--color-text-soft":  { "type": "css-color",  "description": "Secondary text" },
+    "--font-heading":     { "type": "font-stack", "description": "Heading typeface" },
+    "--font-body":        { "type": "font-stack", "description": "Body typeface" },
+    "--text-sm":          { "type": "css-length", "description": "Small text size" },
+    "--text-base":        { "type": "css-length", "description": "Base text size" },
+    "--text-lg":          { "type": "css-length", "description": "Large text size" },
+    "--text-xl":          { "type": "css-length", "description": "Subheading size" },
+    "--text-2xl":         { "type": "css-length", "description": "Section heading size" },
+    "--text-3xl":         { "type": "css-length", "description": "Page heading size" },
+    "--text-hero":        { "type": "css-length", "description": "Hero headline size" },
+    "--radius-sm":        { "type": "css-length", "description": "Small radius" },
+    "--radius-md":        { "type": "css-length", "description": "Default radius" },
+    "--radius-lg":        { "type": "css-length", "description": "Large radius" },
+    "--shadow-sm":        { "type": "css-shadow", "description": "Subtle elevation" },
+    "--shadow-md":        { "type": "css-shadow", "description": "Card elevation" }
+  }
+}

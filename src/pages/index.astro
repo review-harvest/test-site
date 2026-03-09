@@ -1,0 +1,88 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/global/Nav.astro';
+import Footer from '../components/global/Footer.astro';
+import CallToAction from '../components/global/CallToAction.astro';
+import Hero from '../components/home/Hero.astro';
+import TrustBar from '../components/home/TrustBar.astro';
+import Services from '../components/home/Services.astro';
+import Process from '../components/home/Process.astro';
+import WhyUs from '../components/home/WhyUs.astro';
+import Testimonials from '../components/home/Testimonials.astro';
+import { business } from '../data/business';
+---
+
+<Layout
+  title={`${business.name} | Austin, TX Plumbers`}
+  description="Licensed and insured plumbers serving Austin, TX since 2009. Drain cleaning, water heaters, leak detection, emergency plumbing. Call (512) 555-0142."
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <Hero
+    eyebrow="Licensed & Insured · Serving Austin Since 2009"
+    headline="Austin's Most Trusted Plumber"
+    subtext="From leaky faucets to full repiping jobs, we fix it right the first time. Available 24/7 for emergencies — no extra charge."
+    primaryCta={{ label: 'Get a Free Quote', href: '/contact' }}
+    secondaryCta={{ label: 'Our Services', href: '/services' }}
+    stats={business.stats}
+  />
+
+  <TrustBar items={business.stats} />
+
+  <Services
+    eyebrow="What We Do"
+    heading="Plumbing services for every need."
+    subtext="Residential and commercial plumbing from a team that's been doing this for over 15 years."
+    services={business.services.map(s => ({
+      name: s.name,
+      description: s.description,
+      href: `/services/${s.slug}`,
+    }))}
+  />
+
+  <Process
+    eyebrow="How It Works"
+    heading="Simple process, great results."
+    subtext="We make it easy from the first call to the final cleanup. Here's what to expect."
+  />
+
+  <WhyUs
+    eyebrow="Why Choose Us"
+    heading="We do honest work for fair prices."
+    body="After 15 years in Austin, we've built our business entirely on referrals. We don't use high-pressure sales tactics or recommend work you don't need. Just straight answers and quality work — every time."
+    features={business.values.slice(0, 4)}
+    ctaHref="/contact"
+  />
+
+  <Testimonials
+    eyebrow="Customer Reviews"
+    heading="Don't take our word for it."
+    testimonials={business.testimonials.slice(0, 3)}
+  />
+
+  <CallToAction
+    eyebrow="Get Started Today"
+    heading="Ready to get the job done right?"
+    subtext="Call us for a free, no-obligation quote. We answer every call, 24 hours a day."
+    phone={business.phone}
+    ctaLabel="Request Online"
+    ctaHref="/contact"
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+  />
+
+</Layout>
