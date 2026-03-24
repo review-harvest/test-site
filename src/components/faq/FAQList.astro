@@ -1,6 +1,6 @@
 ---
 /**
- * FAQList — categorized accordion FAQ using native <details>/<summary>.
+ * FAQList: categorized accordion FAQ using native <details>/<summary>.
  * No JavaScript required; fully accessible and keyboard-navigable.
  */
 interface Question {
@@ -19,15 +19,19 @@ interface Props {
   subtext?: string;
   categories?: FAQCategory[];
   titleLevel?: 'h1' | 'h2';
+  phone?: string;
 }
 
 const {
   eyebrow = 'Common Questions',
   heading = 'Everything you need to know.',
-  subtext = "Can't find your answer here? Call us — we're happy to help.",
+  subtext = "Can't find your answer here? Call us. We're happy to help.",
   categories = [],
   titleLevel = 'h2',
+  phone = '214-901-0840',
 } = Astro.props;
+
+const phoneHref = 'tel:+1' + phone.replace(/\D/g, '');
 ---
 
 <section class="bg-bg py-20 lg:py-28">
@@ -49,7 +53,7 @@ const {
         : <h2 class="font-heading text-3xl text-text leading-tight">{heading}</h2>
       }
       {subtext && (
-        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+        <p class="font-body text-base text-text-soft mt-3 leading-relaxed" set:html={subtext} />
       )}
     </div>
 
@@ -80,9 +84,7 @@ const {
                     </svg>
                   </span>
                 </summary>
-                <p class="font-body text-base text-text-soft mt-3 leading-relaxed pr-9">
-                  {item.answer}
-                </p>
+                <p class="font-body text-base text-text-soft mt-3 leading-relaxed pr-9" set:html={item.answer} />
               </details>
             ))}
           </div>
@@ -97,7 +99,7 @@ const {
       <p class="font-body text-sm text-text-soft mt-1 mb-5">We're happy to talk through your specific situation over the phone.</p>
       <div class="flex flex-wrap items-center justify-center gap-3">
         <a
-          href="tel:+15125550142"
+          href={phoneHref}
           class="inline-flex items-center gap-2 bg-brand text-brand-fg font-body font-semibold text-sm px-5 py-3 rounded-md hover:opacity-90 transition-opacity"
         >
           <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">

@@ -9,39 +9,125 @@ import { business } from '../../data/business';
 ---
 
 <Layout
-  title={`Plumbing Services | ${business.name} | Austin, TX`}
-  description="Drain cleaning, water heaters, leak detection, emergency plumbing, pipe repair, and fixture installation in Austin, TX. Licensed and insured since 2009."
+  title={`Dog Waste Removal Services | ${business.name} | DFW Poop Scooping`}
+  description="Weekly, bi-weekly, one-time & monthly deodorizing dog waste removal in Prosper, Frisco, McKinney & DFW. No contracts. Satisfaction guaranteed."
 >
 
   <Nav
     businessName={business.name}
     phone={business.phone}
-    links={business.nav}
     ctaHref={business.ctaHref}
   />
 
+  <!-- Hero -->
+  <section class="bg-[#1A2540] py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-4">
+        What We Do
+      </p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">
+        Dog Waste Removal Plans That Fit Your Yard
+      </h1>
+      <p class="font-body text-lg text-white/80 max-w-2xl mb-8">
+        Doodie Crew offers four clean and simple service options, from weekly recurring visits to one-time deep cleans. Every plan includes full yard coverage, all-weather service, and no long-term contracts.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={business.ctaHref}
+          class="inline-block bg-[#E8951A] text-white font-heading font-bold px-8 py-4 rounded-lg hover:bg-[#d4841a] transition-colors text-center"
+        >
+          Get an Instant Quote
+        </a>
+        <a
+          href={`tel:${business.phone}`}
+          class="inline-block border border-white/40 text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 transition-colors text-center"
+        >
+          Call {business.phone}
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services grid -->
   <ServicesList
-    eyebrow="What We Do"
+    eyebrow="Our Services"
     heading="Every service we offer."
-    subtext="Residential and commercial plumbing from a team that has been serving Austin for over 15 years."
+    subtext="Professional dog waste removal in Prosper, Frisco, McKinney, Celina, and surrounding DFW communities. Pick the plan that fits your yard and your schedule."
     services={business.services}
   />
 
-  <WhyUs
-    eyebrow="Why Choose Apex"
-    heading="Quality work, honest pricing, every time."
-    body="Every service we provide comes with a written quote before we start, our 1-year labor warranty, and a commitment to leave your space cleaner than we found it. That's not a marketing claim — it's how we've built our business."
-    features={business.values.slice(0, 4)}
-    ctaHref="/contact"
-  />
+  <!-- Value props strip -->
+  <section class="bg-[#1A2540] py-14 px-6">
+    <div class="max-w-5xl mx-auto grid sm:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+      <div>
+        <p class="font-heading text-4xl font-black text-[#E8951A]">$52</p>
+        <p class="font-body text-white/80 text-sm mt-1">Starting per Month</p>
+      </div>
+      <div>
+        <p class="font-heading text-4xl font-black text-[#E8951A]">Zero</p>
+        <p class="font-body text-white/80 text-sm mt-1">Contracts. Cancel Anytime.</p>
+      </div>
+      <div>
+        <p class="font-heading text-4xl font-black text-[#E8951A]">100%</p>
+        <p class="font-body text-white/80 text-sm mt-1">Satisfaction Guarantee</p>
+      </div>
+      <div>
+        <p class="font-heading text-4xl font-black text-[#E8951A]">7</p>
+        <p class="font-body text-white/80 text-sm mt-1">Day-a-Week Service</p>
+      </div>
+    </div>
+  </section>
+
+  <WhyUs ctaHref={business.ctaHref} />
+
+  <!-- How it works -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Simple Process
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-10">
+        Up and running in minutes
+      </h2>
+      <div class="grid sm:grid-cols-3 gap-8">
+        <div class="flex flex-col gap-3">
+          <div class="w-10 h-10 rounded-full bg-[#1B5FBF] flex items-center justify-center shrink-0">
+            <span class="font-heading font-black text-white text-sm">1</span>
+          </div>
+          <h3 class="font-heading text-lg text-[#1A2540]">Get an instant quote</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm leading-relaxed">
+            Enter your address in our online portal. You'll see exact pricing based on your yard size and number of dogs, no guessing, no phone calls required.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="w-10 h-10 rounded-full bg-[#1B5FBF] flex items-center justify-center shrink-0">
+            <span class="font-heading font-black text-white text-sm">2</span>
+          </div>
+          <h3 class="font-heading text-lg text-[#1A2540]">Pick your plan</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm leading-relaxed">
+            Choose weekly, bi-weekly, one-time, or add monthly deodorizing. Add gate access notes to your account and we handle the rest.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <div class="w-10 h-10 rounded-full bg-[#1B5FBF] flex items-center justify-center shrink-0">
+            <span class="font-heading font-black text-white text-sm">3</span>
+          </div>
+          <h3 class="font-heading text-lg text-[#1A2540]">Enjoy a clean yard</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm leading-relaxed">
+            We show up on your scheduled day, clean every square foot, and notify you when we're done. You don't even need to be home.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <CallToAction
-    eyebrow="Get a Free Quote"
-    heading="Not sure what you need? Just call us."
-    subtext="We'll diagnose the problem, explain your options, and give you a written quote — before any work begins."
+    eyebrow="Ready to Start?"
+    heading="Your first cleanup is one click away."
+    subtext="Get an instant price online or call us. We'll have your yard scheduled fast. No contracts, no commitments."
     phone={business.phone}
-    ctaLabel="Request Online"
-    ctaHref="/contact"
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
   />
 
   <Footer
@@ -52,6 +138,7 @@ import { business } from '../../data/business';
     address={business.address.full}
     links={business.nav}
     serviceAreas={business.serviceAreas}
+    social={business.social}
   />
 
 </Layout>

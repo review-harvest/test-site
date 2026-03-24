@@ -3,94 +3,135 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/global/Nav.astro';
 import Footer from '../components/global/Footer.astro';
 import CallToAction from '../components/global/CallToAction.astro';
-import ReviewStats from '../components/reviews/ReviewStats.astro';
-import PlatformBadges from '../components/reviews/PlatformBadges.astro';
-import ReviewGrid from '../components/reviews/ReviewGrid.astro';
 import { business } from '../data/business';
+
+const reviews = [
+  {
+    name: "Ginger Giles",
+    quote: "Ryan was responsive to my initial inquiry and was out for my first service the next day! His communication prior to arrival and upon completion of the job was efficient, and he did an amazing job! Highly recommend!",
+    date: "1 month ago",
+  },
+  {
+    name: "Paul Edwards",
+    quote: "Doodie Crew is doing a great job for me so far. Thanks for your help y'all. Appreciate the communication and timeliness — and my dog loved the welcome treats.",
+    date: "2 months ago",
+  },
+  {
+    name: "Heather Perry",
+    quote: "Great service! Always on time for scheduling and easy to get ahold of someone if needed!",
+    date: "1 month ago",
+  },
+  {
+    name: "Debi Waldrop",
+    quote: "The Doodie Crew is very punctual and efficient. I receive a text always letting me know when their arrival time will be so I can have my dog in the house. When the job is finished, I always receive a text with a picture showing me that the gate is secured.",
+    date: "9 months ago",
+  },
+  {
+    name: "Justin Hamilton",
+    quote: "On time, friendly and easy to book. My yard is spotless and free of doggie land mines.",
+    date: "7 months ago",
+  },
+  {
+    name: "Lindsey Hassfeld",
+    quote: "Our yard has never smelt so fresh. We have struggled with what to use to get rid of the urine smell in our turf. This has been the only thing that has helped tremendously. Also love that it's all natural and safe for our kids and pets. Super nice guy too!",
+    date: "7 months ago",
+  },
+  {
+    name: "Becky Rentzel",
+    quote: "These guys do a fantastic job! I felt bad the first pick up, but now that we are on the weekly — we have our yard back!!!",
+    date: "11 months ago",
+  },
+  {
+    name: "Courtney Cano",
+    quote: "Amazing job! Love the communication as well :) Great prices for service.",
+    date: "1 year ago",
+  },
+  {
+    name: "Layla Corleone",
+    quote: "Great customer service. Showed up on time. Great to answer all my questions. Animal lovers 💕 Thanks!",
+    date: "11 months ago",
+  },
+  {
+    name: "Stephanie Seager",
+    quote: "Prompt service, always communicative and punctual! They do a wonderful job!",
+    date: "1 year ago",
+  },
+];
 ---
 
+<!-- Counteract ReviewHarvest widget CSS that overrides Tailwind responsive classes -->
+<script is:inline>
+  // ReviewHarvest widget injects CSS that breaks Tailwind responsive classes.
+  // We inject our fix AFTER window load so it runs after the widget's deferred script.
+  window.addEventListener('load', () => {
+    const style = document.createElement('style');
+    style.textContent = `
+      @media (min-width: 1024px) {
+        header nav { display: flex !important; }
+        header button#mobile-menu-btn { display: none !important; }
+        header #mobile-menu { display: none !important; }
+        footer .grid { grid-template-columns: repeat(4, minmax(0, 1fr)) !important; }
+      }
+      @media (min-width: 768px) {
+        header a[href^="tel"] { display: flex !important; }
+        header a[href*="sweepandgo"] { display: flex !important; }
+        header a[style*="E8951A"] { display: inline-flex !important; }
+      }
+    `;
+    document.head.appendChild(style);
+  });
+</script>
+
 <Layout
-  title={`Customer Reviews | ${business.name} | Austin, TX`}
-  description={`Read verified customer reviews for ${business.name}. 4.9★ across 847 Google reviews. Austin's trusted plumber since 2009.`}
+  title={`Customer Reviews | ${business.name} | DFW Poop Scooping`}
+  description={`Read what Doodie Crew customers say. 5-star rated dog waste removal service in Prosper, Frisco, McKinney & DFW. No contracts, satisfaction guaranteed.`}
 >
+  <Fragment slot="head">
+    <script src="https://widget.reviewharvest.com/widget/reviews-grid?business-id=38e8beca-f9af-47da-b33d-af4a1ec91672&tag=reviews-grid&star-color=%23FFC107&card-background-color=%23FFFFFF&text-color=%23333333&background-color=%23F9FAFB&button-color=%23333333&business-id=38e8beca-f9af-47da-b33d-af4a1ec91672" defer></script>
+  </Fragment>
 
   <Nav
     businessName={business.name}
     phone={business.phone}
-    links={business.nav}
     ctaHref={business.ctaHref}
   />
 
-  <!-- Page header -->
-  <div class="bg-brand-tint border-b border-border py-16 lg:py-20">
-    <div class="max-w-4xl mx-auto px-6 lg:px-10 text-center">
+  <!-- Hero with photo background -->
+  <div class="relative min-h-[380px] lg:min-h-[460px] flex items-center justify-center overflow-hidden">
+    <img
+      src="/images/doodie-crew-employee-truck-dog-waste-service-dfw-tx.jpg"
+      alt="Doodie Crew team member with service truck"
+      class="absolute inset-0 w-full h-full object-cover object-[center_35%]"
+      loading="eager"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, rgba(10,20,50,0.62) 0%, rgba(10,20,50,0.72) 100%);"></div>
+    <div class="relative z-10 text-center px-6 lg:px-10 max-w-3xl mx-auto">
       <div class="inline-flex items-center justify-center gap-2.5 mb-4">
-        <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
-        <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">Customer Reviews</span>
-        <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+        <span class="block w-5 h-px bg-amber-400" aria-hidden="true"></span>
+        <span class="font-body text-sm font-semibold tracking-widest uppercase text-amber-400">5-Star Rated on Google</span>
+        <span class="block w-5 h-px bg-amber-400" aria-hidden="true"></span>
       </div>
-      <h1 class="font-heading text-4xl lg:text-5xl text-text leading-tight">
-        4.9 stars across 1,000+ verified reviews.
+      <h1 class="font-heading text-4xl lg:text-5xl text-white leading-tight">
+        Here's what your DFW neighbors are saying about us.
       </h1>
-      <p class="font-body text-lg text-text-soft mt-4 leading-relaxed max-w-2xl mx-auto">
-        Real reviews from real customers across Google, Yelp, and Angi. We don't edit or cherry-pick — this is the full picture.
+      <p class="font-body text-lg text-white/80 mt-4 leading-relaxed">
+        Real reviews from real customers across Prosper, Frisco, McKinney, Celina, and beyond.
       </p>
     </div>
   </div>
 
-  <ReviewStats
-    rating="4.9"
-    totalReviews={847}
-    breakdown={[
-      { stars: 5, count: 728, pct: 86 },
-      { stars: 4, count: 94, pct: 11 },
-      { stars: 3, count: 17, pct: 2 },
-      { stars: 2, count: 5, pct: 1 },
-      { stars: 1, count: 3, pct: 0 },
-    ]}
-  />
-
-  <PlatformBadges
-    eyebrow="Verified On"
-    heading="Find us on every major review platform."
-    platforms={[
-      {
-        name: 'Google',
-        rating: '4.9',
-        reviewCount: 847,
-        url: '#',
-        description: 'Our primary review profile. Search "Apex Plumbing Austin" on Google Maps to verify.',
-      },
-      {
-        name: 'Yelp',
-        rating: '4.8',
-        reviewCount: 312,
-        url: '#',
-        description: 'Hundreds of detailed reviews from Yelp customers across Austin and the suburbs.',
-      },
-      {
-        name: 'Angi',
-        rating: '4.9',
-        reviewCount: 184,
-        url: '#',
-        description: 'Angi Super Service Award winner. All reviews verified by the platform.',
-      },
-    ]}
-  />
-
-  <ReviewGrid
-    eyebrow="What Our Customers Say"
-    heading="Real reviews from real customers."
-    reviews={business.testimonials}
-  />
+  <!-- ReviewHarvest live grid -->
+  <div class="py-12 lg:py-16">
+    <div id="reviews-grid"></div>
+  </div>
 
   <CallToAction
     eyebrow="Ready to Experience the Difference?"
-    heading="Join 8,400+ satisfied Austin customers."
-    subtext="Call us for a free quote. We answer every call personally — no voicemail, no runaround."
+    heading="Join Prosper & DFW dog owners who love their yards again."
+    subtext="Get an instant quote online or give us a call. No contracts, no commitments."
     phone={business.phone}
-    ctaLabel="Request Online"
-    ctaHref="/contact"
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
   />
 
   <Footer
@@ -101,6 +142,7 @@ import { business } from '../data/business';
     address={business.address.full}
     links={business.nav}
     serviceAreas={business.serviceAreas}
+    social={business.social}
   />
 
 </Layout>

@@ -1,0 +1,169 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import ServiceDetail from '../../components/services/ServiceDetail.astro';
+import RelatedServices from '../../components/services/RelatedServices.astro';
+import FAQList from '../../components/faq/FAQList.astro';
+import { business } from '../../data/business';
+
+const service = business.services.find(s => s.slug === 'monthly-deodorizing')!;
+
+const serviceSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.name,
+  "description": service.description,
+  "serviceType": "Yard Deodorizing",
+  "provider": { "@type": "LocalBusiness", "name": "Doodie Crew", "url": "https://doodiecrew.com" },
+  "areaServed": [{ "@type": "City", "name": "Prosper, TX" }, { "@type": "City", "name": "Frisco, TX" }, { "@type": "City", "name": "McKinney, TX" }, { "@type": "City", "name": "Celina, TX" }],
+  "url": "https://doodiecrew.com/services/monthly-deodorizing"
+});
+
+const relatedServices = business.services
+  .filter(s => s.slug !== 'monthly-deodorizing')
+  .slice(0, 3)
+  .map(s => ({ name: s.name, description: s.description, href: `/services/${s.slug}` }));
+
+const faqs = [
+  {
+    category: 'Monthly Deodorizing FAQ',
+    questions: [
+      {
+        question: 'What does the yard deodorizing treatment actually do?',
+        answer: 'Our organic deodorizing treatment neutralizes odor-causing bacteria at the source, in the soil and grass where dogs frequently go. It doesn\'t just mask smells the way air fresheners do. The formula breaks down the compounds that create that ammonia and sulfur smell, leaving your yard genuinely fresh.',
+      },
+      {
+        question: 'Is the deodorizing formula safe for my dogs and kids?',
+        answer: 'Yes. We only use pet-safe, non-toxic formulas. The treatment is safe once dry, which typically takes 15–30 minutes. We\'ll let you know when it\'s fine for your dogs and family to use the yard again. Usually we treat at the end of a cleanup visit so the yard is ready when you get home.',
+      },
+      {
+        question: 'How often should I get the deodorizing treatment?',
+        answer: 'Once a month is our standard recommendation for most yards. During the hot Texas summer months, when heat amplifies odors, some customers prefer to add it to every cleanup visit. We can work with you on a schedule that makes sense for your yard and your dogs.',
+      },
+      {
+        question: 'Can I add deodorizing to my existing cleanup plan?',
+        answer: 'Absolutely, and it\'s the most popular way to use it. Most customers who get weekly or bi-weekly poop scooping add the monthly deodorizing as an add-on to one of their regular visits. There\'s no separate trip needed.',
+      },
+      {
+        question: 'Why does my yard still smell even after cleanup?',
+        answer: 'Even after waste is removed, bacteria and residue remain in the soil and grass, especially in high-traffic dog areas. Over time, this bacteria produces persistent odors that scooping alone can\'t fix. That\'s exactly what the deodorizing treatment targets. It\'s particularly effective in areas near fences, dog runs, and spots your dog returns to repeatedly.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title="Monthly Yard Deodorizing | Odor Treatment | Doodie Crew | Prosper, TX"
+  description="Monthly yard deodorizing in Prosper, Frisco, McKinney & Celina. Pet-safe formula neutralizes dog waste odors at the source. Add to any cleanup plan."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={serviceSchema} />
+  </Fragment>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    ctaHref={business.ctaHref}
+  />
+
+  <ServiceDetail
+    name="Monthly Yard Deodorizing Service in Prosper, Frisco & DFW"
+    tagline="Pet-safe odor treatment. Not just a cover-up."
+    description="Texas summers and multiple dogs create one thing: serious yard odor. Even after waste is removed, bacteria remain in the soil and grass, producing the ammonia and sulfur smells that make your yard unpleasant. Our monthly deodorizing treatment goes after those odor-causing bacteria directly, using an organic, pet-safe formula that neutralizes the smell at the source. Applied to high-traffic dog areas once a month, it makes a noticeable difference, especially during the warmer months when heat amplifies everything."
+    benefits={service.features}
+    guarantee="100% satisfaction. If your yard doesn't smell better after treatment, we'll retreat it at no charge."
+    ctaHref={business.ctaHref}
+    phone={business.phone}
+  />
+
+  <!-- How it works simple 3-step -->
+  <section class="bg-bg py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center justify-center gap-2.5 mb-4">
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">How It Works</span>
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+        </div>
+        <h2 class="font-heading text-3xl text-text leading-tight">Simple add-on. Big difference.</h2>
+        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">Most customers combine deodorizing with a regular cleanup visit, no extra trip needed.</p>
+      </div>
+      <div class="grid sm:grid-cols-3 gap-8">
+        {[
+          { n: '01', title: 'We Clean First', body: 'All dog waste is removed from your yard on your regular scheduled visit.' },
+          { n: '02', title: 'Treatment Applied', body: 'Our organic deodorizing formula is applied directly to high-traffic dog areas and grass.' },
+          { n: '03', title: 'Fresh Within Hours', body: 'Odor-causing bacteria are neutralized. Your yard smells noticeably fresher within 24 hours.' },
+        ].map(step => (
+          <div class="flex flex-col items-center text-center">
+            <div class="w-20 h-20 rounded-full flex items-center justify-center mb-6 border-2 shadow-sm" style="border-color: rgba(232,149,26,0.3); background-color: #FFFFFF;">
+              <span class="font-heading text-xl font-bold" style="color: #E8951A;">{step.n}</span>
+            </div>
+            <h3 class="font-heading font-bold text-lg text-text mb-2">{step.title}</h3>
+            <p class="font-body text-sm text-text-soft leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQList
+    eyebrow="Deodorizing FAQ"
+    heading="Common questions about odor treatment."
+    subtext={`Still have questions? Call us at <a href="tel:+1${business.phone.replace(/\D/g,'')}" class="text-brand font-semibold hover:underline">${business.phone}</a> or get a quote online.`}
+    phone={business.phone}
+    categories={faqs}
+  />
+
+  <!-- Deodorizing action photos -->
+  <section class="py-14 px-6" style="background-color: #F4F4F2;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img
+            src="/images/doodie-crew-yard-deodorizing-treatment-prosper-tx.jpg"
+            alt="Doodie Crew team member applying yard deodorizing treatment with a Solo backpack sprayer in a residential backyard in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img
+            src="/images/doodie-crew-yard-deodorizing-service-dfw-tx.jpg"
+            alt="Doodie Crew team member in orange shirt applying organic yard deodorizing solution with a backpack sprayer next to a dog in a DFW backyard"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <RelatedServices
+    heading="Pair deodorizing with a cleanup plan"
+    services={relatedServices}
+  />
+
+  <CallToAction
+    eyebrow="Add Deodorizing to Your Plan"
+    heading="Stop masking yard odor. Fix it."
+    subtext="Add our monthly deodorizing treatment to any cleanup plan. Get an instant quote online or give us a call."
+    phone={business.phone}
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>

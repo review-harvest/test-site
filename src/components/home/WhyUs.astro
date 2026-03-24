@@ -1,74 +1,129 @@
 ---
-interface Feature {
-  title: string;
-  description: string;
-}
-
 interface Props {
-  eyebrow?: string;
-  heading?: string;
-  body?: string;
-  features?: Feature[];
   ctaHref?: string;
 }
+const { ctaHref = '#' } = Astro.props;
 
-const {
-  eyebrow = 'Why Choose Us',
-  heading = 'The right team for the job.',
-  body = "We've been serving this community for over two decades. Our reputation is built on doing the job right, being honest about what you need, and showing up when we say we will.",
-  features = [
-    { title: 'Upfront Pricing', description: 'No surprise charges. You get a full written quote before any work begins.' },
-    { title: 'Same-Day Service', description: 'Most jobs completed the same day you call. We respect your time.' },
-    { title: 'Fully Licensed', description: 'All technicians are licensed, background-checked, and insured.' },
-    { title: 'Guaranteed Work', description: 'Every job comes with our satisfaction guarantee — we make it right.' },
-  ],
-  ctaHref = '/contact',
-} = Astro.props;
+const bullets = [
+  { emoji: '📸', text: 'Photo of your secured gate after every visit. We never leave it open.' },
+  { emoji: '🚛', text: 'Clean, marked truck you\'ll recognize at the curb' },
+  { emoji: '💩', text: 'All waste bagged and fully removed from your property' },
+  { emoji: '⭐', text: '5-star rated by Prosper & DFW families' },
+  { emoji: '📲', text: 'You\'ll be notified when your yard is fresh and clean' },
+  { emoji: '🔔', text: 'We\'ll alert you if we notice anything unusual with your dog' },
+  { emoji: '🐾', text: 'Owned by a K-9 handler & certified dog trainer' },
+  { emoji: '🌿', text: 'Pet-safe, eco-friendly monthly deodorizing available' },
+  { emoji: '🚫', text: 'No contracts. Pause or cancel anytime, no fees' },
+  { emoji: '👍', text: 'Satisfaction guaranteed. Free re-scoop if we miss a spot' },
+];
 ---
 
-<section class="bg-surface py-20 lg:py-28">
+<section class="bg-[#F4F4F2] py-16 lg:py-20">
   <div class="max-w-7xl mx-auto px-6 lg:px-10">
-    <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
 
-      <!-- Left: statement (sticky on scroll) -->
-      <div class="lg:col-span-5 lg:sticky lg:top-28">
-        {eyebrow && (
-          <div class="inline-flex items-center gap-2.5 mb-4">
-            <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
-            <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
-              {eyebrow}
-            </span>
+    <!-- Heading -->
+    <div class="text-center mb-10">
+      <h2 class="font-heading text-4xl lg:text-5xl font-black text-[#1A2540]">Why DFW Homeowners Choose Doodie Crew for Poop Scooping</h2>
+      <div class="flex items-center justify-center mt-3" aria-hidden="true">
+        <svg width="80" height="14" viewBox="0 0 80 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 7 Q10 2, 20 7 Q30 12, 40 7 Q50 2, 60 7 Q70 12, 78 7" stroke="#E8951A" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Bullets + truck side by side -->
+    <div class="flex flex-col lg:flex-row items-center lg:items-end gap-10 lg:gap-6">
+
+      <!-- Bullet grid -->
+      <div class="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-4">
+        {bullets.map((b) => (
+          <div class="flex items-start gap-3">
+            <span class="text-2xl leading-none mt-0.5 shrink-0" aria-hidden="true">{b.emoji}</span>
+            <span class="font-body text-[15px] font-semibold text-[#1A2540] leading-snug">{b.text}</span>
           </div>
-        )}
-
-        <h2 class="font-heading text-3xl text-text leading-tight">{heading}</h2>
-
-        <p class="font-body text-base text-text-soft mt-5 leading-relaxed">{body}</p>
-
-        <a
-          href={ctaHref}
-          class="inline-flex items-center gap-2 mt-8 font-body text-sm font-semibold text-brand hover:gap-3 transition-all duration-150"
-        >
-          Talk to us today
-          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-          </svg>
-        </a>
+        ))}
       </div>
 
-      <!-- Right: feature grid -->
-      <div class="lg:col-span-7">
-        <div class="grid sm:grid-cols-2 gap-8">
-          {features.map((feature) => (
-            <div class="border-t-2 border-brand/20 pt-6">
-              <div class="w-2 h-2 rounded-full bg-brand mb-4" aria-hidden="true"></div>
-              <h3 class="font-body font-semibold text-base text-text">{feature.title}</h3>
-              <p class="font-body text-sm text-text-soft mt-2 leading-relaxed">{feature.description}</p>
-            </div>
-          ))}
+      <!-- Truck column: slide in from right, overflow clip scoped to this column -->
+      <div class="truck-col lg:w-[50%] shrink-0 overflow-hidden">
+        <div class="truck-anim">
+          <img
+            src="/images/truck-cutout.png"
+            alt="Doodie Crew branded truck in Prosper, TX"
+            class="truck-img w-full"
+            loading="lazy"
+            width="2176"
+            height="1084"
+            draggable="false"
+          />
         </div>
       </div>
 
     </div>
+
+    <!-- Team photo strip -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12">
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+        <img
+          src="/images/ryan-white-owner-doodie-crew-poop-scooping-prosper-tx.jpg"
+          alt="Ryan White, owner of Doodie Crew, in an orange hoodie standing next to the branded dog waste removal truck in Prosper, TX"
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+        <img
+          src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+          alt="Doodie Crew team member in orange uniform scooping dog waste with a yellow collection bin against a stone wall in a residential backyard in TX"
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+      <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+        <img
+          src="/images/doodie-crew-yard-cleanup-pet-waste-removal-prosper-tx.jpg"
+          alt="Back view of Doodie Crew team member in branded orange shirt reading 'I Want Your Dog Doodie' during a yard cleanup visit in Prosper, TX"
+          class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
   </div>
 </section>
+
+<style>
+  .truck-anim {
+    transform: translateX(110%);
+    transition: transform 1.3s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .truck-anim.truck-visible {
+    transform: translateX(0);
+  }
+  .truck-img {
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.18));
+    display: block;
+    width: 100%;
+  }
+</style>
+
+<script>
+  (function () {
+    const anim = document.querySelector('.truck-anim') as HTMLElement | null;
+    const trigger = document.querySelector('.truck-col') as HTMLElement | null;
+    if (!anim || !trigger) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            anim.classList.add('truck-visible');
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(trigger);
+  })();
+</script>

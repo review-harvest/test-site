@@ -1,0 +1,292 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import { business } from '../../data/business';
+---
+
+<Layout
+  title="Poop Scooping Service in Frisco, TX | Doodie Crew"
+  description="Dog waste removal in Frisco, TX. Weekly, bi-weekly & one-time poop scooping. Serving Phillips Creek Ranch, Heritage Lakes, Starwood & more. No contracts."
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <!-- Hero -->
+  <section class="bg-[#1A2540] overflow-hidden">
+    <div class="max-w-7xl mx-auto lg:grid lg:grid-cols-2 items-stretch">
+      <div class="pt-10 pb-6 lg:py-24 px-6 lg:px-10 xl:pl-16">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-4">
+        Collin County · North DFW
+      </p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">
+        Poop Scooping Service in Frisco, TX
+      </h1>
+      <p class="font-body text-lg text-white/80 max-w-2xl mb-8">
+        Frisco is one of the fastest-growing cities in the entire country, and with more families and more dogs come more yards that need attention. Doodie Crew provides reliable, professional dog waste removal for Frisco homeowners across its many planned communities and established neighborhoods. No contracts, no fuss, just a clean yard waiting for you every time we visit.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={business.ctaHref}
+          class="inline-block bg-[#E8951A] text-white font-heading font-bold px-8 py-4 rounded-lg hover:bg-[#d4841a] transition-colors text-center"
+        >
+          Get an Instant Quote
+        </a>
+        <a
+          href={`tel:+1${business.phone.replace(/\D/g,'')}`}
+          class="inline-block border border-white/40 text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 transition-colors text-center"
+        >
+          Call {business.phone}
+        </a>
+      </div>
+
+      <!-- Mobile hero photo -->
+      <div class="block lg:hidden mt-6 -mx-6 overflow-hidden" style="height: 200px;">
+        <img src="/images/doodie-crew-poop-scooping-truck-frisco-tx.jpg"
+          alt="Doodie Crew dog waste removal service truck parked on a residential street in Frisco, TX"
+          class="w-full h-full object-cover object-center" loading="eager"/>
+      </div>
+      </div>
+      <!-- Hero photo -->
+      <div class="hidden lg:block py-8 pr-8">
+        <div class="relative h-full min-h-[380px] rounded-2xl overflow-hidden">
+          <img src="/images/doodie-crew-poop-scooping-truck-frisco-tx.jpg"
+            alt="Doodie Crew dog waste removal service truck parked on a residential street in Frisco, TX under a blue sky"
+            class="absolute inset-0 w-full h-full object-cover object-center" loading="eager"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Doodie Crew in Frisco -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Why Choose Us
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-8">
+        Why Frisco homeowners choose Doodie Crew
+      </h2>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Frisco-familiar crew.</strong> We're based just minutes away in Prosper and serve Frisco regularly. We know the neighborhoods, the subdivision layouts, and the gates, no confusion, no delays.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Handles busy Frisco schedules.</strong> With two working parents and kids in Frisco ISD activities, the last thing you need to add is yard cleanup. Our pooper scooper service runs on autopilot. Sign up once and never think about it again.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>No contracts, ever.</strong> Frisco's population is always on the move. We get it. Start your pet waste removal service, pause it when you travel, cancel when you need to, all through your online portal without a phone call.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>HOA-compliant service.</strong> Frisco's master-planned communities often have HOA yard standards. Regular poop scooping keeps your property looking sharp and keeps you clear of any HOA notices.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Organic disinfectant on every tool.</strong> We use kennel-grade organic sanitizer on all scooping equipment between every single yard. Your pets and kids play in a yard that's clean, not just clear of waste but treated for bacteria.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>100% satisfaction guarantee.</strong> If a cleanup doesn't meet your expectations, call us and we'll come back. Period.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Neighborhoods -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Local Neighborhoods
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-4">
+        Frisco neighborhoods we serve
+      </h2>
+      <p class="font-body text-[#1A2540]/70 mb-8 max-w-2xl">
+        We provide dog waste removal across Frisco's diverse range of communities, from newer master-planned developments to well-established subdivisions.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {['Phillips Creek Ranch', 'Heritage Lakes', 'Starwood', 'The Hills of Kingswood', 'Plantation Resort'].map(n => (
+          <div class="bg-[#FBF8F3] rounded-lg px-5 py-4">
+            <p class="font-heading text-[#1A2540] font-semibold">{n}</p>
+            <p class="font-body text-sm text-[#1A2540]/60 mt-1">Frisco, TX</p>
+          </div>
+        ))}
+      </div>
+      <p class="font-body text-[#1A2540]/70 mt-6 text-sm">
+        Don't see your neighborhood? We likely cover it. <a href={business.ctaHref} class="text-[#1B5FBF] underline">Get an instant quote</a> or <a href={`tel:+1${business.phone.replace(/\D/g,'')}`} class="text-[#1B5FBF] underline">call us</a> to confirm your address.
+      </p>
+    </div>
+  </section>
+
+  <!-- Local Knowledge -->
+  <section class="bg-[#1B5FBF] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-white/70 font-semibold text-sm uppercase tracking-widest mb-3">
+        Local Knowledge
+      </p>
+      <h2 class="font-heading text-3xl text-white mb-6">
+        Frisco runs at full speed. Your yard should keep up.
+      </h2>
+      <p class="font-body text-white/90 text-lg leading-relaxed">
+        Frisco is a city that doesn't slow down. From the energy at Toyota Stadium on FC Dallas match days to the sprawling green lawns around Frisco Commons Park, this city values its outdoor spaces. Stonebriar Centre draws visitors from across DFW, and The Star brings a level of polish and pride to Frisco that residents carry into their own neighborhoods. With Frisco ISD ranked among the top school districts in Texas and new communities popping up every year, families here expect the best, and that should include their own backyard. Our dog waste removal service makes sure your outdoor space lives up to the Frisco standard: clean, well-maintained, and ready for your family any day of the week.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Tiers -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Service Plans
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-4">
+        Choose your cleanup plan
+      </h2>
+      <p class="font-body text-[#1A2540]/70 mb-10 max-w-2xl">
+        All plans include full yard coverage, all-weather visits, and zero long-term contracts. Cancel or adjust anytime.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1A2540]/10">
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">Weekly Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            Once-a-week poop scooping so your yard is always ready. Best for households with multiple dogs or heavy yard use.
+          </p>
+          <a href="/services/weekly-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1B5FBF]/40 ring-2 ring-[#1B5FBF]">
+          <p class="font-body text-[#1B5FBF] text-xs font-semibold uppercase tracking-wide mb-2">Popular</p>
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">Bi-Weekly Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            Every-other-week pet waste removal, a great value option that keeps things manageable between visits.
+          </p>
+          <a href="/services/biweekly-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1A2540]/10">
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">One-Time Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            One thorough dog waste removal visit, no subscription, no commitment. Great before parties or for new customers wanting to try us out.
+          </p>
+          <a href="/services/one-time-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        FAQ
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-10">
+        Questions from Frisco dog owners
+      </h2>
+      <div class="space-y-8">
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            How soon can you start service in Frisco?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Often within the same week. Get your instant quote online, pick your plan, and we'll confirm your first visit date by the next business day. Most Frisco customers are on the schedule within 2–3 days of signing up.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Do you service gated communities in Frisco like Phillips Creek Ranch?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Yes. We regularly work in Frisco's gated and access-controlled communities. Just provide your gate code or access instructions in your client account and we'll handle the rest. We're already familiar with many of Frisco's neighborhood entry systems.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            What happens if I need to skip a week while traveling?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            No problem. Just log in to your client portal and skip or pause your service at any time. Frisco families travel a lot, and we've built our system to be completely flexible around your schedule. No fees, no hassle.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Can you handle multiple dogs? We have three.
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Absolutely. Our pricing accounts for the number of dogs, and our crew is fully equipped to handle high-volume yards. Three dogs means we're thorough on every visit. We don't rush through large jobs. Your yard will be properly cleaned every single time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team photo strip -->
+  <section class="py-12 px-6" style="background-color: #F4F4F2;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/ryan-white-owner-doodie-crew-poop-scooping-prosper-tx.jpg"
+            alt="Ryan White, owner of Doodie Crew, in an orange hoodie standing next to the branded dog waste removal truck in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+            alt="Doodie Crew team member in orange uniform scooping dog waste with a yellow collection bin in a residential backyard in TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-yard-cleanup-pet-waste-removal-prosper-tx.jpg"
+            alt="Back view of Doodie Crew team member in branded orange shirt reading I Want Your Dog Doodie during a yard cleanup in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    eyebrow="Frisco, TX"
+    heading="Frisco is built for families. Your yard should be too."
+    subtext="Join Frisco homeowners who've handed off yard waste cleanup for good. Get an instant quote in minutes, no commitment required."
+    phone={business.phone}
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>

@@ -16,73 +16,124 @@ const {
   eyebrow = 'What We Do',
   heading = 'Our Services',
   subtext = 'Comprehensive solutions for your home and business.',
-  services = [
-    { name: 'Service One', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
-    { name: 'Service Two', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
-    { name: 'Service Three', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
-    { name: 'Service Four', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
-    { name: 'Service Five', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
-    { name: 'Service Six', description: 'A clear description of this service and the value it provides to customers who need it.', href: '/contact' },
-  ],
+  services = [],
 } = Astro.props;
+
+const trustStats = [
+  { value: '100%', label: 'Satisfaction Guarantee', color: '#1B5FBF', bg: '#EEF3FC', border: '#C7D9F5' },
+  { value: 'Zero', label: 'Contracts — ever', color: '#1B5FBF', bg: '#EEF3FC', border: '#C7D9F5' },
+  { value: '7 Days', label: 'a Week Service', color: '#1B5FBF', bg: '#EEF3FC', border: '#C7D9F5' },
+  { value: 'From $52', label: 'per month to start', color: '#C4700E', bg: '#FEF3DC', border: '#F5D9A0' },
+];
 ---
 
-<section id="services" class="bg-bg py-20 lg:py-28">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+<section id="services" class="relative pt-10 lg:pt-14 pb-28 lg:pb-36 overflow-hidden" style="background-color: #FEFAF4;">
+
+  <!-- Paw print watermark bottom-right -->
+  <div class="absolute bottom-12 right-0 pointer-events-none select-none" aria-hidden="true" style="opacity: 0.045; color: #E8951A;">
+    <svg viewBox="0 0 200 200" fill="currentColor" style="width: 260px; height: 260px;">
+      <ellipse cx="60" cy="58" rx="22" ry="28"/>
+      <ellipse cx="140" cy="58" rx="22" ry="28"/>
+      <ellipse cx="27" cy="115" rx="19" ry="24"/>
+      <ellipse cx="173" cy="115" rx="19" ry="24"/>
+      <ellipse cx="100" cy="152" rx="50" ry="43"/>
+    </svg>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
 
     <!-- Section header -->
-    <div class="max-w-2xl">
+    <div class="text-center max-w-3xl mx-auto mb-8">
       {eyebrow && (
-        <div class="inline-flex items-center gap-2.5 mb-4">
+        <div class="inline-flex items-center justify-center gap-2.5 mb-4">
           <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
           <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
             {eyebrow}
           </span>
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
         </div>
       )}
-      <h2 class="font-heading text-3xl text-text leading-tight">{heading}</h2>
+      <h2 class="font-heading text-4xl lg:text-5xl text-text leading-tight">{heading}</h2>
       {subtext && (
-        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+        <p class="font-body text-base text-text-soft mt-4 leading-relaxed">{subtext}</p>
       )}
     </div>
 
-    <!-- Service cards -->
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
-      {services.map((service, i) => (
-        <div class="group bg-surface border border-border rounded-lg p-7 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200">
-
-          <!-- Numbered accent -->
-          <div class="w-8 h-8 rounded-md bg-brand-tint flex items-center justify-center mb-5">
-            <span class="font-body text-xs font-bold text-brand leading-none">
-              {String(i + 1).padStart(2, '0')}
-            </span>
-          </div>
-
-          <h3 class="font-body font-semibold text-lg text-text">{service.name}</h3>
-          <p class="font-body text-sm text-text-soft mt-2 leading-relaxed">{service.description}</p>
-
-          {service.href && (
-            <a
-              href={service.href}
-              class="inline-flex items-center gap-1.5 mt-5 font-body text-sm font-semibold text-brand hover:gap-2.5 transition-all duration-150"
-              aria-label={`Learn more about ${service.name}`}
-            >
-              Learn more
-              <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-              </svg>
-            </a>
-          )}
-
+    <!-- Trust stat cards -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
+      {trustStats.map(stat => (
+        <div
+          class="rounded-2xl p-5 lg:p-7 border text-center"
+          style={`background: ${stat.bg}; border-color: ${stat.border};`}
+        >
+          <p class="font-heading text-2xl lg:text-3xl font-bold leading-none mb-2" style={`color: ${stat.color};`}>{stat.value}</p>
+          <p class="font-body text-sm leading-snug" style="color: #6B7280;">{stat.label}</p>
         </div>
       ))}
     </div>
 
-    <!-- View all services link -->
+    <!-- Action photo banner: splits the header from the service cards -->
+    <div class="flex flex-col lg:flex-row gap-6 mb-14 rounded-2xl overflow-hidden shadow-md">
+      <div class="lg:w-1/2 aspect-[4/3] lg:aspect-auto">
+        <img
+          src="/images/doodie-crew-poop-scooping-yard-cleanup-dfw-tx.jpg"
+          alt="Doodie Crew team member in orange shirt actively scooping dog waste with a white dog nearby in a residential backyard in DFW, TX"
+          class="w-full h-full object-cover"
+          loading="lazy"
+          style="min-height: 280px;"
+        />
+      </div>
+      <div class="lg:w-1/2 flex flex-col justify-center p-8 lg:p-10" style="background-color: #1A2540;">
+        <p class="font-body text-sm font-semibold tracking-widest uppercase mb-3" style="color: #E8951A;">We Handle the Dirty Work</p>
+        <h3 class="font-heading text-2xl lg:text-3xl font-bold text-white leading-snug mb-4">
+          You enjoy the yard.<br/>We'll take care of the rest.
+        </h3>
+        <p class="font-body text-base leading-relaxed mb-6" style="color: rgba(255,255,255,0.65);">
+          Every visit includes a full scoop, tool sanitization with kennel-grade disinfectant, and a photo confirmation so you know it's done right.
+        </p>
+        <a
+          href="https://client.sweepandgo.com/doodie-crew-pgqy8/register"
+          class="inline-flex items-center gap-2 self-start font-body font-bold text-sm px-6 py-3 rounded-md hover:opacity-90 transition-opacity"
+          style="background-color: #E8951A; color: #ffffff;"
+        >
+          Get an Instant Quote
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- Service plan cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      {services.map((service, i) => (
+        <a
+          href={service.href ?? '/services'}
+          class="svc-card group bg-white border border-border rounded-xl p-7 shadow-sm flex flex-col"
+          style={`--delay: ${i * 90}ms`}
+        >
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-5 shrink-0" style="background-color: #FEF3DC;">
+            <svg class="w-6 h-6" style="color: #E8951A;" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M4.5 11a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm15 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM7 8.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm10 0a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zm.24 2.77c-1.87-2.35-3.55-3.27-5.24-3.27s-3.37.92-5.24 3.27C4.83 13.68 4 15.5 4 17c0 2.5 2.5 4 8 4s8-1.5 8-4c0-1.5-.83-3.32-2.76-5.73z"/>
+            </svg>
+          </div>
+          <h3 class="font-heading font-bold text-xl text-text group-hover:text-brand transition-colors">{service.name}</h3>
+          <p class="font-body text-sm text-text-soft mt-2 leading-relaxed flex-1">{service.description}</p>
+          <span class="inline-flex items-center gap-1.5 mt-6 font-body text-sm font-semibold" style="color: #E8951A;">
+            Learn more
+            <svg class="w-4 h-4 shrink-0 group-hover:translate-x-1 transition-transform duration-150" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </span>
+        </a>
+      ))}
+    </div>
+
     <div class="mt-10 text-center">
       <a
         href="/services"
-        class="inline-flex items-center gap-2 font-body text-sm font-semibold text-brand hover:gap-3 transition-all duration-150"
+        class="inline-flex items-center gap-2 font-body text-sm font-semibold hover:gap-3 transition-all duration-150"
+        style="color: #1B5FBF;"
       >
         View all services
         <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
@@ -92,4 +143,47 @@ const {
     </div>
 
   </div>
+
+  <!-- Wave: cream → dark navy (Process section) -->
+  <div class="absolute bottom-0 left-0 right-0 pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:64px;">
+      <path d="M0,20 C480,64 960,0 1440,40 L1440,64 L0,64 Z" fill="#0F1A35"/>
+    </svg>
+  </div>
+
 </section>
+
+<style>
+  .svc-card {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.2s;
+    transition-delay: var(--delay, 0ms);
+  }
+  .svc-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .svc-card.visible:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 14px 32px rgba(0,0,0,0.09);
+  }
+</style>
+
+<script>
+  (function () {
+    const cards = document.querySelectorAll('.svc-card');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    cards.forEach((card) => observer.observe(card));
+  })();
+</script>

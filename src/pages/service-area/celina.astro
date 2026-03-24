@@ -1,0 +1,292 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import { business } from '../../data/business';
+---
+
+<Layout
+  title="Poop Scooping Service in Celina, TX | Doodie Crew"
+  description="Dog waste removal in Celina, TX. Weekly, bi-weekly & one-time poop scooping. Serving Light Farms, Mustang Lakes, Cambridge Crossing & more. No contracts."
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <!-- Hero -->
+  <section class="bg-[#1A2540] overflow-hidden">
+    <div class="max-w-7xl mx-auto lg:grid lg:grid-cols-2 items-stretch">
+      <div class="pt-10 pb-6 lg:py-24 px-6 lg:px-10 xl:pl-16">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-4">
+        Collin County · North DFW
+      </p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">
+        Poop Scooping Service in Celina, TX
+      </h1>
+      <p class="font-body text-lg text-white/80 max-w-2xl mb-8">
+        Celina is growing faster than almost anywhere in North Texas, and if you've recently moved into Light Farms, Mustang Lakes, or a new development on a generous lot, you already know how much outdoor space you have to enjoy. You also know how much space your dogs have to use. Doodie Crew provides professional poop scooping and pet waste removal for Celina homeowners, including properties with larger acreage lots that smaller services won't touch. Get your yard back.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={business.ctaHref}
+          class="inline-block bg-[#E8951A] text-white font-heading font-bold px-8 py-4 rounded-lg hover:bg-[#d4841a] transition-colors text-center"
+        >
+          Get an Instant Quote
+        </a>
+        <a
+          href={`tel:+1${business.phone.replace(/\D/g,'')}`}
+          class="inline-block border border-white/40 text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 transition-colors text-center"
+        >
+          Call {business.phone}
+        </a>
+      </div>
+
+      <!-- Mobile hero photo -->
+      <div class="block lg:hidden mt-6 -mx-6 overflow-hidden" style="height: 200px;">
+        <img src="/images/doodie-crew-poop-scooping-truck-celina-tx.jpg"
+          alt="Doodie Crew dog waste removal service truck at a Celina, TX property"
+          class="w-full h-full object-cover object-center" loading="eager"/>
+      </div>
+      </div>
+      <!-- Hero photo -->
+      <div class="hidden lg:block py-8 pr-8">
+        <div class="relative h-full min-h-[380px] rounded-2xl overflow-hidden">
+          <img src="/images/doodie-crew-poop-scooping-truck-celina-tx.jpg"
+            alt="Doodie Crew dog waste removal service truck at a Celina, TX property showing the branded wrap with 214-901-0840"
+            class="absolute inset-0 w-full h-full object-cover object-center" loading="eager"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Doodie Crew in Celina -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Why Choose Us
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-8">
+        Why Celina homeowners choose Doodie Crew
+      </h2>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Ready for Celina's growth.</strong> New neighborhoods are appearing in Celina every few months. We stay current with new development addresses and are ready to serve your community even if your street is brand new.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Handles acreage properties.</strong> Celina has a mix of standard subdivision lots and larger rural-style properties. Our pet waste removal service covers both. Pricing is based on your actual yard area and number of dogs so you pay fairly for the work.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Just down the road in Prosper.</strong> Our home base is Prosper. We're your neighbor. That means you get consistent, on-time service from a local business that knows this part of Collin County well.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>No long-term contracts.</strong> Celina is a city in transition, and life changes fast. Our dog waste removal service is month-to-month. Start, adjust, or cancel whenever you need to.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Organic disinfectant on every tool.</strong> We sanitize our equipment between every yard with a kennel-grade organic disinfectant. Your family and pets are protected from cross-contamination with every visit.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Satisfaction guaranteed.</strong> We'll return and re-clean if you're ever not satisfied with a visit, at no charge, no questions asked.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Neighborhoods -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Local Neighborhoods
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-4">
+        Celina neighborhoods we serve
+      </h2>
+      <p class="font-body text-[#1A2540]/70 mb-8 max-w-2xl">
+        We provide poop scooping across Celina's fast-developing planned communities and established neighborhoods alike.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {['Light Farms', 'Mustang Lakes', 'Cambridge Crossing', 'Wellspring', 'Downtown Celina Area'].map(n => (
+          <div class="bg-[#FBF8F3] rounded-lg px-5 py-4">
+            <p class="font-heading text-[#1A2540] font-semibold">{n}</p>
+            <p class="font-body text-sm text-[#1A2540]/60 mt-1">Celina, TX</p>
+          </div>
+        ))}
+      </div>
+      <p class="font-body text-[#1A2540]/70 mt-6 text-sm">
+        Moving into a new Celina development? <a href={business.ctaHref} class="text-[#1B5FBF] underline">Get a quote</a> with your address. We likely already serve your area or will soon.
+      </p>
+    </div>
+  </section>
+
+  <!-- Local Knowledge -->
+  <section class="bg-[#1B5FBF] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-white/70 font-semibold text-sm uppercase tracking-widest mb-3">
+        Local Knowledge
+      </p>
+      <h2 class="font-heading text-3xl text-white mb-6">
+        Small-town heart, big growth energy. We match it.
+      </h2>
+      <p class="font-body text-white/90 text-lg leading-relaxed">
+        Celina has a rare quality: it's growing at a breakneck pace while still holding onto its small-town identity. Friday night lights at Celina High School, one of the most celebrated football programs in Texas, bring the whole community together. Celina City Park is a local gathering spot where families bring their dogs for fresh air and a change of scenery. Downtown Celina retains its charming character even as the population doubles around it. If you've chosen Celina for its unique mix of space, community, and small-town warmth, you deserve a service that matches that same level of care. Our dog waste removal service is handled by your neighbor in Prosper, a local business that respects the Celina community and shows up every time, rain or North Texas heat. Whether you've got a standard lot in Light Farms or a half-acre in a newer development, we'll keep it clean.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Tiers -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Service Plans
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-4">
+        Choose your cleanup plan
+      </h2>
+      <p class="font-body text-[#1A2540]/70 mb-10 max-w-2xl">
+        Every plan includes full yard coverage, all-weather service, and no long-term contracts. Manage your account online anytime.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1A2540]/10">
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">Weekly Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            Once-a-week poop scooping, the best choice for multiple dogs or larger Celina lots where waste accumulates quickly.
+          </p>
+          <a href="/services/weekly-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1B5FBF]/40 ring-2 ring-[#1B5FBF]">
+          <p class="font-body text-[#1B5FBF] text-xs font-semibold uppercase tracking-wide mb-2">Popular</p>
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">Bi-Weekly Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            Every-other-week pet waste removal, a popular and affordable plan for keeping your yard manageable.
+          </p>
+          <a href="/services/biweekly-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1A2540]/10">
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">One-Time Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            A single thorough dog waste removal visit, no subscription required. Perfect for new homeowners or before a backyard gathering.
+          </p>
+          <a href="/services/one-time-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        FAQ
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-10">
+        Questions from Celina dog owners
+      </h2>
+      <div class="space-y-8">
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Do you serve newly built communities in Celina?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Yes. We actively add new Celina communities to our routes as they develop. If your neighborhood just broke ground, get a quote with your address. We either already cover it or we'll let you know our expected start date for your area.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Can you handle larger lots? We're on about half an acre.
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Absolutely. We regularly service properties in Celina with larger-than-average lots. Pricing is adjusted based on your yard size, so you pay fairly, and we cover every bit of it. No flat-rate pricing that incentivizes rushing through a large property.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            How does the pooper scooper service work if I'm not home?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Very smoothly. The vast majority of our customers aren't home during visits. Provide gate access in your online account, and we take care of everything. You'll receive a notification when the job is complete. No interaction required.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Is there a setup fee or minimum commitment?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            No setup fee, no minimum commitment. Our service is month-to-month and you can cancel at any time through your online portal without any fees. We're confident in the quality of our work. We don't need a contract to keep your business.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team photo strip -->
+  <section class="py-12 px-6" style="background-color: #F4F4F2;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/ryan-white-owner-doodie-crew-poop-scooping-prosper-tx.jpg"
+            alt="Ryan White, owner of Doodie Crew, in an orange hoodie standing next to the branded dog waste removal truck in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+            alt="Doodie Crew team member in orange uniform scooping dog waste with a yellow collection bin in a residential backyard in TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-yard-cleanup-pet-waste-removal-prosper-tx.jpg"
+            alt="Back view of Doodie Crew team member in branded orange shirt reading I Want Your Dog Doodie during a yard cleanup in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    eyebrow="Celina, TX"
+    heading="Big lots need reliable poop scooping."
+    subtext="Celina homeowners trust Doodie Crew for consistent, thorough dog waste removal, no matter the lot size. Get your instant quote today."
+    phone={business.phone}
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>

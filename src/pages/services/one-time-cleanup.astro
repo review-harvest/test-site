@@ -1,0 +1,147 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import ServiceDetail from '../../components/services/ServiceDetail.astro';
+import RelatedServices from '../../components/services/RelatedServices.astro';
+import Process from '../../components/home/Process.astro';
+import Testimonials from '../../components/home/Testimonials.astro';
+import FAQList from '../../components/faq/FAQList.astro';
+import { business } from '../../data/business';
+
+const service = business.services.find(s => s.slug === 'one-time-cleanup')!;
+
+const serviceSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.name,
+  "description": service.description,
+  "serviceType": "Dog Waste Removal",
+  "provider": { "@type": "LocalBusiness", "name": "Doodie Crew", "url": "https://doodiecrew.com" },
+  "areaServed": [{ "@type": "City", "name": "Prosper, TX" }, { "@type": "City", "name": "Frisco, TX" }, { "@type": "City", "name": "McKinney, TX" }, { "@type": "City", "name": "Celina, TX" }],
+  "url": "https://doodiecrew.com/services/one-time-cleanup"
+});
+
+const relatedServices = business.services
+  .filter(s => s.slug !== 'one-time-cleanup')
+  .slice(0, 3)
+  .map(s => ({ name: s.name, description: s.description, href: `/services/${s.slug}` }));
+
+// One matching testimonial (Jessica M.) - pad to 3 with the weekly ones
+const relatedTestimonials = business.testimonials
+  .filter(t => t.service === 'One-Time Cleanup')
+  .concat(business.testimonials.filter(t => t.service !== 'One-Time Cleanup').slice(0, 2))
+  .slice(0, 3);
+
+const faqs = [
+  {
+    category: 'One-Time Pet Waste Removal Questions',
+    questions: [
+      {
+        question: 'How quickly can you schedule a one-time poop scooping visit?',
+        answer: 'In most cases we can get you on the schedule within the same week you book. For urgent situations, like a backyard party coming up this weekend, call us directly at ' + business.phone + ' and we will do our best to fit you in as fast as possible. Online booking shows live availability so you can pick the soonest open slot yourself.',
+      },
+      {
+        question: 'My yard is really bad. Months of waste accumulated. Can you handle it?',
+        answer: 'Yes, and you would not believe how often we hear this. Whether the yard has been neglected for weeks or months, our crew is equipped and experienced at thorough deep-clean pet waste removal jobs. We work methodically through the entire yard and do not leave until everything is cleared. There is no judgment, just a clean yard waiting for you when we are done.',
+      },
+      {
+        question: 'Do you offer one-time poop scooping for commercial properties, not just residential?',
+        answer: 'Absolutely. We handle one-time dog waste removal for apartment complexes, HOA common areas, event venues, and private residences. If you manage a shared outdoor space and need it cleaned before an inspection, event, or turnover, we can help. Contact us at ' + business.phone + ' to discuss the scope and get a quote.',
+      },
+      {
+        question: 'Is there any commitment after the one-time cleanup?',
+        answer: 'None whatsoever. A one-time visit is exactly that: one visit, one payment, no subscription and no follow-up charges. That said, many of our one-time customers discover how much they enjoy a clean yard and choose to convert to a recurring weekly or bi-weekly plan. That decision is entirely yours, and there is never any pressure.',
+      },
+      {
+        question: 'What should I do to prepare my yard before the team arrives?',
+        answer: 'Very little. Make sure our crew can access the yard (unlocked gate or code provided at booking) and that the area is free of major obstacles like large toys or furniture covering the ground. That is it. We take care of everything else. You do not need to be home and you do not need to pre-clean anything.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title={`One-Time Poop Scooping & Yard Cleanup | ${business.name} | Prosper, Frisco & McKinney TX`}
+  description="One-time poop scooping in Prosper, Frisco, McKinney & Celina TX. No subscription needed. Perfect before parties or after vacations. Same-week availability."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={serviceSchema} />
+  </Fragment>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <ServiceDetail
+    name="One-Time Poop Scooping & Dog Waste Removal in DFW"
+    tagline="No commitment. Book a single yard cleanup."
+    description="Sometimes you just need a clean yard and you need it now. Whether you are hosting a backyard barbecue in Prosper next weekend, returning from a two-week vacation to a yard full of dog waste, moving into a new home where the previous owners had pets, or simply want a fresh start before signing up for recurring service, our one-time poop scooping visit is the answer. No subscription, no contracts, no recurring billing. Book online, tell us about your property, and we show up and remove every bit of pet waste from your yard. We have tackled everything from a single week of accumulation to months of neglect, and we leave every yard spotless. One-time dog waste removal is also available for commercial properties, rental homes, and HOA common areas across the DFW area."
+    benefits={[
+      'No recurring commitment. Pay once, done.',
+      'Full yard deep clean from fence to fence',
+      'Same-week availability in most of our DFW service area',
+      'Perfect before parties, open houses, events, or after vacations',
+      'Available for both residential and commercial properties',
+      'Easy online booking with instant confirmation',
+    ]}
+    guarantee="100% satisfaction. If you are not happy with the cleanup, we come back and re-clean at no charge."
+  />
+
+  <Process
+    eyebrow="How One-Time Cleanup Works"
+    heading="Fresh yard in four steps. No strings attached."
+    subtext="Booking a one-time pet waste removal visit is fast and straightforward. Here is the entire process."
+    steps={[
+      { number: '01', title: 'Book Online or Call Us', description: 'Use our online portal to select the one-time cleanup, enter your address in Prosper, Frisco, McKinney, Celina, or the surrounding DFW area, and choose your preferred date. Or call us directly at ' + business.phone + ' for same-day or next-day requests.' },
+      { number: '02', title: 'We Confirm & Note Access Details', description: 'After booking you provide gate access info and any notes about your property. We confirm your appointment and make sure the crew has everything they need before arriving.' },
+      { number: '03', title: 'We Arrive & Deep-Clean the Entire Yard', description: 'On the scheduled day our team works through your full yard, front, back, side areas, and dog runs, collecting and removing every piece of pet waste. All waste is bagged and hauled off your property.' },
+      { number: '04', title: 'Completion Notification Sent', description: 'You receive a notification as soon as the job is done. Your yard is clean, the waste is gone, and you can enjoy your outdoor space right away. No follow-up appointments unless you want them.' },
+    ]}
+  />
+
+  <Testimonials
+    eyebrow="What Customers Say About Our Cleanups"
+    heading="One visit made all the difference."
+    testimonials={relatedTestimonials}
+  />
+
+  <FAQList
+    eyebrow="One-Time Cleanup FAQ"
+    heading="Questions about our one-time poop scooping service."
+    subtext={`Need a fast answer? Call us at <a href="tel:+1${business.phone.replace(/\D/g,'')}" class="text-brand font-semibold hover:underline">${business.phone}</a>. We are happy to help.`}
+    phone={business.phone}
+    categories={faqs}
+  />
+
+  <RelatedServices
+    heading="Need ongoing dog waste removal after your one-time visit?"
+    services={relatedServices}
+  />
+
+  <CallToAction
+    eyebrow="Ready for a Poop-Free Yard?"
+    heading="Book your one-time yard cleanup today."
+    subtext="Serving Prosper, Frisco, McKinney, Celina, and the surrounding DFW area. Same-week availability. No contracts, no pressure."
+    phone={business.phone}
+    ctaLabel="Book Online Now"
+    ctaHref={business.ctaHref}
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>

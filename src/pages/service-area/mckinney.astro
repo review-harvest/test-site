@@ -1,0 +1,292 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import { business } from '../../data/business';
+---
+
+<Layout
+  title="Poop Scooping Service in McKinney, TX | Doodie Crew"
+  description="Dog waste removal in McKinney, TX. Weekly, bi-weekly & one-time poop scooping. Serving Craig Ranch, Stonebridge Ranch, Trinity Falls & more. No contracts."
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <!-- Hero -->
+  <section class="bg-[#1A2540] overflow-hidden">
+    <div class="max-w-7xl mx-auto lg:grid lg:grid-cols-2 items-stretch">
+      <div class="pt-10 pb-6 lg:py-24 px-6 lg:px-10 xl:pl-16">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-4">
+        Collin County · North DFW
+      </p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">
+        Poop Scooping Service in McKinney, TX
+      </h1>
+      <p class="font-body text-lg text-white/80 max-w-2xl mb-8">
+        McKinney has it all: a historic downtown square, thriving new master-planned communities, and some of the most beautiful natural green spaces in Collin County. If your dogs enjoy McKinney's outdoors, they deserve a clean yard to come home to. Doodie Crew provides professional pet waste removal for McKinney homeowners from Craig Ranch to Stonebridge Ranch and everywhere in between. Dependable, affordable, and always on schedule.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={business.ctaHref}
+          class="inline-block bg-[#E8951A] text-white font-heading font-bold px-8 py-4 rounded-lg hover:bg-[#d4841a] transition-colors text-center"
+        >
+          Get an Instant Quote
+        </a>
+        <a
+          href={`tel:+1${business.phone.replace(/\D/g,'')}`}
+          class="inline-block border border-white/40 text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 transition-colors text-center"
+        >
+          Call {business.phone}
+        </a>
+      </div>
+
+      <!-- Mobile hero photo -->
+      <div class="block lg:hidden mt-6 -mx-6 overflow-hidden" style="height: 200px;">
+        <img src="/images/doodie-crew-dog-waste-removal-truck-mckinney-tx.jpg"
+          alt="Doodie Crew poop scooping service truck on a shaded street in McKinney, TX"
+          class="w-full h-full object-cover object-center" loading="eager"/>
+      </div>
+      </div>
+      <!-- Hero photo -->
+      <div class="hidden lg:block py-8 pr-8">
+        <div class="relative h-full min-h-[380px] rounded-2xl overflow-hidden">
+          <img src="/images/doodie-crew-dog-waste-removal-truck-mckinney-tx.jpg"
+            alt="Doodie Crew poop scooping service truck on a shaded street in McKinney, TX with established trees in the background"
+            class="absolute inset-0 w-full h-full object-cover object-center" loading="eager"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Doodie Crew in McKinney -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Why Choose Us
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-8">
+        Why McKinney homeowners choose Doodie Crew
+      </h2>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Close to home.</strong> We're based in nearby Prosper and serve McKinney on a regular route. You get a consistent crew that knows your neighborhood, not a rotating roster of unfamiliar faces.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Works with McKinney's varied lot sizes.</strong> McKinney has everything from cozy quarter-acre lots in older neighborhoods to sweeping half-acre lots in Craig Ranch. Our dog waste removal process covers every foot of your property regardless of size.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Flexible scheduling.</strong> McKinney families are busy. Our online portal lets you manage your pooper scooper service: change your day, skip a visit, or update your preferences, without ever picking up the phone.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>No contracts.</strong> We've built our business on quality service, not binding agreements. Cancel anytime if you're ever unhappy, though we're confident you won't be.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Safe sanitation practices.</strong> We use an organic kennel-grade disinfectant on our tools between every single yard. This matters in a city like McKinney where dogs and kids share the same green spaces.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Satisfaction guaranteed.</strong> If we miss a spot or fall short of your expectations, we'll return and fix it, no charge, no debate.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Neighborhoods -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Local Neighborhoods
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-4">
+        McKinney neighborhoods we serve
+      </h2>
+      <p class="font-body text-[#1A2540]/70 mb-8 max-w-2xl">
+        From McKinney's established west side to its newest communities in the north, we handle dog waste removal across the city.
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {['Craig Ranch', 'Stonebridge Ranch', 'Tucker Hill', 'Adriatica Village', 'Trinity Falls'].map(n => (
+          <div class="bg-[#FBF8F3] rounded-lg px-5 py-4">
+            <p class="font-heading text-[#1A2540] font-semibold">{n}</p>
+            <p class="font-body text-sm text-[#1A2540]/60 mt-1">McKinney, TX</p>
+          </div>
+        ))}
+      </div>
+      <p class="font-body text-[#1A2540]/70 mt-6 text-sm">
+        Not listed? We serve most of McKinney. <a href={business.ctaHref} class="text-[#1B5FBF] underline">Get a quote</a> or <a href={`tel:+1${business.phone.replace(/\D/g,'')}`} class="text-[#1B5FBF] underline">call us</a> to check your address.
+      </p>
+    </div>
+  </section>
+
+  <!-- Local Knowledge -->
+  <section class="bg-[#1B5FBF] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-white/70 font-semibold text-sm uppercase tracking-widest mb-3">
+        Local Knowledge
+      </p>
+      <h2 class="font-heading text-3xl text-white mb-6">
+        McKinney takes pride in its outdoors. So do we.
+      </h2>
+      <p class="font-body text-white/90 text-lg leading-relaxed">
+        Anyone who's spent time at the Heard Natural Science Museum and Wildlife Sanctuary knows McKinney residents care deeply about the environment and the quality of their green spaces. Erwin Park draws mountain bikers and hikers from across DFW, and the trails there are a community treasure. The historic downtown McKinney square is immaculately kept and a constant reminder of the city's pride in its appearance. That same standard should apply to your own backyard. Our pet waste removal service ensures your yard is as clean and welcoming as McKinney's finest parks, a space where your kids can play, your dogs can roam, and you can relax without worrying about what you're stepping in. We take the job seriously so you don't have to think about it at all.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Tiers -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Service Plans
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-4">
+        Choose your cleanup plan
+      </h2>
+      <p class="font-body text-[#1A2540]/70 mb-10 max-w-2xl">
+        Every plan covers your full yard, works in any weather, and requires no long-term commitment. Manage everything online.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1A2540]/10">
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">Weekly Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            Weekly poop scooping visits keep your yard consistently clean. Ideal for homes with multiple dogs or frequent yard use.
+          </p>
+          <a href="/services/weekly-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1B5FBF]/40 ring-2 ring-[#1B5FBF]">
+          <p class="font-body text-[#1B5FBF] text-xs font-semibold uppercase tracking-wide mb-2">Popular</p>
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">Bi-Weekly Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            Every-two-weeks pet waste removal, keeps things under control at a great value price point.
+          </p>
+          <a href="/services/biweekly-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1A2540]/10">
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">One-Time Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            A single deep-clean dog waste removal visit. Perfect for spring cleanups, before parties, or as a first visit before subscribing.
+          </p>
+          <a href="/services/one-time-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        FAQ
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-10">
+        Questions from McKinney dog owners
+      </h2>
+      <div class="space-y-8">
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Do you serve Trinity Falls and other newer McKinney communities?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Yes. Trinity Falls and other newer communities on McKinney's north side are well within our service area. We're accustomed to working in new developments where addresses can sometimes be tricky. Just enter your address for an instant quote and we'll confirm coverage.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            How do you handle the heat during North Texas summers?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Our crew works through all DFW weather conditions, including McKinney summers that push 100 degrees or more. We schedule early-morning routes during peak heat and stay properly hydrated and equipped. Your service doesn't pause just because the weather is uncomfortable.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Is poop scooping service worth it for just one dog?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Absolutely. Even one dog produces enough waste to make a yard unpleasant within days. Regular pet waste removal keeps your grass healthier (dog waste is acidic and damages lawns), eliminates odors, and keeps parasites from spreading. Starting at $52/month, most of our single-dog McKinney customers say it's one of the best small investments they've made.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            What if I live in an older McKinney neighborhood with a smaller yard?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Smaller yards are no problem, and they typically mean a quicker visit with the same thorough approach. We serve McKinney's older established neighborhoods west of Highway 75 just as readily as the newer communities to the east and north. Every yard gets a full clean on every visit.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team photo strip -->
+  <section class="py-12 px-6" style="background-color: #F4F4F2;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/ryan-white-owner-doodie-crew-poop-scooping-prosper-tx.jpg"
+            alt="Ryan White, owner of Doodie Crew, in an orange hoodie standing next to the branded dog waste removal truck in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+            alt="Doodie Crew team member in orange uniform scooping dog waste with a yellow collection bin in a residential backyard in TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-yard-cleanup-pet-waste-removal-prosper-tx.jpg"
+            alt="Back view of Doodie Crew team member in branded orange shirt reading I Want Your Dog Doodie during a yard cleanup in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    eyebrow="McKinney, TX"
+    heading="McKinney deserves a clean backyard too."
+    subtext="From Craig Ranch to Trinity Falls, we've got McKinney covered. Get your instant quote and schedule your first visit this week."
+    phone={business.phone}
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>

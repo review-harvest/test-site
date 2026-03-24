@@ -1,6 +1,6 @@
 ---
 /**
- * ServicesList — detailed services grid used on the /services overview page.
+ * ServicesList: detailed services grid used on the /services overview page.
  * More information-dense than the homepage Services card grid.
  */
 interface Service {
@@ -45,7 +45,7 @@ const {
       )}
     </div>
 
-    <!-- Service cards — 2-column detailed layout -->
+    <!-- Service cards: 2-column detailed layout -->
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
       {services.map((service, i) => (
         <div class="bg-surface border border-border rounded-lg p-8 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex flex-col">
@@ -71,7 +71,7 @@ const {
             ))}
           </ul>
 
-          <!-- CTA — push to bottom -->
+          <!-- CTA: push to bottom -->
           <div class="mt-auto pt-4 border-t border-border flex items-center justify-between">
             <a
               href={service.href || `/services/${service.slug}`}

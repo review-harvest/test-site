@@ -1,0 +1,171 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import { business } from '../../data/business';
+---
+
+<Layout
+  title="Poop Scooping Service in Little Elm, TX | Doodie Crew"
+  description="Dog waste removal in Little Elm, TX. Weekly & bi-weekly poop scooping near Lake Lewisville. Serving Paloma Creek, Union Park & more. No contracts."
+>
+  <Nav businessName={business.name} phone={business.phone} ctaHref={business.ctaHref} />
+
+  <!-- Hero -->
+  <section style="background-color: #1A2540;" class="overflow-hidden">
+    <div class="max-w-7xl mx-auto lg:grid lg:grid-cols-2 items-stretch">
+      <div class="pt-10 pb-6 lg:py-24 px-6 lg:px-10 xl:pl-16">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-4" style="color: #E8951A;">Denton County · Near Lake Lewisville</p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">
+        Poop Scooping Service in Little Elm, TX
+      </h1>
+      <p class="font-body text-lg max-w-2xl mb-8" style="color: rgba(255,255,255,0.8);">
+        Little Elm's lakeside lifestyle means dogs are outside constantly, and that means yards fill up fast. Doodie Crew provides reliable pet waste removal throughout Little Elm so you can enjoy your outdoor space without worrying about what your dog left behind. From Paloma Creek to Union Park, we keep your yard clean on a schedule that works for you.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href={business.ctaHref} class="inline-block font-heading font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-colors text-center" style="background-color: #E8951A; color: white;">Get an Instant Quote</a>
+        <a href={`tel:${business.phone.replace(/\D/g,'')}`} class="inline-block border text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 transition-colors text-center" style="border-color: rgba(255,255,255,0.4);">Call {business.phone}</a>
+      </div>
+
+      <!-- Mobile hero photo -->
+      <div class="block lg:hidden mt-6 -mx-6 overflow-hidden" style="height: 200px;">
+        <img src="/images/doodie-crew-dog-waste-removal-truck-little-elm-tx.jpg"
+          alt="Doodie Crew poop scooping truck on a residential street in Little Elm, TX near Lake Lewisville"
+          class="w-full h-full object-cover object-center" loading="eager"/>
+      </div>
+      </div>
+      <!-- Hero photo -->
+      <div class="hidden lg:block py-8 pr-8">
+        <div class="relative h-full min-h-[380px] rounded-2xl overflow-hidden">
+          <img src="/images/doodie-crew-dog-waste-removal-truck-little-elm-tx.jpg"
+            alt="Doodie Crew poop scooping truck on a lush green residential street in Little Elm, TX near Lake Lewisville in the summer"
+            class="absolute inset-0 w-full h-full object-cover object-center" loading="eager"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Doodie Crew -->
+  <section style="background-color: #FBF8F3;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Why Choose Us</p>
+      <h2 class="font-heading text-3xl mb-8" style="color: #1A2540;">Why Little Elm dog owners choose Doodie Crew</h2>
+      <ul class="space-y-4">
+        {[
+          { strong: "K-9 handler background.", rest: "Doodie Crew's owner Ryan White spent 14 years in law enforcement including as a K-9 handler and dog trainer. He knows how to safely work around dogs in their home environment. Your pets are always comfortable and secure during visits." },
+          { strong: "Built for lakeside living.", rest: "Little Elm's humidity and outdoor lifestyle means more time in the yard, and more dog waste piling up. We visit on a consistent schedule so your yard never reaches a tipping point." },
+          { strong: "No contracts, ever.", rest: "Start or stop your dog waste removal service anytime through your online portal. No cancellation fees, no awkward phone calls." },
+          { strong: "All-weather reliability.", rest: "Hot North Texas summers, spring storms, the occasional ice event, we show up anyway. Your scheduled day is your scheduled day." },
+          { strong: "Organic tool disinfectant.", rest: "We sanitize all scooping tools with a kennel-grade organic disinfectant between every single yard. No bacteria transfer, no risk to your pets." },
+          { strong: "Gates always secured.", rest: "Ryan's law enforcement background means process matters. We always double-check that every gate is latched before leaving your property." },
+        ].map(item => (
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 w-4 h-4 rounded-full flex-shrink-0" style="background-color: #1B5FBF;"></span>
+            <p class="font-body" style="color: #1A2540;"><strong>{item.strong}</strong> {item.rest}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Neighborhoods -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Local Neighborhoods</p>
+      <h2 class="font-heading text-3xl mb-4" style="color: #1A2540;">Little Elm neighborhoods we serve</h2>
+      <p class="font-body mb-8 max-w-2xl" style="color: rgba(26,37,64,0.7);">We provide regular poop scooping and dog waste removal throughout Little Elm's growing communities:</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {['Paloma Creek', 'Union Park', 'The Shores at Hidden Cove', 'Lakewood Pointe', 'Sunset Pointe'].map(n => (
+          <div class="rounded-lg px-5 py-4" style="background-color: #FBF8F3;">
+            <p class="font-heading font-semibold" style="color: #1A2540;">{n}</p>
+            <p class="font-body text-sm mt-1" style="color: rgba(26,37,64,0.5);">Little Elm, TX</p>
+          </div>
+        ))}
+      </div>
+      <p class="font-body text-sm mt-6" style="color: rgba(26,37,64,0.7);">Not seeing your neighborhood? We likely serve it. <a href={business.ctaHref} style="color: #1B5FBF;" class="underline">Get a quote online</a> to confirm.</p>
+    </div>
+  </section>
+
+  <!-- Local Knowledge -->
+  <section style="background-color: #1B5FBF;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: rgba(255,255,255,0.7);">Local Knowledge</p>
+      <h2 class="font-heading text-3xl text-white mb-6">We know Little Elm and what its yards need</h2>
+      <p class="font-body text-lg leading-relaxed" style="color: rgba(255,255,255,0.9);">
+        Little Elm Park on Lake Lewisville is one of the most dog-friendly spots in Denton County. Dog owners here are active, outdoorsy, and their dogs spend real time outside. That same energy follows dogs home to their yards, and without regular pet waste removal, those yards can get out of control fast. The humid summers near the lake also mean odors intensify more than in drier areas. Our weekly and bi-weekly poop scooping plans are perfectly suited to Little Elm's pace, with consistent, reliable cleanup that keeps your yard usable no matter how much time your dog spends outdoors. Whether you're in Paloma Creek, Union Park, or anywhere along the Cottonwood Creek corridor, we have your yard covered.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Plans -->
+  <section style="background-color: #FBF8F3;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Service Plans</p>
+      <h2 class="font-heading text-3xl mb-4" style="color: #1A2540;">Pick the plan that fits your yard</h2>
+      <p class="font-body mb-10 max-w-2xl" style="color: rgba(26,37,64,0.7);">All plans include full yard coverage, all-weather service, and no long-term contracts. Start, pause, or cancel anytime.</p>
+      <div class="grid sm:grid-cols-3 gap-6">
+        {[
+          { href: '/services/weekly-cleanup', title: 'Weekly Cleanup', desc: 'Our most popular plan. Waste removed every week so it never builds up.' },
+          { href: '/services/biweekly-cleanup', title: 'Bi-Weekly Cleanup', desc: 'Every-other-week service. Great balance of value and yard cleanliness.', featured: true },
+          { href: '/services/one-time-cleanup', title: 'One-Time Cleanup', desc: 'No commitment needed. Great for a fresh start or before an outdoor event.' },
+        ].map(plan => (
+          <div class={`bg-white rounded-xl p-6 shadow-sm border ${plan.featured ? 'ring-2' : ''}`} style={plan.featured ? 'border-color: rgba(27,95,191,0.4); ring-color: #1B5FBF;' : 'border-color: rgba(26,37,64,0.1);'}>
+            {plan.featured && <p class="font-body text-xs font-semibold uppercase tracking-wide mb-2" style="color: #1B5FBF;">Most Popular</p>}
+            <h3 class="font-heading text-xl mb-2" style="color: #1A2540;">{plan.title}</h3>
+            <p class="font-body text-sm mb-6" style="color: rgba(26,37,64,0.7);">{plan.desc}</p>
+            <a href={plan.href} class="font-body font-semibold text-sm hover:underline" style="color: #1B5FBF;">Learn more &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">FAQ</p>
+      <h2 class="font-heading text-3xl mb-10" style="color: #1A2540;">Questions from Little Elm dog owners</h2>
+      <div class="space-y-8">
+        {[
+          { q: 'Do you serve all of Little Elm, including newer developments near the lake?', a: "Yes, we cover all of Little Elm including the newer lakeside developments. Whether you're in Paloma Creek, Union Park, or a newer community near the water, just enter your address for an instant quote to confirm." },
+          { q: 'My yard smells really bad in the summer. Can you help with that?', a: "Absolutely. Lakeside humidity amplifies pet odors significantly. Beyond regular poop scooping, we also offer a monthly yard deodorizing treatment that neutralizes odor-causing bacteria at the source, not just masks the smell. Many Little Elm customers add it during summer months." },
+          { q: 'How do you handle visits when we have Lake Lewisville events or heavy traffic days?', a: "We schedule your visits on a consistent weekday and stick to it. Occasional local events don't affect our service. We work around conditions and show up as planned." },
+          { q: 'Do I need to be home when you clean the yard?', a: "No, most customers aren't home. Just leave your gate accessible or enter a gate code in your account profile. We clean up and send you a notification when we're done. You come home to a clean yard." },
+        ].map(item => (
+          <div>
+            <h3 class="font-heading text-lg mb-2" style="color: #1A2540;">{item.q}</h3>
+            <p class="font-body" style="color: rgba(26,37,64,0.7);">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team photo strip -->
+  <section class="py-12 px-6" style="background-color: #F4F4F2;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/ryan-white-owner-doodie-crew-poop-scooping-prosper-tx.jpg"
+            alt="Ryan White, owner of Doodie Crew, in an orange hoodie standing next to the branded dog waste removal truck in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+            alt="Doodie Crew team member in orange uniform scooping dog waste with a yellow collection bin in a residential backyard in TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-yard-cleanup-pet-waste-removal-prosper-tx.jpg"
+            alt="Back view of Doodie Crew team member in branded orange shirt reading I Want Your Dog Doodie during a yard cleanup in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction eyebrow="Little Elm, TX" heading="Get a clean yard starting this week." subtext="Join Little Elm homeowners who've taken back their backyards. Instant quote online or call us, no contracts." phone={business.phone} ctaLabel="Get an Instant Quote" ctaHref={business.ctaHref} />
+  <Footer businessName={business.name} tagline={business.tagline} phone={business.phone} email={business.email} address={business.address.full} links={business.nav} serviceAreas={business.serviceAreas}
+    social={business.social} />
+</Layout>

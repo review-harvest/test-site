@@ -8,24 +8,19 @@ import CityGrid from '../components/service-area/CityGrid.astro';
 import { business } from '../data/business';
 
 const cities = [
-  { name: 'Austin', county: 'Travis County', note: 'Our home base' },
-  { name: 'Round Rock', county: 'Williamson County' },
-  { name: 'Cedar Park', county: 'Williamson County' },
-  { name: 'Georgetown', county: 'Williamson County' },
-  { name: 'Pflugerville', county: 'Travis County' },
-  { name: 'Leander', county: 'Williamson County' },
-  { name: 'Kyle', county: 'Hays County' },
-  { name: 'Buda', county: 'Hays County' },
-  { name: 'Lakeway', county: 'Travis County' },
-  { name: 'Bee Cave', county: 'Travis County' },
-  { name: 'Westlake Hills', county: 'Travis County' },
-  { name: 'Rollingwood', county: 'Travis County' },
+  { name: 'Prosper', county: 'Collin County', note: 'Our home base' },
+  { name: 'Frisco', county: 'Collin County' },
+  { name: 'McKinney', county: 'Collin County' },
+  { name: 'Celina', county: 'Collin County' },
+  { name: 'Little Elm', county: 'Denton County' },
+  { name: 'Aubrey', county: 'Denton County' },
+  { name: 'The Colony', county: 'Denton County' },
 ];
 ---
 
 <Layout
-  title={`Service Area | ${business.name} | Austin Metro, TX`}
-  description={`${business.name} serves Austin, Round Rock, Cedar Park, Georgetown, Pflugerville, Leander, Kyle, Buda, Lakeway, and more. Same-day plumbing service throughout the Austin metro.`}
+  title={`Service Area | ${business.name} | North DFW Poop Scooping`}
+  description="Doodie Crew serves Prosper, Frisco, McKinney, Celina, Little Elm, Aubrey & The Colony with professional pet waste removal. No contracts."
 >
 
   <Nav
@@ -37,35 +32,78 @@ const cities = [
 
   <CoverageDetails
     eyebrow="Our Coverage"
-    heading="Fast response throughout the Austin metro."
-    body="We're based in central Austin and serve a 30-mile radius that covers most of the metro area. Whether you're in the city or the suburbs, you get the same experienced team, the same upfront pricing, and the same 1-year labor warranty. We don't charge travel fees within our coverage zone."
-    radius="30-mile radius"
-    centerCity="Austin, TX"
-    responseTime="Same-day, most areas"
+    heading="Professional poop scooping throughout North DFW."
+    body="Doodie Crew serves the fast-growing communities of Collin and Denton County, from our home base in Prosper to Frisco, McKinney, Celina, and beyond. Every yard in our service area gets the same reliable pet waste removal, all-weather service, and 100% satisfaction guarantee. No second-tier service based on your zip code."
+    radius="Collin & Denton County"
+    centerCity="Prosper, TX"
+    responseTime="Scheduled weekly or bi-weekly"
     features={[
-      'Same pricing regardless of location',
-      'Same-day service for most areas',
-      'Emergency response within 2 hours',
-      'No travel fees within coverage zone',
-      'Consistent, licensed team across all cities',
-      'Local knowledge of Austin-area codes and suppliers',
+      'Consistent service regardless of which city you live in',
+      'Same pricing across our entire coverage area',
+      'All-weather visits: rain, heat, or cold',
+      'Organic kennel-grade disinfectant on every tool, every yard',
+      'Online portal to manage your schedule anytime',
+      'Locally owned and operated out of Prosper, TX',
     ]}
   />
 
   <CityGrid
-    eyebrow="Where We Work"
+    eyebrow="Where We Scoop"
     heading="Cities and communities we serve."
-    subtext="Every city in our service area gets the same response time, the same team, and the same guarantee. No second-tier service."
+    subtext="Every neighborhood in our coverage area gets the same professional dog waste removal, reliable scheduling, all-weather visits, and no long-term contracts."
     cities={cities}
   />
 
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="font-heading text-2xl text-[#1A2540] mb-4">Explore poop scooping services by city:</h2>
+      <ul class="grid grid-cols-2 sm:grid-cols-3 gap-3">
+        <li>
+          <a href="/service-area/prosper" class="text-[#1B5FBF] font-body hover:underline font-medium">
+            Poop Scooping in Prosper
+          </a>
+        </li>
+        <li>
+          <a href="/service-area/frisco" class="text-[#1B5FBF] font-body hover:underline font-medium">
+            Poop Scooping in Frisco
+          </a>
+        </li>
+        <li>
+          <a href="/service-area/mckinney" class="text-[#1B5FBF] font-body hover:underline font-medium">
+            Poop Scooping in McKinney
+          </a>
+        </li>
+        <li>
+          <a href="/service-area/celina" class="text-[#1B5FBF] font-body hover:underline font-medium">
+            Poop Scooping in Celina
+          </a>
+        </li>
+        <li>
+          <a href="/service-area/little-elm" class="text-[#1B5FBF] font-body hover:underline font-medium">
+            Poop Scooping in Little Elm
+          </a>
+        </li>
+        <li>
+          <a href="/service-area/aubrey" class="text-[#1B5FBF] font-body hover:underline font-medium">
+            Poop Scooping in Aubrey
+          </a>
+        </li>
+        <li>
+          <a href="/service-area/the-colony" class="text-[#1B5FBF] font-body hover:underline font-medium">
+            Poop Scooping in The Colony
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
   <CallToAction
-    eyebrow="In Our Area?"
-    heading="Same-day service throughout the Austin metro."
-    subtext="Call us to schedule or check if we cover your specific neighborhood. We're happy to confirm over the phone."
+    eyebrow="Serving Your Neighborhood?"
+    heading="Professional pet waste removal near you."
+    subtext="Check if we cover your street. Most of North DFW is in our service zone. Start with an instant quote or give us a call."
     phone={business.phone}
-    ctaLabel="Check Your Area"
-    ctaHref="/contact"
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
   />
 
   <Footer
@@ -76,6 +114,7 @@ const cities = [
     address={business.address.full}
     links={business.nav}
     serviceAreas={business.serviceAreas}
+    social={business.social}
   />
 
 </Layout>

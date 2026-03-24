@@ -4,12 +4,53 @@ import '../styles/global.css';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
 const {
-  title = 'Apex Plumbing & Drain | Austin, TX',
-  description = 'Licensed and insured plumbers serving Austin, TX since 2009. Drain cleaning, water heaters, leak detection, emergency plumbing, and more. Call (512) 555-0142.',
+  title = 'Doodie Crew | Dog Waste Removal | Prosper, Frisco & DFW',
+  description = 'Professional poop scooping and dog waste removal in Prosper, Frisco, McKinney, Celina & DFW. No contracts. Satisfaction guaranteed. Starts at $52/month.',
+  ogImage = '/images/doodie-crew-employee-truck-dog-waste-service-dfw-tx.jpg',
 } = Astro.props;
+
+const schemaOrg = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": "Doodie Crew",
+  "description": "Professional dog waste removal service in Prosper, Frisco, McKinney, Celina, and surrounding DFW communities. No contracts, 100% satisfaction guarantee.",
+  "url": "https://doodiecrew.com",
+  "telephone": "+12149010840",
+  "email": "ryan@doodiecrew.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Prosper",
+    "addressRegion": "TX",
+    "addressCountry": "US"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Prosper, TX" },
+    { "@type": "City", "name": "Frisco, TX" },
+    { "@type": "City", "name": "McKinney, TX" },
+    { "@type": "City", "name": "Celina, TX" },
+    { "@type": "City", "name": "Little Elm, TX" },
+    { "@type": "City", "name": "Aubrey, TX" },
+    { "@type": "City", "name": "The Colony, TX" }
+  ],
+  "priceRange": "$$",
+  "image": "https://doodiecrew.com/images/doodie-crew-employee-truck-dog-waste-service-dfw-tx.jpg",
+  "logo": "https://doodiecrew.com/images/logo-dog-head.jpg",
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5.0",
+    "reviewCount": "18",
+    "bestRating": "5",
+    "worstRating": "1"
+  }
+});
 ---
 
 <!doctype html>
@@ -17,11 +58,25 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" href="/images/logo-dog-head.jpg" />
+    <link rel="canonical" href={new URL(Astro.url.pathname, 'https://doodiecrew.com').href} />
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Doodie Crew" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
     <title>{title}</title>
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json" set:html={schemaOrg} />
+    <slot name="head" />
   </head>
   <body>
     <slot />

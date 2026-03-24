@@ -4,7 +4,6 @@ import Nav from '../components/global/Nav.astro';
 import Footer from '../components/global/Footer.astro';
 import CallToAction from '../components/global/CallToAction.astro';
 import Hero from '../components/home/Hero.astro';
-import TrustBar from '../components/home/TrustBar.astro';
 import Services from '../components/home/Services.astro';
 import Process from '../components/home/Process.astro';
 import WhyUs from '../components/home/WhyUs.astro';
@@ -13,8 +12,8 @@ import { business } from '../data/business';
 ---
 
 <Layout
-  title={`${business.name} | Austin, TX Plumbers`}
-  description="Licensed and insured plumbers serving Austin, TX since 2009. Drain cleaning, water heaters, leak detection, emergency plumbing. Call (512) 555-0142."
+  title={`${business.name} | Dog Waste Removal in Prosper, Frisco, McKinney, TX`}
+  description="Professional dog waste removal in Prosper, Frisco, McKinney & DFW. Weekly, bi-weekly & one-time cleanup. No contracts. Starts at $52/mo."
 >
 
   <Nav
@@ -25,20 +24,19 @@ import { business } from '../data/business';
   />
 
   <Hero
-    eyebrow="Licensed & Insured · Serving Austin Since 2009"
-    headline="Austin's Most Trusted Plumber"
-    subtext="From leaky faucets to full repiping jobs, we fix it right the first time. Available 24/7 for emergencies — no extra charge."
-    primaryCta={{ label: 'Get a Free Quote', href: '/contact' }}
-    secondaryCta={{ label: 'Our Services', href: '/services' }}
+    eyebrow="Serving Prosper, Frisco, McKinney & Celina"
+    headline="Poop Scooping Service in Prosper, TX"
+    subtext="Professional, no-contract poop scooping for DFW homeowners. We remove all pet waste, sanitize our tools, and notify you when done. Starts at $52/month."
+    primaryCta={{ label: 'Get an Instant Quote', href: business.ctaHref }}
+    secondaryCta={{ label: 'See Our Services', href: '/services' }}
     stats={business.stats}
   />
 
-  <TrustBar items={business.stats} />
 
   <Services
     eyebrow="What We Do"
-    heading="Plumbing services for every need."
-    subtext="Residential and commercial plumbing from a team that's been doing this for over 15 years."
+    heading="Dog Waste Removal Services in Prosper, Frisco & DFW"
+    subtext="Residential and commercial poop scooping on your schedule: weekly, bi-weekly, monthly, or one-time."
     services={business.services.map(s => ({
       name: s.name,
       description: s.description,
@@ -48,31 +46,47 @@ import { business } from '../data/business';
 
   <Process
     eyebrow="How It Works"
-    heading="Simple process, great results."
-    subtext="We make it easy from the first call to the final cleanup. Here's what to expect."
+    heading="Clean yard in four easy steps."
+    subtext="Getting started takes just a few minutes. Here's exactly what happens after you sign up."
+    steps={[
+      {
+        number: '01',
+        title: 'Get an Instant Quote',
+        description: 'Use our online portal to get a quote in minutes. Pick your plan and schedule. No phone call required.',
+      },
+      {
+        number: '02',
+        title: 'We Come to You',
+        description: "Our crew arrives on your scheduled day. You don't even need to be home, just leave the gate accessible.",
+      },
+      {
+        number: '03',
+        title: 'Yard Cleaned & Sanitized',
+        description: 'We remove all waste and use an organic kennel-grade disinfectant on our tools to keep your pets safe.',
+      },
+      {
+        number: '04',
+        title: "You're Good to Go",
+        description: "Get notified when we're done. Enjoy your clean yard, and cancel or adjust your plan anytime.",
+      },
+    ]}
   />
 
-  <WhyUs
-    eyebrow="Why Choose Us"
-    heading="We do honest work for fair prices."
-    body="After 15 years in Austin, we've built our business entirely on referrals. We don't use high-pressure sales tactics or recommend work you don't need. Just straight answers and quality work — every time."
-    features={business.values.slice(0, 4)}
-    ctaHref="/contact"
-  />
+  <WhyUs ctaHref={business.ctaHref} />
 
   <Testimonials
     eyebrow="Customer Reviews"
-    heading="Don't take our word for it."
+    heading="DFW Dog Owners Love a Clean Yard"
     testimonials={business.testimonials.slice(0, 3)}
   />
 
   <CallToAction
     eyebrow="Get Started Today"
-    heading="Ready to get the job done right?"
-    subtext="Call us for a free, no-obligation quote. We answer every call, 24 hours a day."
+    heading="Start Your Poop Scooping Service in Prosper, Frisco & DFW"
+    subtext="Get an instant quote online or give us a call. No contracts, no commitments, just a cleaner yard starting this week."
     phone={business.phone}
-    ctaLabel="Request Online"
-    ctaHref="/contact"
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
   />
 
   <Footer
@@ -83,6 +97,7 @@ import { business } from '../data/business';
     address={business.address.full}
     links={business.nav}
     serviceAreas={business.serviceAreas}
+    social={business.social}
   />
 
 </Layout>

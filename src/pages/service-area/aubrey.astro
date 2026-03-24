@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import { business } from '../../data/business';
+---
+<Layout
+  title="Poop Scooping Service in Aubrey, TX | Doodie Crew"
+  description="Dog waste removal in Aubrey, TX. Weekly poop scooping for larger lots in Arrow Brooke & Sandbrock Ranch. No contracts. Starts at $52/month."
+>
+  <Nav businessName={business.name} phone={business.phone} ctaHref={business.ctaHref} />
+
+  <section style="background-color: #1A2540;" class="overflow-hidden">
+    <div class="max-w-7xl mx-auto lg:grid lg:grid-cols-2 items-stretch">
+      <div class="pt-10 pb-6 lg:py-24 px-6 lg:px-10 xl:pl-16">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-4" style="color: #E8951A;">Denton County · Serving Larger Lots</p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">Poop Scooping Service in Aubrey, TX</h1>
+      <p class="font-body text-lg max-w-2xl mb-8" style="color: rgba(255,255,255,0.8);">Aubrey is growing fast, and with larger lots, more outdoor space, and a community that loves dogs, the need for professional pet waste removal is real. Doodie Crew serves Aubrey homeowners in Sandbrock Ranch, Arrow Brooke, and surrounding neighborhoods with reliable, no-contract dog waste removal that keeps your yard clean no matter how much land you have to manage.</p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href={business.ctaHref} class="inline-block font-heading font-bold px-8 py-4 rounded-lg hover:opacity-90 text-center" style="background-color: #E8951A; color: white;">Get an Instant Quote</a>
+        <a href={`tel:${business.phone.replace(/\D/g,'')}`} class="inline-block border text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 text-center" style="border-color: rgba(255,255,255,0.4);">Call {business.phone}</a>
+      </div>
+
+      <!-- Mobile hero photo -->
+      <div class="block lg:hidden mt-6 -mx-6 overflow-hidden" style="height: 200px;">
+        <img src="/images/doodie-crew-poop-scooping-service-truck-aubrey-tx.jpg"
+          alt="Doodie Crew dog waste removal service truck at a property in Aubrey, TX"
+          class="w-full h-full object-cover object-center" loading="eager"/>
+      </div>
+      </div>
+      <!-- Hero photo -->
+      <div class="hidden lg:block py-8 pr-8">
+        <div class="relative h-full min-h-[380px] rounded-2xl overflow-hidden">
+          <img src="/images/doodie-crew-poop-scooping-service-truck-aubrey-tx.jpg"
+            alt="Doodie Crew dog waste removal service truck at a property in Aubrey, TX serving the Sandbrock Ranch and Arrow Brooke communities"
+            class="absolute inset-0 w-full h-full object-cover object-center" loading="eager"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background-color: #FBF8F3;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Why Choose Us</p>
+      <h2 class="font-heading text-3xl mb-8" style="color: #1A2540;">Why Aubrey homeowners choose Doodie Crew</h2>
+      <ul class="space-y-4">
+        {[
+          { strong: "Real dog experience behind every visit.", rest: "Owner Ryan White is a former K-9 handler and certified dog trainer with 14 years in law enforcement. He built Doodie Crew around the same care and professionalism he applied to working with police dogs. Your pets are always in good hands." },
+          { strong: "Built for larger Aubrey lots.", rest: "Bigger yards mean more ground to cover. Our pricing accounts for lot size and number of dogs, no flat-rate shortcuts. We walk every square foot of your property on every visit." },
+          { strong: "No contracts, cancel anytime.", rest: "Aubrey homeowners can start or stop service anytime through their client portal. No fees, no phone calls, no hassle." },
+          { strong: "All-weather service.", rest: "From scorching August heat to surprise Denton County ice storms, we show up on your scheduled day. Reliability is the foundation of what we do." },
+          { strong: "Organic, pet-safe disinfectant.", rest: "All tools are sanitized with a kennel-grade organic formula between every yard visit, protecting your pets and preventing cross-contamination." },
+          { strong: "100% satisfaction guarantee.", rest: "If a visit doesn't meet your standard, we return and re-clean at no charge. No arguments." },
+        ].map(item => (
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 w-4 h-4 rounded-full flex-shrink-0" style="background-color: #1B5FBF;"></span>
+            <p class="font-body" style="color: #1A2540;"><strong>{item.strong}</strong> {item.rest}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Neighborhoods We Serve</p>
+      <h2 class="font-heading text-3xl mb-4" style="color: #1A2540;">Aubrey communities we clean</h2>
+      <p class="font-body mb-8 max-w-2xl" style="color: rgba(26,37,64,0.7);">We provide dog waste removal and poop scooping throughout Aubrey's established and fast-growing neighborhoods:</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {['Arrow Brooke', 'Sandbrock Ranch', 'Mantua Point', 'Wildridge', 'Hartlee Field'].map(n => (
+          <div class="rounded-lg px-5 py-4" style="background-color: #FBF8F3;">
+            <p class="font-heading font-semibold" style="color: #1A2540;">{n}</p>
+            <p class="font-body text-sm mt-1" style="color: rgba(26,37,64,0.5);">Aubrey, TX</p>
+          </div>
+        ))}
+      </div>
+      <p class="font-body text-sm mt-6" style="color: rgba(26,37,64,0.7);">Not sure if we cover your street? <a href={business.ctaHref} style="color: #1B5FBF;" class="underline">Enter your address for an instant quote</a>.</p>
+    </div>
+  </section>
+
+  <section style="background-color: #1B5FBF;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: rgba(255,255,255,0.7);">Local Knowledge</p>
+      <h2 class="font-heading text-3xl text-white mb-6">Aubrey's space is a feature. We keep it clean.</h2>
+      <p class="font-body text-lg leading-relaxed" style="color: rgba(255,255,255,0.9);">
+        One of the things that draws people to Aubrey is the space: larger lots, room to breathe, a more rural feel than the dense suburbs to the south. That's great for dogs, who spend serious time outdoors. The Aubrey Community Park and the open terrain around Denton County invite active, outdoor lifestyles for both owners and their dogs. But more outdoor time means more waste in more places across a bigger yard. Our thorough pet waste removal process covers every part of your property on every visit, not just the obvious spots. Whether you're in Sandbrock Ranch's master-planned streets or on a larger Aubrey property, we adapt to your yard. Aubrey High School's athletic community reflects the work ethic of this town, and that same reliability is exactly what Doodie Crew brings to your yard every week.
+      </p>
+    </div>
+  </section>
+
+  <section style="background-color: #FBF8F3;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Service Plans</p>
+      <h2 class="font-heading text-3xl mb-10" style="color: #1A2540;">Pick the right plan for your property</h2>
+      <div class="grid sm:grid-cols-3 gap-6">
+        {[
+          { href: '/services/weekly-cleanup', title: 'Weekly Cleanup', desc: 'Best for larger properties and multiple dogs. Waste never gets a chance to pile up.' },
+          { href: '/services/biweekly-cleanup', title: 'Bi-Weekly Cleanup', desc: 'Every other week, great for smaller households or those who want a consistent clean without weekly visits.', featured: true },
+          { href: '/services/one-time-cleanup', title: 'One-Time Cleanup', desc: 'No subscription. Perfect if your yard has gotten out of control and you just need a fresh start.' },
+        ].map(plan => (
+          <div class="bg-white rounded-xl p-6 shadow-sm border" style={plan.featured ? 'border-color: rgba(27,95,191,0.4); outline: 2px solid #1B5FBF;' : 'border-color: rgba(26,37,64,0.1);'}>
+            {plan.featured && <p class="font-body text-xs font-semibold uppercase tracking-wide mb-2" style="color: #1B5FBF;">Popular Choice</p>}
+            <h3 class="font-heading text-xl mb-2" style="color: #1A2540;">{plan.title}</h3>
+            <p class="font-body text-sm mb-6" style="color: rgba(26,37,64,0.7);">{plan.desc}</p>
+            <a href={plan.href} class="font-body font-semibold text-sm hover:underline" style="color: #1B5FBF;">Learn more &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">FAQ</p>
+      <h2 class="font-heading text-3xl mb-10" style="color: #1A2540;">Questions from Aubrey dog owners</h2>
+      <div class="space-y-8">
+        {[
+          { q: 'Do you service larger lots and acreage properties in Aubrey?', a: "Yes, and we price accordingly. Our service is based on yard size and number of dogs. If you have a larger property, we make sure we cover all of it. No cutting corners to hit a time limit." },
+          { q: 'Aubrey is a bit farther out. Do you really come this far?', a: "Absolutely. Aubrey is within our service area, and we treat it exactly the same as any other community we serve: same pricing, same reliability, same guarantee. Distance doesn't affect the quality of service." },
+          { q: 'What if my dogs are outside when you show up?', a: "Not a problem. Ryan is a former K-9 handler and dog trainer, so our crew is experienced working in and around dogs. We\'re comfortable with dogs present, and we always make sure gates are secured before we leave." },
+          { q: 'Can I start with a one-time cleanup to see how it goes before signing up for regular service?', a: "That's exactly what a lot of our customers do. Start with a one-time cleanup, get your yard back to a clean baseline, and then sign up for weekly or bi-weekly service going forward. No commitment required at any point." },
+        ].map(item => (
+          <div>
+            <h3 class="font-heading text-lg mb-2" style="color: #1A2540;">{item.q}</h3>
+            <p class="font-body" style="color: rgba(26,37,64,0.7);">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team photo strip -->
+  <section class="py-12 px-6" style="background-color: #F4F4F2;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/ryan-white-owner-doodie-crew-poop-scooping-prosper-tx.jpg"
+            alt="Ryan White, owner of Doodie Crew, in an orange hoodie standing next to the branded dog waste removal truck in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+            alt="Doodie Crew team member in orange uniform scooping dog waste with a yellow collection bin in a residential backyard in TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-yard-cleanup-pet-waste-removal-prosper-tx.jpg"
+            alt="Back view of Doodie Crew team member in branded orange shirt reading I Want Your Dog Doodie during a yard cleanup in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction eyebrow="Aubrey, TX" heading="More yard shouldn't mean more work." subtext="Let Doodie Crew handle the cleanup so you can enjoy the space you paid for. Instant quote online, no contracts." phone={business.phone} ctaLabel="Get an Instant Quote" ctaHref={business.ctaHref} />
+  <Footer businessName={business.name} tagline={business.tagline} phone={business.phone} email={business.email} address={business.address.full} links={business.nav} serviceAreas={business.serviceAreas}
+    social={business.social} />
+</Layout>

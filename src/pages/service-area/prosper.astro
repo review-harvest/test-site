@@ -1,0 +1,292 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import { business } from '../../data/business';
+---
+
+<Layout
+  title="Poop Scooping Service in Prosper, TX | Doodie Crew"
+  description="Dog waste removal in Prosper, TX. Weekly, bi-weekly & one-time poop scooping. Serving Windsong Ranch, Star Trail & all Prosper neighborhoods. No contracts."
+>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <!-- Hero -->
+  <section class="bg-[#1A2540] overflow-hidden">
+    <div class="max-w-7xl mx-auto lg:grid lg:grid-cols-2 items-stretch">
+      <div class="pt-10 pb-6 lg:py-24 px-6 lg:px-10 xl:pl-16">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-4">
+        Collin County · Our Home Base
+      </p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">
+        Poop Scooping Service in Prosper, TX
+      </h1>
+      <p class="font-body text-lg text-white/80 max-w-2xl mb-8">
+        Doodie Crew is based right here in Prosper, and we're proud of it. We provide professional pet waste removal to homeowners throughout Prosper's fast-growing communities, from the sprawling lots of Windsong Ranch to the family-filled streets of Star Trail. Whether you have one dog or four, we keep your yard clean, safe, and usable every week.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={business.ctaHref}
+          class="inline-block bg-[#E8951A] text-white font-heading font-bold px-8 py-4 rounded-lg hover:bg-[#d4841a] transition-colors text-center"
+        >
+          Get an Instant Quote
+        </a>
+        <a
+          href={`tel:+1${business.phone.replace(/\D/g,'')}`}
+          class="inline-block border border-white/40 text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 transition-colors text-center"
+        >
+          Call {business.phone}
+        </a>
+      </div>
+
+      <!-- Mobile hero photo -->
+      <div class="block lg:hidden mt-6 -mx-6 overflow-hidden" style="height: 200px;">
+        <img src="/images/doodie-crew-service-truck-prosper-tx-dog-waste-removal.jpg"
+          alt="Doodie Crew branded service truck parked in a residential driveway in Prosper, TX"
+          class="w-full h-full object-cover object-center" loading="eager"/>
+      </div>
+      </div>
+      <!-- Hero photo -->
+      <div class="hidden lg:block py-8 pr-8">
+        <div class="relative h-full min-h-[380px] rounded-2xl overflow-hidden">
+          <img src="/images/doodie-crew-service-truck-prosper-tx-dog-waste-removal.jpg"
+            alt="Doodie Crew branded service truck parked in a residential driveway in Prosper, TX showing phone number 214-901-0840 and doodiecrew.com"
+            class="absolute inset-0 w-full h-full object-cover object-center" loading="eager"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Doodie Crew in Prosper -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Why Choose Us
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-8">
+        Why Prosper homeowners choose Doodie Crew
+      </h2>
+      <ul class="space-y-4">
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>We're your neighbors.</strong> Doodie Crew is owned and operated out of Prosper. We live here, our kids go to Prosper ISD schools, and we genuinely care about the quality of service we deliver in our own community.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Built for large Prosper lots.</strong> Homes in Prosper often sit on generous lots, and more space means more ground to cover. Our thorough dog waste removal process covers every corner of your yard, including side yards and dog runs.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>No contracts, ever.</strong> We earn your business visit by visit. Start or stop your pooper scooper service anytime through your online portal, no cancellation fees, no phone calls required.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>All-weather reliability.</strong> North Texas weather is unpredictable: blazing summers, surprise ice storms, heavy spring rain. We show up anyway. Your yard gets cleaned on schedule regardless of conditions.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>Safe for your family and pets.</strong> We disinfect all tools with an organic kennel-grade sanitizer between every yard, preventing cross-contamination and keeping your pets safe from bacteria and parasites.
+          </p>
+        </li>
+        <li class="flex items-start gap-3">
+          <span class="mt-1 w-5 h-5 rounded-full bg-[#1B5FBF] flex-shrink-0"></span>
+          <p class="font-body text-[#1A2540]">
+            <strong>100% satisfaction guarantee.</strong> If a visit doesn't meet your standards, we'll return and re-clean at no charge. No arguments, just a clean yard.
+          </p>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Neighborhoods -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Local Neighborhoods
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-4">
+        Prosper neighborhoods we serve
+      </h2>
+      <p class="font-body text-[#1A2540]/70 mb-8 max-w-2xl">
+        We provide dog waste removal throughout Prosper's established and newer communities. Here are some of the neighborhoods where we regularly scoop:
+      </p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {['Windsong Ranch', 'Star Trail', 'LaCima', 'Whitley Place', 'Meadow Brook'].map(n => (
+          <div class="bg-[#FBF8F3] rounded-lg px-5 py-4">
+            <p class="font-heading text-[#1A2540] font-semibold">{n}</p>
+            <p class="font-body text-sm text-[#1A2540]/60 mt-1">Prosper, TX</p>
+          </div>
+        ))}
+      </div>
+      <p class="font-body text-[#1A2540]/70 mt-6 text-sm">
+        Not seeing your neighborhood? We likely serve it. <a href={`tel:+1${business.phone.replace(/\D/g,'')}`} class="text-[#1B5FBF] underline">Give us a call</a> or <a href={business.ctaHref} class="text-[#1B5FBF] underline">get a quote online</a> to confirm.
+      </p>
+    </div>
+  </section>
+
+  <!-- Local Knowledge -->
+  <section class="bg-[#1B5FBF] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-white/70 font-semibold text-sm uppercase tracking-widest mb-3">
+        Local Knowledge
+      </p>
+      <h2 class="font-heading text-3xl text-white mb-6">
+        We know Prosper and we keep it clean
+      </h2>
+      <p class="font-body text-white/90 text-lg leading-relaxed">
+        Prosper is known for its beautiful trails, open green spaces, and tight-knit community feel. The walking paths throughout Frontier Park are well-maintained and well-loved. Prosper residents take pride in their outdoor spaces. The Prosper Trail system winds through the city and gives families and dog owners miles of clean, enjoyable paths. If you're walking your dog from Windsong Ranch or heading to a Friday night game at Prosper High School or Rock Hill High School, the last thing you want is to come home to a yard full of waste. That same community pride that keeps the parks clean deserves to extend to your backyard. That's exactly what our pet waste removal service is here for, so every inch of your outdoor space is clean, safe, and ready for your kids, guests, and dogs to enjoy.
+      </p>
+    </div>
+  </section>
+
+  <!-- Service Tiers -->
+  <section class="bg-[#FBF8F3] py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        Service Plans
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-4">
+        Pick the plan that fits your yard
+      </h2>
+      <p class="font-body text-[#1A2540]/70 mb-10 max-w-2xl">
+        All plans include full yard coverage, all-weather service, and no long-term contracts. Start, pause, or cancel anytime.
+      </p>
+      <div class="grid sm:grid-cols-3 gap-6">
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1A2540]/10">
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">Weekly Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            Our most popular plan. We visit every week so waste never has a chance to pile up. Perfect for active dogs and families.
+          </p>
+          <a href="/services/weekly-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1B5FBF]/40 ring-2 ring-[#1B5FBF]">
+          <p class="font-body text-[#1B5FBF] text-xs font-semibold uppercase tracking-wide mb-2">Popular</p>
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">Bi-Weekly Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            A great balance of value and cleanliness. We come every two weeks to prevent waste buildup and keep your yard usable.
+          </p>
+          <a href="/services/biweekly-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-[#1A2540]/10">
+          <h3 class="font-heading text-xl text-[#1A2540] mb-2">One-Time Cleanup</h3>
+          <p class="font-body text-[#1A2540]/70 text-sm mb-6">
+            Need a fresh start or prepping for a backyard event? We'll do a thorough one-time dog waste removal, no subscription needed.
+          </p>
+          <a href="/services/one-time-cleanup" class="inline-block text-[#1B5FBF] font-body font-semibold hover:underline text-sm">
+            Learn more &rarr;
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-3">
+        FAQ
+      </p>
+      <h2 class="font-heading text-3xl text-[#1A2540] mb-10">
+        Questions from Prosper dog owners
+      </h2>
+      <div class="space-y-8">
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Does Doodie Crew serve all of Prosper, including newer developments?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Yes. We cover all of Prosper, including rapidly developing areas on the north and west sides of town. Whether you're in an established neighborhood like Whitley Place or a newer community like Star Trail or Windsong Ranch, we have you covered. If you're ever unsure, just enter your address for an instant quote.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            How do you handle large lots common in Prosper?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            We walk every square foot of your yard on every visit. Larger lots just mean we take a bit more time, and our pricing is based on yard size and number of dogs, so you're always charged fairly for the actual work involved. No flat-rate corner-cutting.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            I have HOA requirements about yard maintenance. Will this help?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            Absolutely. Many Prosper HOAs have rules about yard upkeep, and accumulated pet waste is often cited. Regular poop scooping service keeps your yard compliant and your neighbors happy. Some of our Windsong Ranch customers specifically mentioned HOA compliance as one reason they signed up.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-heading text-lg text-[#1A2540] mb-2">
+            Do I need to be home when you come to scoop?
+          </h3>
+          <p class="font-body text-[#1A2540]/70">
+            No, most of our Prosper customers aren't home during the visit. As long as your gate is accessible (you can leave a code in your account), we'll handle everything and send you a notification when we're done. You'll come home to a clean yard without any effort on your part.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team photo strip -->
+  <section class="py-12 px-6" style="background-color: #F4F4F2;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/ryan-white-owner-doodie-crew-poop-scooping-prosper-tx.jpg"
+            alt="Ryan White, owner of Doodie Crew, in an orange hoodie standing next to the branded dog waste removal truck in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+            alt="Doodie Crew team member in orange uniform scooping dog waste with a yellow collection bin in a residential backyard in TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-yard-cleanup-pet-waste-removal-prosper-tx.jpg"
+            alt="Back view of Doodie Crew team member in branded orange shirt reading I Want Your Dog Doodie during a yard cleanup in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction
+    eyebrow="Prosper, TX"
+    heading="Your yard deserves better than a buildup of waste."
+    subtext="Join Prosper homeowners who've taken back their backyards. Get an instant quote online or call us. We'll have your first cleanup scheduled fast."
+    phone={business.phone}
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>

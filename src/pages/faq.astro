@@ -5,35 +5,51 @@ import Footer from '../components/global/Footer.astro';
 import CallToAction from '../components/global/CallToAction.astro';
 import FAQList from '../components/faq/FAQList.astro';
 import { business } from '../data/business';
+
+const faqSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": business.faqs.flatMap(cat => cat.questions.map(q => ({
+    "@type": "Question",
+    "name": q.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": q.answer.replace(/<[^>]*>/g, '')
+    }
+  })))
+});
 ---
 
 <Layout
-  title={`FAQ | ${business.name} | Austin, TX`}
-  description={`Frequently asked questions about ${business.name}'s plumbing services, pricing, scheduling, and warranties. Austin, TX plumbers since 2009.`}
+  title={`FAQ | ${business.name} | DFW Poop Scooping`}
+  description="FAQ: Doodie Crew dog waste removal — pricing, scheduling & satisfaction guarantee. Serving Prosper, Frisco, McKinney & DFW. No contracts."
 >
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={faqSchema} />
+  </Fragment>
 
   <Nav
     businessName={business.name}
     phone={business.phone}
-    links={business.nav}
     ctaHref={business.ctaHref}
   />
 
   <FAQList
     eyebrow="Common Questions"
     heading="Everything you need to know."
-    subtext="Can't find your answer here? Call us at (512) 555-0142 — we're happy to help."
+    subtext={`Can't find your answer here? Call us at <a href="tel:+1${business.phone.replace(/\D/g,'')}" class="text-brand font-semibold hover:underline">${business.phone}</a>. We're happy to help.`}
+    phone={business.phone}
     categories={business.faqs}
     titleLevel="h1"
   />
 
   <CallToAction
-    eyebrow="Ready to Book?"
-    heading="Questions answered. Let's get started."
-    subtext="Call us for a free quote or submit a request online. We respond within the hour."
+    eyebrow="Ready to Start?"
+    heading="Questions answered. Let's get your yard clean."
+    subtext="Get an instant quote online in minutes or give us a call. No contracts, no commitments."
     phone={business.phone}
-    ctaLabel="Send a Message"
-    ctaHref="/contact"
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
   />
 
   <Footer
@@ -44,6 +60,7 @@ import { business } from '../data/business';
     address={business.address.full}
     links={business.nav}
     serviceAreas={business.serviceAreas}
+    social={business.social}
   />
 
 </Layout>

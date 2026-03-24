@@ -1,0 +1,144 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import ServiceDetail from '../../components/services/ServiceDetail.astro';
+import RelatedServices from '../../components/services/RelatedServices.astro';
+import Process from '../../components/home/Process.astro';
+import Testimonials from '../../components/home/Testimonials.astro';
+import FAQList from '../../components/faq/FAQList.astro';
+import { business } from '../../data/business';
+
+const service = business.services.find(s => s.slug === 'biweekly-cleanup')!;
+
+const serviceSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.name,
+  "description": service.description,
+  "serviceType": "Dog Waste Removal",
+  "provider": { "@type": "LocalBusiness", "name": "Doodie Crew", "url": "https://doodiecrew.com" },
+  "areaServed": [{ "@type": "City", "name": "Prosper, TX" }, { "@type": "City", "name": "Frisco, TX" }, { "@type": "City", "name": "McKinney, TX" }, { "@type": "City", "name": "Celina, TX" }],
+  "url": "https://doodiecrew.com/services/biweekly-cleanup"
+});
+
+const relatedServices = business.services
+  .filter(s => s.slug !== 'biweekly-cleanup')
+  .slice(0, 3)
+  .map(s => ({ name: s.name, description: s.description, href: `/services/${s.slug}` }));
+
+// No testimonials explicitly tagged Bi-Weekly - fall back to all 3
+const relatedTestimonials = business.testimonials.slice(0, 3);
+
+const faqs = [
+  {
+    category: 'Bi-Weekly Pet Waste Removal Questions',
+    questions: [
+      {
+        question: 'Is bi-weekly dog waste removal enough to keep my yard clean?',
+        answer: 'For a one-dog household or a smaller dog breed, every-other-week pet waste removal typically keeps your yard in great shape. With one dog producing roughly two to three pounds of waste per week, a bi-weekly visit catches roughly four to six pounds at a time, manageable and effective. If you notice buildup between visits, upgrading to weekly is easy through your client portal.',
+      },
+      {
+        question: 'Can I upgrade from bi-weekly to weekly service if I add a second dog?',
+        answer: 'Yes, and we make it simple. Log in to your client portal at any time and switch your plan to weekly. The change takes effect on your next billing cycle. Many customers start bi-weekly and move to weekly after adopting a second dog. There is no penalty and no paperwork involved.',
+      },
+      {
+        question: 'Is bi-weekly poop scooping a good fit for small dogs?',
+        answer: 'Absolutely. Small breeds produce significantly less waste than large dogs, making every-other-week pet waste removal a practical and cost-effective solution. If you have one small or medium dog in Prosper, Frisco, or the surrounding DFW area, bi-weekly service usually keeps your yard fresh without the need for weekly visits.',
+      },
+      {
+        question: 'Do I need to be home on the service day?',
+        answer: 'No. Just like our weekly customers, bi-weekly clients provide gate access information at signup and our crew handles the entire dog waste removal visit without you needing to be present. You will receive a notification when your yard has been cleaned.',
+      },
+      {
+        question: 'What happens during the two weeks between visits? Does waste attract pests?',
+        answer: 'In DFW, especially during warmer months, dog waste can attract flies and other insects if left for extended periods. For one-dog households this is generally manageable on a bi-weekly schedule. If your yard is larger, you have multiple dogs, or you notice pest issues, our weekly plan is the better fit. We are happy to discuss your specific situation at ' + business.phone + '.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title={`Bi-Weekly Poop Scooping Service | ${business.name} | Prosper, Frisco & McKinney TX`}
+  description="Bi-weekly dog waste removal in Prosper, Frisco, McKinney & Celina TX. Every-other-week poop scooping, no contracts, satisfaction guaranteed."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={serviceSchema} />
+  </Fragment>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <ServiceDetail
+    name="Bi-Weekly Poop Scooping Service in Prosper, Frisco & DFW"
+    tagline="Reliable dog waste removal every other week"
+    description="Not every household needs a weekly poop scooping visit, and that is completely fine. Our bi-weekly dog waste removal plan was designed for single-dog households, small breeds, and budget-conscious pet owners across the DFW area who still want a genuinely clean yard without spending more than necessary. We come out every other week, remove all accumulated pet waste from your entire property, and sanitize our tools before and after. Two visits per month is enough to prevent serious buildup, control odors, and keep your Prosper or Frisco backyard a place the whole family actually wants to spend time in. And if your needs change, upgrading to weekly is a one-click process in your client portal."
+    benefits={[
+      'Every-other-week visits on a consistent, reliable schedule',
+      'Full yard coverage: front, back, and side yards',
+      'Ideal for single-dog or small-breed households',
+      'All-weather service. We come out regardless of DFW weather.',
+      'Gate access on file so you never need to be home',
+      'Organic kennel-grade disinfectant used between every yard we service',
+    ]}
+    guarantee="100% satisfaction. If you are not happy with a visit, we come back and re-clean at no charge."
+  />
+
+  <Process
+    eyebrow="How Bi-Weekly Service Works"
+    heading="Consistent dog waste removal, every two weeks."
+    subtext="Getting set up with bi-weekly pet waste removal takes just a few minutes online. Here is what happens next."
+    steps={[
+      { number: '01', title: 'Sign Up Online in Minutes', description: 'Choose the bi-weekly plan in our online portal, enter your Prosper, Frisco, McKinney, or Celina address, and receive your instant price. No phone call needed, though we are reachable at ' + business.phone + ' if you prefer.' },
+      { number: '02', title: 'We Log Your Gate & Pet Details', description: 'After signup you share your gate access info and any notes about your dog. Our crew reviews this before your first dog waste removal visit so nothing is overlooked.' },
+      { number: '03', title: 'We Visit Every Other Week', description: 'On your scheduled day, a Doodie Crew team member clears your entire yard of all pet waste, bags it, and hauls it off your property. Equipment is disinfected between every yard we service.' },
+      { number: '04', title: 'Notification Sent. Clean Yard Waiting.', description: 'You receive a visit confirmation so you always know when your yard is clean. Step outside and enjoy it. Your dogs will too.' },
+    ]}
+  />
+
+  <Testimonials
+    eyebrow="What DFW Dog Owners Are Saying"
+    heading="Trusted by pet owners across Prosper and beyond."
+    testimonials={relatedTestimonials}
+  />
+
+  <FAQList
+    eyebrow="Bi-Weekly Cleanup FAQ"
+    heading="Your bi-weekly poop scooping questions, answered."
+    subtext={`Have a question not listed here? Call us at <a href="tel:+1${business.phone.replace(/\D/g,'')}" class="text-brand font-semibold hover:underline">${business.phone}</a> or sign up and ask in your client portal.`}
+    phone={business.phone}
+    categories={faqs}
+  />
+
+  <RelatedServices
+    heading="Other dog waste removal services we offer"
+    services={relatedServices}
+  />
+
+  <CallToAction
+    eyebrow="Ready for a Cleaner Yard?"
+    heading="Get bi-weekly dog waste removal starting today."
+    subtext="No contracts, no commitments, just a clean DFW yard every other week. Cancel anytime through your client portal."
+    phone={business.phone}
+    ctaLabel="Sign Up Online"
+    ctaHref={business.ctaHref}
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>

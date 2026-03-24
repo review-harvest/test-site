@@ -1,0 +1,159 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import { business } from '../../data/business';
+---
+<Layout
+  title="Poop Scooping Service in The Colony, TX | Doodie Crew"
+  description="Dog waste removal in The Colony, TX. Reliable poop scooping near Lake Lewisville. No contracts. Starts at $52/month. Satisfaction guaranteed."
+>
+  <Nav businessName={business.name} phone={business.phone} ctaHref={business.ctaHref} />
+
+  <section style="background-color: #1A2540;" class="overflow-hidden">
+    <div class="max-w-7xl mx-auto lg:grid lg:grid-cols-2 items-stretch">
+      <div class="pt-10 pb-6 lg:py-24 px-6 lg:px-10 xl:pl-16">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-4" style="color: #E8951A;">Denton County · Lake Lewisville Area</p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">Poop Scooping Service in The Colony, TX</h1>
+      <p class="font-body text-lg max-w-2xl mb-8" style="color: rgba(255,255,255,0.8);">The Colony is an established lakeside community where residents take real pride in their homes and yards. Doodie Crew brings professional dog waste removal to The Colony homeowners, from the lakeside neighborhoods to the family streets near Stewart Creek Park. Reliable, scheduled poop scooping so your yard stays clean all year long, no matter how many dogs you have.</p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href={business.ctaHref} class="inline-block font-heading font-bold px-8 py-4 rounded-lg hover:opacity-90 text-center" style="background-color: #E8951A; color: white;">Get an Instant Quote</a>
+        <a href={`tel:${business.phone.replace(/\D/g,'')}`} class="inline-block border text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 text-center" style="border-color: rgba(255,255,255,0.4);">Call {business.phone}</a>
+      </div>
+
+      <!-- Mobile hero photo -->
+      <div class="block lg:hidden mt-6 -mx-6 overflow-hidden" style="height: 200px;">
+        <img src="/images/doodie-crew-dog-waste-removal-truck-the-colony-tx.jpg"
+          alt="Doodie Crew poop scooping service truck at a property in The Colony, TX near Lake Lewisville"
+          class="w-full h-full object-cover object-center" loading="eager"/>
+      </div>
+      </div>
+      <!-- Hero photo -->
+      <div class="hidden lg:block py-8 pr-8">
+        <div class="relative h-full min-h-[380px] rounded-2xl overflow-hidden">
+          <img src="/images/doodie-crew-dog-waste-removal-truck-the-colony-tx.jpg"
+            alt="Doodie Crew poop scooping service truck parked at an established community property in The Colony, TX near Lake Lewisville"
+            class="absolute inset-0 w-full h-full object-cover object-center" loading="eager"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background-color: #FBF8F3;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Why Choose Us</p>
+      <h2 class="font-heading text-3xl mb-8" style="color: #1A2540;">Why Colony homeowners choose Doodie Crew</h2>
+      <ul class="space-y-4">
+        {[
+          { strong: "Dog experience you can trust.", rest: "Doodie Crew was founded by Ryan White, a former law enforcement K-9 handler and certified dog trainer. Ryan built this business on the same care and attention to detail he applied to working with police dogs for 14 years." },
+          { strong: "Consistent, predictable service.", rest: "We come on your scheduled day, every time. No missed weeks, no last-minute reschedules. The Colony homeowners can count on us the same way they count on their lawn service." },
+          { strong: "No contracts, ever.", rest: "Cancel your poop scooping service anytime through your online portal. No fees, no calls, no friction." },
+          { strong: "Lakeside humidity means odors build fast.", rest: "We offer optional monthly yard deodorizing to go beyond just waste removal, neutralizing odor at the soil level for a yard that actually smells fresh." },
+          { strong: "Pet-safe practices.", rest: "Organic kennel-grade disinfectant on all tools between every yard. Your dogs' health and safety are built into every visit." },
+          { strong: "100% satisfaction guarantee.", rest: "Not happy with a cleanup? We return and re-clean. No questions asked, no runaround." },
+        ].map(item => (
+          <li class="flex items-start gap-3">
+            <span class="mt-1.5 w-4 h-4 rounded-full flex-shrink-0" style="background-color: #1B5FBF;"></span>
+            <p class="font-body" style="color: #1A2540;"><strong>{item.strong}</strong> {item.rest}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Neighborhoods We Serve</p>
+      <h2 class="font-heading text-3xl mb-4" style="color: #1A2540;">Colony neighborhoods we service</h2>
+      <p class="font-body mb-8 max-w-2xl" style="color: rgba(26,37,64,0.7);">We provide dog waste removal and regular poop scooping throughout The Colony's established communities:</p>
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+        {['The Cascades', 'The Peninsula', 'Oak Crest', 'Stewart Creek Estates', 'Lakeside Communities'].map(n => (
+          <div class="rounded-lg px-5 py-4" style="background-color: #FBF8F3;">
+            <p class="font-heading font-semibold" style="color: #1A2540;">{n}</p>
+            <p class="font-body text-sm mt-1" style="color: rgba(26,37,64,0.5);">The Colony, TX</p>
+          </div>
+        ))}
+      </div>
+      <p class="font-body text-sm mt-6" style="color: rgba(26,37,64,0.7);">Not sure if we cover your address? <a href={business.ctaHref} style="color: #1B5FBF;" class="underline">Get an instant quote</a> to find out.</p>
+    </div>
+  </section>
+
+  <section style="background-color: #1B5FBF;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: rgba(255,255,255,0.7);">Local Knowledge</p>
+      <h2 class="font-heading text-3xl text-white mb-6">The Colony is a community that cares about its properties</h2>
+      <p class="font-body text-lg leading-relaxed" style="color: rgba(255,255,255,0.9);">
+        The Colony has long been one of Denton County's most established and well-kept communities. Stewart Creek Park and the Lake Lewisville shoreline give residents plenty of outdoor space, and dogs are everywhere. The Colony Recreation Center serves a community that values being active, and active dogs in warm, humid yards produce serious amounts of waste. Regular pet waste removal keeps properties looking well-maintained, protects lawn health, and eliminates the odors that heat amplifies. Whether you're near the lake, close to the rec center, or in one of the neighborhood's quieter interior streets, Doodie Crew provides reliable poop scooping that matches the standard this community sets for itself.
+      </p>
+    </div>
+  </section>
+
+  <section style="background-color: #FBF8F3;" class="py-16 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">Service Plans</p>
+      <h2 class="font-heading text-3xl mb-10" style="color: #1A2540;">Choose your cleanup schedule</h2>
+      <div class="grid sm:grid-cols-3 gap-6">
+        {[
+          { href: '/services/weekly-cleanup', title: 'Weekly Cleanup', desc: 'Weekly visits keep waste from ever building up. Our most popular plan.' },
+          { href: '/services/biweekly-cleanup', title: 'Bi-Weekly Cleanup', desc: 'Every other week, great for 1-dog households who want a reliably clean yard.', featured: true },
+          { href: '/services/one-time-cleanup', title: 'One-Time Cleanup', desc: 'Just need a single visit? No subscription required. Perfect for a fresh start.' },
+        ].map(plan => (
+          <div class="bg-white rounded-xl p-6 shadow-sm border" style={plan.featured ? 'border-color: rgba(27,95,191,0.4); outline: 2px solid #1B5FBF;' : 'border-color: rgba(26,37,64,0.1);'}>
+            {plan.featured && <p class="font-body text-xs font-semibold uppercase tracking-wide mb-2" style="color: #1B5FBF;">Popular Choice</p>}
+            <h3 class="font-heading text-xl mb-2" style="color: #1A2540;">{plan.title}</h3>
+            <p class="font-body text-sm mb-6" style="color: rgba(26,37,64,0.7);">{plan.desc}</p>
+            <a href={plan.href} class="font-body font-semibold text-sm hover:underline" style="color: #1B5FBF;">Learn more &rarr;</a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <p class="font-body font-semibold text-sm uppercase tracking-widest mb-3" style="color: #E8951A;">FAQ</p>
+      <h2 class="font-heading text-3xl mb-10" style="color: #1A2540;">Questions from Colony dog owners</h2>
+      <div class="space-y-8">
+        {[
+          { q: 'Do you service all neighborhoods in The Colony?', a: "Yes, we cover all of The Colony's neighborhoods, from the lakeside areas near Lewisville to the established interior streets. Enter your address at the quote link to confirm coverage." },
+          { q: 'My yard smells in the summer even after I clean up. What can I do?', a: "That's a really common issue near Lake Lewisville. The humidity keeps odor-causing bacteria active longer. We offer a monthly yard deodorizing treatment that neutralizes those bacteria in the soil. Many Colony customers add it to their regular poop scooping plan during warmer months." },
+          { q: 'How is Doodie Crew different from other poop scooping services?', a: "The biggest difference is the background behind it. Ryan White is a former K-9 handler and dog trainer. He built Doodie Crew around genuine dog expertise and law enforcement-level reliability. We show up when we say we will, we secure your gates, and we treat your property with respect." },
+          { q: 'What happens if my dog is outside when you come?', a: "No issue at all. Ryan's K-9 background means our crew is comfortable and experienced working around dogs. We handle it professionally, safely, and without any disruption to your dog's routine." },
+        ].map(item => (
+          <div>
+            <h3 class="font-heading text-lg mb-2" style="color: #1A2540;">{item.q}</h3>
+            <p class="font-body" style="color: rgba(26,37,64,0.7);">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Team photo strip -->
+  <section class="py-12 px-6" style="background-color: #F4F4F2;">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/ryan-white-owner-doodie-crew-poop-scooping-prosper-tx.jpg"
+            alt="Ryan White, owner of Doodie Crew, in an orange hoodie standing next to the branded dog waste removal truck in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+            alt="Doodie Crew team member in orange uniform scooping dog waste with a yellow collection bin in a residential backyard in TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+        <div class="aspect-[4/3] rounded-2xl overflow-hidden shadow-md">
+          <img src="/images/doodie-crew-yard-cleanup-pet-waste-removal-prosper-tx.jpg"
+            alt="Back view of Doodie Crew team member in branded orange shirt reading I Want Your Dog Doodie during a yard cleanup in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy"/>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CallToAction eyebrow="The Colony, TX" heading="A yard The Colony can be proud of." subtext="Professional dog waste removal from a locally owned company you can trust. Instant quote, no contracts." phone={business.phone} ctaLabel="Get an Instant Quote" ctaHref={business.ctaHref} />
+  <Footer businessName={business.name} tagline={business.tagline} phone={business.phone} email={business.email} address={business.address.full} links={business.nav} serviceAreas={business.serviceAreas}
+    social={business.social} />
+</Layout>

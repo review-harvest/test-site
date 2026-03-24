@@ -1,8 +1,4 @@
 ---
-/**
- * Process — "How It Works" section with numbered steps.
- * Used on the homepage and individual service pages.
- */
 interface Step {
   number: string;
   title: string;
@@ -19,7 +15,7 @@ interface Props {
 const {
   eyebrow = 'How It Works',
   heading = 'Simple process, great results.',
-  subtext = "We make it easy to get started. Here's exactly what to expect when you call us.",
+  subtext = "We make it easy to get started. Here's exactly what to expect when you sign up.",
   steps = [
     {
       number: '01',
@@ -28,62 +24,84 @@ const {
     },
     {
       number: '02',
-      title: 'We Diagnose the Problem',
-      description: 'Our licensed technician arrives on time, assesses the issue thoroughly, and gives you a clear written quote.',
+      title: 'We Come to You',
+      description: 'Our crew arrives on your scheduled day. No need to be home, just leave the gate accessible.',
     },
     {
       number: '03',
-      title: 'We Get to Work',
-      description: 'Once you approve the quote, we fix it right — using quality materials and leaving your space clean.',
+      title: 'Yard Cleaned & Sanitized',
+      description: 'We remove all waste and use organic kennel-grade disinfectant on our tools to keep your pets safe.',
     },
     {
       number: '04',
-      title: "You're Covered",
-      description: 'All work is backed by our 1-year labor warranty. If something is off, we come back at no charge.',
+      title: "You're Good to Go",
+      description: 'Get a notification when we finish. Enjoy your clean yard and adjust or cancel your plan anytime.',
     },
   ],
 } = Astro.props;
 ---
 
-<section class="bg-bg py-20 lg:py-28">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10">
+<section class="relative pt-10 lg:pt-16 pb-32 lg:pb-40 overflow-hidden" style="background-color: #0F1A35;">
+
+  <!-- Subtle dot-grid background texture -->
+  <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 28px 28px;"></div>
+
+  <!-- Amber glow blob top-right -->
+  <div class="absolute -top-24 -right-24 w-80 h-80 rounded-full pointer-events-none" aria-hidden="true" style="background: radial-gradient(circle, rgba(232,149,26,0.12) 0%, transparent 70%);"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 relative z-10">
 
     <!-- Section header -->
     <div class="text-center max-w-2xl mx-auto mb-16">
       {eyebrow && (
         <div class="inline-flex items-center justify-center gap-2.5 mb-4">
-          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
-          <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">
+          <span class="block w-5 h-px" style="background-color: #E8951A;" aria-hidden="true"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase" style="color: #E8951A;">
             {eyebrow}
           </span>
-          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+          <span class="block w-5 h-px" style="background-color: #E8951A;" aria-hidden="true"></span>
         </div>
       )}
-      <h2 class="font-heading text-3xl text-text leading-tight">{heading}</h2>
+      <h2 class="font-heading text-3xl leading-tight text-white">{heading}</h2>
       {subtext && (
-        <p class="font-body text-base text-text-soft mt-3 leading-relaxed">{subtext}</p>
+        <p class="font-body text-base mt-3 leading-relaxed" style="color: rgba(255,255,255,0.55);">{subtext}</p>
       )}
     </div>
 
     <!-- Steps -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6 relative">
 
-      <!-- Desktop connector line — sits behind the circles -->
+      <!-- Wavy dashed connector (desktop only) -->
       <div
-        class="hidden lg:block absolute top-10 left-[calc(12.5%+2.5rem)] right-[calc(12.5%+2.5rem)] h-px border-t border-dashed border-border"
+        class="hidden lg:block absolute pointer-events-none"
+        style="top: 44px; left: calc(12.5% + 3rem); right: calc(12.5% + 3rem); height: 24px;"
         aria-hidden="true"
-      ></div>
+      >
+        <svg viewBox="0 0 900 30" preserveAspectRatio="none" style="width:100%;height:100%;">
+          <path
+            d="M 0 15 Q 150 2 300 15 Q 450 28 600 15 Q 750 2 900 15"
+            stroke="#E8951A"
+            stroke-width="1.5"
+            stroke-dasharray="7 5"
+            fill="none"
+            opacity="0.45"
+          />
+        </svg>
+      </div>
 
-      {steps.map((step) => (
-        <div class="flex flex-col items-center text-center">
+      {steps.map((step, i) => (
+        <div class="process-step flex flex-col items-center text-center" style={`--step-delay: ${i * 130}ms`}>
 
-          <!-- Circle with step number -->
-          <div class="relative z-10 w-20 h-20 rounded-full bg-surface border-2 border-brand/20 shadow-sm flex items-center justify-center mb-6 shrink-0">
-            <span class="font-heading text-xl text-brand leading-none">{step.number}</span>
+          <!-- Glowing amber number circle -->
+          <div
+            class="relative z-10 w-[88px] h-[88px] rounded-full flex items-center justify-center mb-6 shrink-0"
+            style="background: linear-gradient(135deg, #E8951A 0%, #C4700E 100%); box-shadow: 0 0 0 8px rgba(232,149,26,0.1), 0 0 32px rgba(232,149,26,0.3);"
+          >
+            <span class="font-heading text-2xl text-white font-black leading-none">{step.number}</span>
           </div>
 
-          <h3 class="font-body font-semibold text-base text-text mb-2">{step.title}</h3>
-          <p class="font-body text-sm text-text-soft leading-relaxed">{step.description}</p>
+          <h3 class="font-body font-bold text-base text-white mb-2">{step.title}</h3>
+          <p class="font-body text-sm leading-relaxed" style="color: rgba(255,255,255,0.52);">{step.description}</p>
 
         </div>
       ))}
@@ -91,4 +109,43 @@ const {
     </div>
 
   </div>
+
+  <!-- Wave: navy → WhyUs gray -->
+  <div class="absolute bottom-0 left-0 right-0 pointer-events-none" aria-hidden="true">
+    <svg viewBox="0 0 1440 64" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="display:block;width:100%;height:64px;">
+      <path d="M0,30 C360,64 1080,0 1440,38 L1440,64 L0,64 Z" fill="#F4F4F2"/>
+    </svg>
+  </div>
+
 </section>
+
+<style>
+  .process-step {
+    opacity: 0;
+    transform: translateY(32px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition-delay: var(--step-delay, 0ms);
+  }
+  .process-step.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
+
+<script>
+  (function () {
+    const steps = document.querySelectorAll('.process-step');
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15 }
+    );
+    steps.forEach((step) => observer.observe(step));
+  })();
+</script>

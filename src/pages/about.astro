@@ -3,61 +3,282 @@ import Layout from '../layouts/Layout.astro';
 import Nav from '../components/global/Nav.astro';
 import Footer from '../components/global/Footer.astro';
 import CallToAction from '../components/global/CallToAction.astro';
-import Story from '../components/about/Story.astro';
-import Values from '../components/about/Values.astro';
-import TeamGrid from '../components/about/TeamGrid.astro';
 import Credentials from '../components/about/Credentials.astro';
+import Values from '../components/about/Values.astro';
 import { business } from '../data/business';
 ---
 
 <Layout
-  title={`About Us | ${business.name}`}
-  description={`Learn about ${business.name} — Austin's trusted plumbers since ${business.founded}. Meet our team, understand our values, and see our credentials.`}
+  title={`About Ryan White | ${business.name} | Prosper, TX`}
+  description="Meet Ryan White, founder of Doodie Crew — 14-year law enforcement veteran, K-9 handler & dog trainer. Professional pet waste removal in Prosper & DFW."
 >
 
   <Nav
     businessName={business.name}
     phone={business.phone}
-    links={business.nav}
     ctaHref={business.ctaHref}
   />
 
-  <Story
-    eyebrow="Our Story"
-    heading="Built on honesty. Proven by results."
-    body1="Marcus Rivera started Apex Plumbing & Drain in 2009 after nearly a decade working for larger plumbing companies in the Austin area. The work was good, but the business practices weren't — inflated quotes, unnecessary upsells, technicians rushing through jobs to hit daily ticket counts."
-    body2="He started Apex because he believed there was a better way. Give honest quotes. Do the work right the first time. Stand behind it completely. Over 15 years and 8,400+ jobs later, that approach has built a company that Austin homeowners actually call their friends about."
-    founded={business.founded}
-    accentStat={{ value: '8,400+', label: 'jobs completed since 2009' }}
-  />
+  <!-- Hero / Founder Story -->
+  <section style="background-color: #1A2540;" class="py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
 
-  <Values
-    eyebrow="What We Stand For"
-    heading="The principles behind every job we take."
-    subtext="These aren't words on a website. They're the standards we hold ourselves to — and that our customers can hold us to."
-    values={business.values}
-  />
+        <!-- Content -->
+        <div class="lg:col-span-7">
+          <div class="inline-flex items-center gap-2.5 mb-5">
+            <span class="block w-5 h-px" style="background-color: #E8951A;" aria-hidden="true"></span>
+            <span class="font-body text-sm font-semibold tracking-widest uppercase" style="color: #E8951A;">
+              About the Owner
+            </span>
+          </div>
+          <h1 class="font-heading text-4xl lg:text-5xl text-white leading-tight mb-6">
+            14 Years with Dogs.<br/>Built to Serve Yours.
+          </h1>
+          <p class="font-body text-lg leading-relaxed mb-4" style="color: rgba(255,255,255,0.8);">
+            My name is Ryan White, and I'm the owner of Doodie Crew. Before starting this business, I spent 14 years in law enforcement, including time as a K-9 handler. Working side by side with a police dog every single day gave me a deep, practical understanding of dogs: their behavior, their needs, and the responsibility that comes with caring for them.
+          </p>
+          <p class="font-body text-base leading-relaxed mb-8" style="color: rgba(255,255,255,0.6);">
+            Alongside my law enforcement career, I also worked as a private dog trainer, helping owners build stronger relationships with their dogs. Between the K-9 unit and the training work, dogs have been a central part of my professional life for a long time.
+          </p>
+          <!-- Credential chips -->
+          <div class="flex flex-wrap gap-3">
+            {[
+              '14 Years Law Enforcement',
+              'K-9 Handler',
+              'Private Dog Trainer',
+              'Prosper, TX Based',
+            ].map(c => (
+              <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full font-body text-sm font-semibold" style="background-color: rgba(232,149,26,0.15); color: #E8951A; border: 1px solid rgba(232,149,26,0.3);">
+                {c}
+              </span>
+            ))}
+          </div>
+        </div>
 
-  <TeamGrid
-    eyebrow="Meet the Team"
-    heading="The people behind every job."
-    subtext="Our team is small by design. You'll work with experienced professionals on every visit — not whoever happens to be available."
-    members={business.team}
-  />
+        <!-- Photo -->
+        <div class="lg:col-span-5">
+          <div class="relative">
+            <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-xl">
+              <img
+                src="/images/ryan-white-doodie-crew-owner-certified-dog-trainer-prosper-tx.jpg"
+                alt="Ryan White, founder of Doodie Crew and certified dog trainer, holding a small dog with a white Labrador by his side in Prosper, TX"
+                class="w-full h-full object-cover object-top"
+                loading="eager"
+              />
+            </div>
+            <!-- Floating badge -->
+            <div class="absolute -bottom-5 -left-5 hidden lg:block bg-white rounded-xl shadow-lg px-5 py-4 border" style="border-color: #E8E0D4;">
+              <p class="font-body text-xs font-semibold tracking-widest uppercase" style="color: #6B6560;">Founded</p>
+              <p class="font-heading text-xl font-bold" style="color: #1A2540;">Prosper, TX · 2024</p>
+            </div>
+            <!-- Amber ring -->
+            <div class="absolute -top-4 -right-4 w-20 h-20 rounded-full -z-10" style="background-color: rgba(232,149,26,0.2);" aria-hidden="true"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why I Started Doodie Crew -->
+  <section class="bg-surface py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+
+        <!-- Photo -->
+        <div class="lg:col-span-5 order-2 lg:order-1">
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-md">
+              <img
+                src="/images/ryan-white-police-k9-handler-dog-trainer-dfw-tx.jpg"
+                alt="Ryan White in his police uniform kneeling with his K-9 partner wearing a POLICE vest during his 14 years as a law enforcement K-9 handler in DFW, TX"
+                class="w-full h-full object-cover object-center"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute -top-4 -left-4 w-16 h-16 rounded-full -z-10" style="background-color: #FEF3DC;" aria-hidden="true"></div>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <div class="lg:col-span-7 order-1 lg:order-2">
+          <div class="inline-flex items-center gap-2.5 mb-4">
+            <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+            <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">Why I Started This</span>
+          </div>
+          <h2 class="font-heading text-3xl lg:text-4xl text-text leading-tight mb-5">
+            Helping busy families enjoy their yards again.
+          </h2>
+          <p class="font-body text-lg text-text-soft leading-relaxed mb-4">
+            I started Doodie Crew to solve a real problem: busy homeowners, people with jobs, kids, and full lives, who don't have time to deal with the mess their dogs leave behind.
+          </p>
+          <p class="font-body text-base text-text-soft leading-relaxed mb-4">
+            Between work, kids, and everyday life, cleaning up after dogs is usually the last thing anyone wants to do. I saw firsthand how much work dogs can create in a yard, and I also know how important a clean, healthy environment is for both pets and families.
+          </p>
+          <p class="font-body text-base text-text-soft leading-relaxed">
+            My goal with Doodie Crew is simple: <strong class="text-text">be reliable, show up when we say we will, and make life easier for dog owners.</strong> That's it. No upsells, no complexity, just a cleaner yard, week after week.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- What Sets Us Apart -->
+  <section class="bg-bg py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center justify-center gap-2.5 mb-4">
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase text-brand">What Sets Us Apart</span>
+          <span class="block w-5 h-px bg-brand" aria-hidden="true"></span>
+        </div>
+        <h2 class="font-heading text-3xl lg:text-4xl text-text leading-tight">
+          Not just another poop scooping company.
+        </h2>
+        <p class="font-body text-base text-text-soft mt-4 leading-relaxed">
+          My background as a K-9 handler and dog trainer shapes how we operate every single day. We're not just a lawn service. We're dog people.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          {
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"/></svg>`,
+            title: 'K-9 Handler Experience',
+            body: "Ryan spent years working daily with a police K-9. We know how to safely enter a dog's space, read their behavior, and handle any situation. Your dogs are comfortable and safe during every visit.",
+          },
+          {
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z"/></svg>`,
+            title: 'Gates Always Secured',
+            body: 'Law enforcement instills a process mindset. We always double-check that gates are fully latched before we leave. Your dogs always stay in.',
+          },
+          {
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>`,
+            title: 'Reliability is Non-Negotiable',
+            body: 'In law enforcement, showing up is everything. That same mindset runs Doodie Crew. Your scheduled day is your scheduled day, rain, heat, or cold.',
+          },
+          {
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.182 15.182a4.5 4.5 0 01-6.364 0M21 12a9 9 0 11-18 0 9 9 0 0118 0zM9.75 9.75c0 .414-.168.75-.375.75S9 10.164 9 9.75 9.168 9 9.375 9s.375.336.375.75zm-.375 0h.008v.015h-.008V9.75zm5.625 0c0 .414-.168.75-.375.75s-.375-.336-.375-.75.168-.75.375-.75.375.336.375.75zm-.375 0h.008v.015h-.008V9.75z"/></svg>`,
+            title: 'Pet-Safe Everything',
+            body: 'Organic kennel-grade disinfectant on all tools between every single yard. No cross-contamination. No harsh chemicals near your dogs.',
+          },
+          {
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"/></svg>`,
+            title: 'Locally Owned in Prosper',
+            body: "We're not a franchise. Ryan lives and works in Prosper, TX, the same community he serves. That accountability matters.",
+          },
+          {
+            icon: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1 3m8.5-3l1 3m0 0l.5 1.5m-.5-1.5h-9.5m0 0l-.5 1.5"/></svg>`,
+            title: 'Simple & Transparent',
+            body: 'No contracts, no hidden fees, no confusing tiers. Start or cancel anytime. Pricing is upfront and fair.',
+          },
+        ].map(item => (
+          <div class="bg-surface border border-border rounded-xl p-7 shadow-sm">
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background-color: #FEF3DC; color: #E8951A;">
+              <Fragment set:html={item.icon} />
+            </div>
+            <h3 class="font-heading text-lg font-bold text-text mb-2">{item.title}</h3>
+            <p class="font-body text-sm text-text-soft leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- K-9 Background Section -->
+  <section style="background-color: #0F1A35;" class="py-20 lg:py-24 relative overflow-hidden">
+    <!-- Subtle dot-grid texture -->
+    <div class="absolute inset-0 pointer-events-none" style="background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 28px 28px;"></div>
+    <div class="relative max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-2xl mx-auto mb-14">
+        <div class="inline-flex items-center justify-center gap-2.5 mb-4">
+          <span class="block w-5 h-px" style="background-color: #E8951A;"></span>
+          <span class="font-body text-sm font-semibold tracking-widest uppercase" style="color: #E8951A;">The K-9 Background</span>
+          <span class="block w-5 h-px" style="background-color: #E8951A;"></span>
+        </div>
+        <h2 class="font-heading text-3xl lg:text-4xl text-white leading-tight">
+          Years of real experience with working dogs.
+        </h2>
+        <p class="font-body text-base mt-4 leading-relaxed" style="color: rgba(255,255,255,0.65);">
+          Before Doodie Crew, Ryan spent over a decade as a certified K-9 handler and private dog trainer. These aren't stock photos — this is the work that shaped how he approaches every yard and every dog he encounters.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="/images/ryan-white-police-k9-handler-dog-trainer-dfw-tx.jpg"
+            alt="Ryan White in police uniform kneeling with his K-9 police dog wearing a POLICE vest during active duty in DFW, TX"
+            class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="/images/ryan-white-k9-dog-trainer-law-enforcement-dfw-tx.jpg"
+            alt="Ryan White working with a Belgian Malinois during K-9 obedience and protection training in DFW, Texas"
+            class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg">
+          <img
+            src="/images/police-k9-german-shepherd-dog-training-dfw-tx.jpg"
+            alt="A highly trained black German Shepherd police K-9 in full harness on duty in DFW, TX — the same breed and training background Ryan White brought to founding Doodie Crew"
+            class="w-full h-full object-cover object-center hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Photo gallery: team in action -->
+  <section class="bg-surface py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-sm col-span-2">
+          <img
+            src="/images/doodie-crew-service-truck-prosper-tx-dog-waste-removal.jpg"
+            alt="Doodie Crew branded Ford Maverick service truck parked in front of a suburban home in Prosper, TX showing the phone number 214-901-0840"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-sm">
+          <img
+            src="/images/ryan-white-doodie-crew-founder-dog-waste-removal-prosper-tx.jpg"
+            alt="Ryan White, founder of Doodie Crew, standing next to the branded service truck in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+        <div class="aspect-[4/3] rounded-xl overflow-hidden shadow-sm">
+          <img
+            src="/images/doodie-crew-team-member-dog-waste-removal-prosper-tx.jpg"
+            alt="Doodie Crew team member in orange shirt standing confidently in front of the branded service truck ready for a dog waste removal visit in Prosper, TX"
+            class="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
 
   <Credentials
-    eyebrow="Licenses & Certifications"
-    heading="You can verify everything we claim."
+    eyebrow="Background & Credentials"
+    heading="Built on real experience with dogs."
     credentials={business.credentials}
   />
 
   <CallToAction
-    eyebrow="Work With Us"
-    heading="Ready to experience the difference?"
-    subtext="Call us for a free, no-obligation quote. We answer every call personally."
+    eyebrow="Ready to get started?"
+    heading="A clean yard is one click away."
+    subtext="Get an instant quote online or call Ryan directly. No contracts, no commitments, just reliable service from someone who genuinely loves dogs."
     phone={business.phone}
-    ctaLabel="Send Us a Message"
-    ctaHref="/contact"
+    ctaLabel="Get an Instant Quote"
+    ctaHref={business.ctaHref}
   />
 
   <Footer
@@ -68,6 +289,7 @@ import { business } from '../data/business';
     address={business.address.full}
     links={business.nav}
     serviceAreas={business.serviceAreas}
+    social={business.social}
   />
 
 </Layout>

@@ -1,0 +1,147 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import ServiceDetail from '../../components/services/ServiceDetail.astro';
+import RelatedServices from '../../components/services/RelatedServices.astro';
+import Process from '../../components/home/Process.astro';
+import Testimonials from '../../components/home/Testimonials.astro';
+import FAQList from '../../components/faq/FAQList.astro';
+import { business } from '../../data/business';
+
+const service = business.services.find(s => s.slug === 'weekly-cleanup')!;
+
+const serviceSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": service.name,
+  "description": service.description,
+  "serviceType": "Dog Waste Removal",
+  "provider": { "@type": "LocalBusiness", "name": "Doodie Crew", "url": "https://doodiecrew.com" },
+  "areaServed": [{ "@type": "City", "name": "Prosper, TX" }, { "@type": "City", "name": "Frisco, TX" }, { "@type": "City", "name": "McKinney, TX" }, { "@type": "City", "name": "Celina, TX" }],
+  "url": "https://doodiecrew.com/services/weekly-cleanup"
+});
+
+const relatedServices = business.services
+  .filter(s => s.slug !== 'weekly-cleanup')
+  .slice(0, 3)
+  .map(s => ({ name: s.name, description: s.description, href: `/services/${s.slug}` }));
+
+// Weekly Cleanup has 2 matching testimonials; pad with the One-Time to reach 3
+const relatedTestimonials = business.testimonials
+  .filter(t => t.service === 'Weekly Cleanup')
+  .concat(business.testimonials.filter(t => t.service !== 'Weekly Cleanup').slice(0, 1))
+  .slice(0, 3);
+
+const faqs = [
+  {
+    category: 'Weekly Poop Scooping Questions',
+    questions: [
+      {
+        question: 'Why should I choose weekly poop scooping over bi-weekly?',
+        answer: 'One to three dogs can generate five or more pounds of waste every week. Weekly pet waste removal prevents that buildup from accumulating, keeps odors under control, and gives your family a genuinely usable outdoor space day after day. Bi-weekly service is great for smaller dogs or tighter budgets, but weekly is the gold standard for consistent cleanliness, especially in Texas summers when waste breaks down fast and smells spread quickly.',
+      },
+      {
+        question: 'What happens if the crew misses a week due to weather or holidays?',
+        answer: 'We work in all weather, rain, cold, or Texas heat, so a missed visit is rare. In the unlikely event a visit has to be skipped, we will communicate with you in advance and schedule a makeup visit at no extra charge. We do not simply skip a week and move on.',
+      },
+      {
+        question: 'Do I need to be home when Doodie Crew comes?',
+        answer: 'No. The vast majority of our weekly dog waste removal customers are not home during service. When you sign up you provide your gate code or access details, and our crew handles everything. You will receive a notification once your yard has been cleaned so you always know the job is done.',
+      },
+      {
+        question: 'What do you do with the dog waste after you remove it?',
+        answer: 'We bag all collected pet waste and remove it from your property entirely. We never leave bags behind. The waste is disposed of properly off-site. Your yard is left completely clear after every weekly visit.',
+      },
+      {
+        question: 'Can I pause or cancel my weekly service if I go on vacation?',
+        answer: 'Absolutely. Log in to your client portal at any time to skip upcoming visits or pause service while you are away. There are no cancellation fees and no contracts. When you are ready to resume, simply reactivate through the portal.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title={`Weekly Poop Scooping Service | ${business.name} | Prosper, Frisco & McKinney TX`}
+  description="Weekly poop scooping in Prosper, Frisco, McKinney & Celina TX. Doodie Crew removes all pet waste once a week and notifies you when done. No contracts."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={serviceSchema} />
+  </Fragment>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    links={business.nav}
+    ctaHref={business.ctaHref}
+  />
+
+  <ServiceDetail
+    name="Weekly Poop Scooping Service in Prosper, Frisco & DFW"
+    tagline="Our most popular dog waste removal plan"
+    description="With one to three dogs producing five or more pounds of waste every single week, your Prosper or Frisco backyard can go from fresh to foul faster than you think, especially during the long DFW summers. Our weekly pet waste removal service solves that problem for good: we show up once a week, clear every corner of your yard, sanitize our equipment, and leave without you needing to lift a finger. Weekly dog waste removal keeps odors gone, eliminates disease-carrying bacteria, and lets your family and pets actually enjoy the outdoor space you paid for. It is the most effective poop scooping plan we offer, and it is our most popular for a reason."
+    benefits={[
+      'Once-per-week visits on a consistent day you can count on',
+      'Front yard, back yard, and side yards all covered',
+      'Dog runs and kennel areas included at no extra charge',
+      'All-weather service, we show up rain or shine, hot or cold',
+      'Gate access on file, no need to be home during the visit',
+      'Organic kennel-grade disinfectant applied to tools between every yard',
+    ]}
+    guarantee="100% satisfaction. If you are not happy with a visit, we come back and re-clean at no charge."
+  />
+
+  <Process
+    eyebrow="How Weekly Service Works"
+    heading="How Our Weekly Poop Scooping Service Works"
+    subtext="Getting started with weekly dog waste removal takes less than five minutes. Here is exactly what to expect."
+    steps={[
+      { number: '01', title: 'Sign Up Online in Minutes', description: 'Use our instant online portal to select the weekly plan, enter your address, and get your price. No phone call required, though we are always happy to chat at ' + business.phone + '.' },
+      { number: '02', title: 'We Note Your Gate Info & Pet Details', description: 'After signup you provide gate access instructions and a quick note about your dogs. Our crew reviews everything before the first visit so nothing is missed.' },
+      { number: '03', title: 'We Visit Weekly & Remove All Waste', description: 'On your scheduled day, a Doodie Crew team member arrives, scours the full yard for every piece of dog waste, bags it, and removes it from your property entirely. Tools are disinfected between every yard.' },
+      { number: '04', title: 'You Get Notified. Enjoy Your Clean Yard.', description: 'You receive a completion notification so you always know the job is done. Walk outside, let the kids run around, and enjoy a poop-free yard every single week.' },
+    ]}
+  />
+
+  <Testimonials
+    eyebrow="What Weekly Customers Say"
+    heading="What DFW Dog Owners Say About Weekly Poop Scooping"
+    testimonials={relatedTestimonials}
+  />
+
+  <FAQList
+    eyebrow="Weekly Cleanup FAQ"
+    heading="Common questions about weekly poop scooping."
+    subtext={`Ready to get started? Sign up online or call us at <a href="tel:+1${business.phone.replace(/\D/g,'')}" class="text-brand font-semibold hover:underline">${business.phone}</a>.`}
+    phone={business.phone}
+    categories={faqs}
+  />
+
+  <RelatedServices
+    heading="Other pet waste removal services we offer"
+    services={relatedServices}
+  />
+
+  <CallToAction
+    eyebrow="Ready for a Clean Yard Every Week?"
+    heading="Start your weekly poop scooping service today."
+    subtext="Join dog owners across Prosper, Frisco, McKinney, and Celina who never touch a poop bag again. No contracts. Cancel anytime."
+    phone={business.phone}
+    ctaLabel="Sign Up Online"
+    ctaHref={business.ctaHref}
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>
