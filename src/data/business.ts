@@ -268,12 +268,39 @@ export const business = {
     },
     {
       quote:
-        "Doodie Crew is doing a great job for me so far. Thanks for your help y'all. Appreciate the communication and timeliness — and my dog loved the welcome treats.",
-      name: "Paul E.",
+        "The Doodie Crew is very punctual and efficient. I receive a text always letting me know when their arrival time will be so I can have my dog in the house. When the job is finished, I always receive a text with a picture showing me that the gate is secured.",
+      name: "Debi W.",
       location: "North DFW",
       rating: 5,
       service: "Weekly Cleanup",
-      date: "January 2025",
+      date: "July 2024",
+    },
+    {
+      quote:
+        "These guys do a fantastic job! I felt bad the first pick up, but now that we are on the weekly — we have our yard back!!!",
+      name: "Becky R.",
+      location: "North DFW",
+      rating: 5,
+      service: "Weekly Cleanup",
+      date: "May 2024",
+    },
+    {
+      quote:
+        "Our yard has never smelt so fresh. We have struggled with what to use to get rid of the urine smell in our turf. This has been the only thing that has helped tremendously. Also love that it's all natural and safe for our kids and pets. Super nice guy too!",
+      name: "Lindsey H.",
+      location: "North DFW",
+      rating: 5,
+      service: "Monthly Deodorizing",
+      date: "September 2024",
+    },
+    {
+      quote:
+        "On time, friendly and easy to book. My yard is spotless and free of doggie land mines.",
+      name: "Justin H.",
+      location: "North DFW",
+      rating: 5,
+      service: "Weekly Cleanup",
+      date: "September 2024",
     },
     {
       quote:
