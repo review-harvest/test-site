@@ -87,20 +87,24 @@ const phoneHref = 'tel:+1' + phone.replace(/\D/g, '');
 
   <div class="h-px bg-border"></div>
 
-  <!-- Map placeholder -->
+  <!-- Map embed -->
   <div>
     <p class="font-body text-xs font-semibold tracking-widest uppercase text-text-soft mb-3">Service Area</p>
-    <div class="aspect-[4/3] rounded-lg bg-brand-tint border border-border flex items-center justify-center">
-      <div class="text-center">
-        <svg class="w-8 h-8 text-brand/30 mx-auto" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z" />
-        </svg>
-        <p class="font-body text-sm text-text-soft mt-2">North DFW Metroplex</p>
-        <a href="/service-area" class="font-body text-sm text-brand font-medium mt-1 inline-block hover:underline">
-          View full service area →
-        </a>
-      </div>
+    <div class="rounded-lg overflow-hidden border border-border">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d330788.21462725627!2d-96.72806920000001!3d33.20137855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x849cdd8426390b7d%3A0xd03112d08e7c74bd!2sDoodie%20Crew%20Poop%20Scooping!5e1!3m2!1sen!2sus!4v1775560994504!5m2!1sen!2sus"
+        width="100%"
+        height="300"
+        style="border:0; display:block;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        title="Doodie Crew Poop Scooping service area map"
+      ></iframe>
     </div>
+    <a href="/service-area" class="font-body text-sm text-brand font-medium mt-2 inline-block hover:underline">
+      View full service area →
+    </a>
   </div>
 
 </div>
