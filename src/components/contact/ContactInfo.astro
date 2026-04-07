@@ -16,9 +16,7 @@ const {
   email = 'hello@example.com',
   address = '123 Main St, City, ST 00000',
   hours = [
-    { days: 'Monday – Friday', time: '7:00 am – 7:00 pm' },
-    { days: 'Saturday', time: '8:00 am – 5:00 pm' },
-    { days: 'Sunday', time: 'Emergency calls only' },
+    { days: 'Monday – Friday', time: '7:30 am – 6:00 pm' },
   ],
 } = Astro.props;
 
@@ -40,9 +38,6 @@ const phoneHref = 'tel:+1' + phone.replace(/\D/g, '');
       </svg>
       {phone}
     </a>
-    <p class="font-body text-sm text-text-soft mt-1.5 ml-7.5">
-      Emergency line available 24/7. Press 1 when prompted.
-    </p>
   </div>
 
   <div class="h-px bg-border"></div>
