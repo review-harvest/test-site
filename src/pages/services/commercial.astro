@@ -1,0 +1,233 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Nav from '../../components/global/Nav.astro';
+import Footer from '../../components/global/Footer.astro';
+import CallToAction from '../../components/global/CallToAction.astro';
+import RelatedServices from '../../components/services/RelatedServices.astro';
+import FAQList from '../../components/faq/FAQList.astro';
+import { business } from '../../data/business';
+
+const relatedServices = business.services.slice(0, 3).map(s => ({
+  name: s.name,
+  description: s.description,
+  href: `/services/${s.slug}`,
+}));
+
+const serviceSchema = JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "name": "Commercial Dog Waste Removal & Waste Station Service",
+  "description": "Professional commercial poop scooping for parks, HOA communities, and apartment complexes in DFW. Waste station installation and ongoing maintenance.",
+  "serviceType": "Commercial Dog Waste Removal",
+  "provider": { "@type": "LocalBusiness", "name": "Doodie Crew Poop Scooping", "url": "https://doodiecrew.com" },
+  "areaServed": [{ "@type": "City", "name": "Prosper, TX" }, { "@type": "City", "name": "Frisco, TX" }, { "@type": "City", "name": "McKinney, TX" }, { "@type": "City", "name": "Celina, TX" }],
+  "url": "https://doodiecrew.com/services/commercial"
+});
+
+const faqs = [
+  {
+    category: 'Commercial Services FAQ',
+    questions: [
+      {
+        question: 'What types of commercial properties do you service?',
+        answer: 'We service apartment complexes, HOA common areas, public and private parks, dog parks, community green spaces, and any shared outdoor area where dogs are present. If you manage a property with a dog waste problem, we can help.',
+      },
+      {
+        question: 'Do you install and maintain pet waste stations?',
+        answer: 'Yes. We install bag dispensers and waste stations and service them on a recurring schedule — keeping bags stocked and waste bins emptied. This is a great add-on for any property that wants to encourage responsible pet ownership among residents.',
+      },
+      {
+        question: 'How is commercial pricing determined?',
+        answer: 'Commercial pricing is based on the size of the property, the number of dogs present, and service frequency. We do not post commercial pricing online because every property is different. Contact us directly and we will put together a custom quote for your community.',
+      },
+      {
+        question: 'Can you service multiple buildings or locations under one account?',
+        answer: 'Yes. We can manage multiple locations or buildings under a single account and invoice. This is ideal for property management companies that oversee several communities in the DFW area.',
+      },
+      {
+        question: 'How do I get a quote for my community or property?',
+        answer: 'Call us at ' + business.phone + ' or send a message through our contact page. Let us know the type of property, approximate square footage or acreage, and your preferred service frequency. We will follow up quickly with a custom proposal.',
+      },
+    ],
+  },
+];
+---
+
+<Layout
+  title={`Commercial Poop Scooping & Waste Station Service | ${business.name} | DFW`}
+  description="Commercial dog waste removal for parks, HOA communities & apartments in DFW. Waste station installation & maintenance. Contact us for a custom quote."
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={serviceSchema} />
+  </Fragment>
+
+  <Nav
+    businessName={business.name}
+    phone={business.phone}
+    ctaHref={business.ctaHref}
+  />
+
+  <!-- Hero -->
+  <section class="bg-[#1A2540] py-20 px-6">
+    <div class="max-w-4xl mx-auto">
+      <p class="font-body text-[#E8951A] font-semibold text-sm uppercase tracking-widest mb-4">
+        Commercial Services
+      </p>
+      <h1 class="font-heading text-4xl sm:text-5xl text-white leading-tight mb-6">
+        Commercial Dog Waste Removal & Waste Station Services
+      </h1>
+      <p class="font-body text-lg text-white/80 max-w-2xl mb-8">
+        Doodie Crew serves parks, HOA communities, and apartment complexes across the DFW area. We keep shared outdoor spaces clean, install and maintain pet waste stations, and work on a schedule that fits your property's needs. No pricing posted — we build a custom quote for every account.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a
+          href={`tel:${business.phone.replace(/\D/g,'')}`}
+          class="inline-flex items-center justify-center gap-2 font-body font-bold text-base px-8 py-4 rounded-lg hover:opacity-90 transition-opacity text-center"
+          style="background-color: #E8951A; color: #ffffff;"
+        >
+          <svg class="w-4 h-4 shrink-0" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />
+          </svg>
+          Call for a Quote
+        </a>
+        <a
+          href="/contact"
+          class="inline-block border border-white/40 text-white font-body px-8 py-4 rounded-lg hover:bg-white/10 transition-colors text-center"
+        >
+          Send Us a Message
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- What we offer -->
+  <section class="bg-surface py-20 lg:py-24">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+
+        <!-- Content -->
+        <div class="lg:col-span-6">
+          <p class="font-body text-sm font-semibold tracking-widest uppercase text-brand mb-3">What We Do</p>
+          <h2 class="font-heading text-3xl text-text leading-tight">Keeping shared spaces clean for residents and their dogs.</h2>
+          <p class="font-body text-base text-text-soft mt-5 leading-relaxed">
+            Dog waste in shared outdoor spaces is more than an eyesore — it creates liability, damages grass, spreads bacteria, and drives resident complaints. Doodie Crew handles the dirty work so property managers and HOA boards don't have to. We work quietly, efficiently, and on whatever schedule keeps your community looking its best.
+          </p>
+
+          <ul class="mt-8 space-y-3">
+            {[
+              'Parks & public green spaces',
+              'HOA communities & common areas',
+              'Apartment complexes & multi-family properties',
+              'Dog parks & dedicated pet areas',
+              'Pet waste station installation',
+              'Ongoing station maintenance & bag restocking',
+              'Flexible scheduling — weekly, bi-weekly, or custom',
+              'Single invoice for multiple locations',
+            ].map((benefit) => (
+              <li class="flex items-start gap-3">
+                <span class="mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style="background-color: #FEF3DC; border: 1px solid rgba(232,149,26,0.3);">
+                  <svg class="w-3 h-3" style="color: #E8951A;" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12.75l6 6 9-13.5" />
+                  </svg>
+                </span>
+                <span class="font-body text-base text-text">{benefit}</span>
+              </li>
+            ))}
+          </ul>
+
+          <!-- No pricing note -->
+          <div class="mt-8 flex items-start gap-3 p-4 rounded-lg border" style="background-color: #FEF3DC; border-color: rgba(232,149,26,0.25);">
+            <svg class="w-5 h-5 shrink-0 mt-0.5" style="color: #E8951A;" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" />
+            </svg>
+            <p class="font-body text-sm font-medium text-text">Pricing is customized for each property. Call or message us and we'll put together a proposal within one business day.</p>
+          </div>
+
+          <div class="flex flex-wrap gap-3 mt-8">
+            <a
+              href={`tel:${business.phone.replace(/\D/g,'')}`}
+              class="inline-flex items-center justify-center font-body font-bold text-base px-7 py-3.5 rounded-md shadow-sm hover:opacity-90 transition-opacity"
+              style="background-color: #E8951A; color: #ffffff;"
+            >
+              Call {business.phone}
+            </a>
+            <a
+              href="/contact"
+              class="inline-flex items-center justify-center font-body font-semibold text-base px-7 py-3.5 rounded-md border-2 hover:opacity-80 transition-opacity"
+              style="border-color: #1B5FBF; color: #1B5FBF;"
+            >
+              Request a Quote Online
+            </a>
+          </div>
+        </div>
+
+        <!-- Image -->
+        <div class="lg:col-span-6">
+          <div class="relative">
+            <div class="aspect-[4/3] rounded-lg overflow-hidden shadow-md">
+              <img
+                src="/images/doodie-crew-branded-uniform-dog-waste-removal-tx.jpg"
+                alt="Doodie Crew team member in uniform performing commercial dog waste removal service in DFW, TX"
+                class="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div class="absolute -top-4 -right-4 w-20 h-20 rounded-full -z-10" style="background-color: #FEF3DC;" aria-hidden="true"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Doodie Crew for commercial -->
+  <section class="bg-[#0F1A35] py-16 lg:py-20 px-6">
+    <div class="max-w-5xl mx-auto grid sm:grid-cols-3 gap-8 text-center">
+      {[
+        { icon: '🏢', title: 'Built for Property Managers', body: 'We work around your schedule, communicate clearly, and keep documentation of every visit so you always have a record.' },
+        { icon: '📍', title: 'Waste Station Experts', body: 'We supply, install, and maintain bag dispenser stations so residents have no excuse not to clean up after their dogs.' },
+        { icon: '📋', title: 'Custom Proposals', body: 'No two properties are alike. We assess your space and build a service plan and price that actually fits your needs.' },
+      ].map(card => (
+        <div class="flex flex-col items-center">
+          <span class="text-4xl mb-4" aria-hidden="true">{card.icon}</span>
+          <h3 class="font-heading text-lg text-white mb-2">{card.title}</h3>
+          <p class="font-body text-sm leading-relaxed" style="color: rgba(255,255,255,0.65);">{card.body}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <FAQList
+    eyebrow="Commercial FAQ"
+    heading="Common questions about commercial dog waste removal."
+    subtext={`Ready to talk about your property? Call <a href="tel:+1${business.phone.replace(/\D/g,'')}" class="text-brand font-semibold hover:underline">${business.phone}</a> or send us a message.`}
+    phone={business.phone}
+    categories={faqs}
+  />
+
+  <RelatedServices
+    heading="Also available for residential customers."
+    services={relatedServices}
+  />
+
+  <CallToAction
+    eyebrow="Commercial Dog Waste Removal in DFW"
+    heading="Let's keep your community clean."
+    subtext="Serving parks, HOAs, and apartment communities across Prosper, Frisco, McKinney, Celina, and the DFW Metroplex. Contact us for a custom quote."
+    phone={business.phone}
+    ctaLabel="Contact Us for a Quote"
+    ctaHref="/contact"
+  />
+
+  <Footer
+    businessName={business.name}
+    tagline={business.tagline}
+    phone={business.phone}
+    email={business.email}
+    address={business.address.full}
+    links={business.nav}
+    serviceAreas={business.serviceAreas}
+    social={business.social}
+  />
+
+</Layout>
