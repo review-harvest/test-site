@@ -63,10 +63,10 @@ const trustStats = [
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-14">
       {trustStats.map(stat => (
         <div
-          class="rounded-2xl p-5 lg:p-7 border text-center"
+          class="rounded-2xl p-4 lg:p-5 border text-center"
           style={`background: ${stat.bg}; border-color: ${stat.border};`}
         >
-          <p class="font-heading text-2xl lg:text-3xl font-bold leading-none mb-2" style={`color: ${stat.color};`}>{stat.value}</p>
+          <p class="font-heading text-xl lg:text-2xl font-bold leading-none mb-2" style={`color: ${stat.color};`}>{stat.value}</p>
           <p class="font-body text-sm leading-snug" style="color: #6B7280;">{stat.label}</p>
         </div>
       ))}

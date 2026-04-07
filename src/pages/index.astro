@@ -4,7 +4,6 @@ import Nav from '../components/global/Nav.astro';
 import Footer from '../components/global/Footer.astro';
 import CallToAction from '../components/global/CallToAction.astro';
 import Hero from '../components/home/Hero.astro';
-import QuoteWidget from '../components/home/QuoteWidget.astro';
 import Services from '../components/home/Services.astro';
 import Process from '../components/home/Process.astro';
 import WhyUs from '../components/home/WhyUs.astro';
@@ -32,8 +31,6 @@ import { business } from '../data/business';
     secondaryCta={{ label: 'See Our Services', href: '/services' }}
     stats={business.stats}
   />
-
-  <QuoteWidget ctaHref={business.ctaHref} />
 
   <Services
     eyebrow="What We Do"
