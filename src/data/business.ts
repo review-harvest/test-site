@@ -197,7 +197,7 @@ export const business = {
         {
           question: "What are your service hours?",
           answer:
-            "We work Monday through Friday from 7:30am to 6:00pm. Our office is available during those same hours for any questions.",
+            "We work Monday through Friday from 7:30am to 6:00pm. Our office is available during those same hours for any questions. We are closed on weekends.",
         },
       ],
     },
