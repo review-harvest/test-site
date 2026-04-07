@@ -4,6 +4,7 @@ import Nav from '../components/global/Nav.astro';
 import Footer from '../components/global/Footer.astro';
 import CallToAction from '../components/global/CallToAction.astro';
 import Hero from '../components/home/Hero.astro';
+import QuoteWidget from '../components/home/QuoteWidget.astro';
 import Services from '../components/home/Services.astro';
 import Process from '../components/home/Process.astro';
 import WhyUs from '../components/home/WhyUs.astro';
@@ -13,7 +14,7 @@ import { business } from '../data/business';
 
 <Layout
   title={`${business.name} | Dog Waste Removal in Prosper, Frisco, McKinney, TX`}
-  description="Professional dog waste removal in Prosper, Frisco, McKinney & DFW. Weekly, bi-weekly & one-time cleanup. No contracts. Starts at $52/mo."
+  description="Professional dog waste removal in Prosper, Frisco, McKinney & DFW. Weekly & bi-weekly cleanup. No contracts. Starts at $69.75/mo."
 >
 
   <Nav
@@ -26,17 +27,18 @@ import { business } from '../data/business';
   <Hero
     eyebrow="Serving Prosper, Frisco, McKinney & Celina"
     headline="Poop Scooping Service in Prosper, TX"
-    subtext="Professional, no-contract poop scooping for DFW homeowners. We remove all pet waste, sanitize our tools, and notify you when done. Starts at $52/month."
+    subtext="Professional, no-contract poop scooping for DFW homeowners. We remove all pet waste, sanitize our tools, and notify you when done. Starts at $69.75/month."
     primaryCta={{ label: 'Get an Instant Quote', href: business.ctaHref }}
     secondaryCta={{ label: 'See Our Services', href: '/services' }}
     stats={business.stats}
   />
 
+  <QuoteWidget ctaHref={business.ctaHref} />
 
   <Services
     eyebrow="What We Do"
     heading="Dog Waste Removal Services in Prosper, Frisco & DFW"
-    subtext="Residential and commercial poop scooping on your schedule: weekly, bi-weekly, monthly, or one-time."
+    subtext="Residential and commercial poop scooping on your schedule: weekly, bi-weekly, or one-time."
     services={business.services.map(s => ({
       name: s.name,
       description: s.description,

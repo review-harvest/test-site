@@ -1,0 +1,124 @@
+---
+interface Props {
+  ctaHref?: string;
+}
+const { ctaHref = 'https://client.sweepandgo.com/doodie-crew-pgqy8/register' } = Astro.props;
+---
+
+<section class="bg-[#1A2540] py-16 lg:py-20">
+  <div class="max-w-5xl mx-auto px-6 lg:px-10">
+
+    <div class="text-center mb-10">
+      <p class="font-body text-sm font-semibold tracking-widest uppercase mb-3" style="color: #E8951A;">Instant Pricing</p>
+      <h2 class="font-heading text-3xl lg:text-4xl text-white leading-tight">Get your quote in 60 seconds</h2>
+      <p class="font-body text-base mt-3 max-w-xl mx-auto" style="color: rgba(255,255,255,0.65);">Enter your zip code, number of dogs, and preferred service frequency to see your price instantly.</p>
+    </div>
+
+    <div class="bg-white rounded-2xl shadow-xl p-8 lg:p-10">
+      <form id="quote-form" class="grid grid-cols-1 sm:grid-cols-3 gap-6 items-end">
+
+        <!-- Zip Code -->
+        <div class="flex flex-col gap-2">
+          <label for="zip" class="font-body text-sm font-semibold text-[#1A2540]">Your Zip Code</label>
+          <input
+            id="zip"
+            type="text"
+            inputmode="numeric"
+            maxlength="5"
+            placeholder="e.g. 75078"
+            class="border border-gray-300 rounded-lg px-4 py-3 font-body text-base text-[#1A2540] focus:outline-none focus:ring-2 focus:border-transparent"
+            style="focus-ring-color: #E8951A;"
+          />
+        </div>
+
+        <!-- Number of Dogs -->
+        <div class="flex flex-col gap-2">
+          <label for="dogs" class="font-body text-sm font-semibold text-[#1A2540]">
+            Number of Dogs: <span id="dogs-value" class="text-[#E8951A]">1</span>
+          </label>
+          <div class="flex flex-col gap-1">
+            <input
+              id="dogs"
+              type="range"
+              min="1"
+              max="5"
+              value="1"
+              class="quote-slider w-full accent-[#E8951A]"
+            />
+            <div class="flex justify-between font-body text-xs text-gray-400">
+              <span>1</span><span>2</span><span>3</span><span>4</span><span>5+</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Frequency -->
+        <div class="flex flex-col gap-2">
+          <label for="frequency" class="font-body text-sm font-semibold text-[#1A2540]">Service Frequency</label>
+          <select
+            id="frequency"
+            class="border border-gray-300 rounded-lg px-4 py-3 font-body text-base text-[#1A2540] bg-white focus:outline-none focus:ring-2 appearance-none"
+          >
+            <option value="weekly">Weekly (Most Popular)</option>
+            <option value="biweekly">Bi-Weekly</option>
+            <option value="one-time">One-Time Cleanup</option>
+          </select>
+        </div>
+
+      </form>
+
+      <!-- Price estimate display -->
+      <div id="price-display" class="mt-8 rounded-xl p-6 text-center" style="background-color: #FEF3DC; border: 1px solid #F5D9A0;">
+        <p class="font-body text-sm font-semibold uppercase tracking-widest mb-1" style="color: #C4700E;">Estimated Starting Price</p>
+        <p id="price-value" class="font-heading text-5xl font-bold" style="color: #E8951A;">$69.75<span class="text-2xl font-normal">/mo</span></p>
+        <p class="font-body text-sm mt-2" style="color: #92400E;">Final price confirmed instantly in your client portal</p>
+      </div>
+
+      <div class="mt-6 text-center">
+        <a
+          id="quote-cta"
+          href={ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 font-body font-bold text-base px-10 py-4 rounded-lg hover:opacity-90 transition-opacity shadow-md"
+          style="background-color: #E8951A; color: #ffffff;"
+        >
+          Get My Exact Price
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3"/>
+          </svg>
+        </a>
+        <p class="font-body text-xs mt-3" style="color: rgba(255,255,255,0);"><!-- spacer --></p>
+      </div>
+
+      <p class="font-body text-xs text-center text-gray-400 mt-3">No contracts. No commitment. Cancel anytime.</p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const dogsSlider = document.getElementById('dogs') as HTMLInputElement | null;
+  const dogsValue = document.getElementById('dogs-value');
+  const freqSelect = document.getElementById('frequency') as HTMLSelectElement | null;
+  const priceValue = document.getElementById('price-value');
+
+  // Base prices (weekly, 1 dog)
+  const basePrices: Record<string, number[]> = {
+    weekly:   [69.75, 79.75, 89.75, 99.75, 109.75],
+    biweekly: [89.75, 99.75, 109.75, 119.75, 129.75],
+    'one-time': [99.00, 119.00, 139.00, 159.00, 179.00],
+  };
+
+  function updatePrice() {
+    if (!dogsSlider || !freqSelect || !priceValue) return;
+    const dogs = parseInt(dogsSlider.value) - 1;
+    const freq = freqSelect.value;
+    const price = basePrices[freq]?.[dogs] ?? 69.75;
+    const label = freq === 'one-time' ? '' : '/mo';
+    priceValue.innerHTML = `$${price.toFixed(2)}<span class="text-2xl font-normal">${label}</span>`;
+    if (dogsValue) dogsValue.textContent = dogsSlider.value === '5' ? '5+' : dogsSlider.value;
+  }
+
+  dogsSlider?.addEventListener('input', updatePrice);
+  freqSelect?.addEventListener('change', updatePrice);
+</script>

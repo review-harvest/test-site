@@ -3,7 +3,7 @@
  * Swap this file to re-skin the site for a different business.
  */
 export const business = {
-  name: "Doodie Crew",
+  name: "Doodie Crew Poop Scooping",
   tagline:
     "DFW's trusted dog waste removal service. Reliable, affordable, and satisfaction guaranteed, so you can enjoy your yard again.",
   phone: "214-901-0840",
@@ -19,7 +19,6 @@ export const business = {
   },
   hours: [
     { days: "Monday – Friday", time: "7:30 am – 6:00 pm" },
-    { days: "Saturday – Sunday", time: "9:00 am – 5:00 pm" },
   ],
   nav: [
     { label: "Services", href: "/services" },
@@ -31,10 +30,10 @@ export const business = {
   ],
   ctaHref: "https://client.sweepandgo.com/doodie-crew-pgqy8/register",
   stats: [
-    { value: "$52", label: "Starting per Month" },
+    { value: "$69.75", label: "Starting per Month" },
     { value: "5★", label: "Customer Rating" },
     { value: "No", label: "Contracts Required" },
-    { value: "7 Days", label: "a Week Service" },
+    { value: "Mon–Fri", label: "Service Days" },
   ],
   serviceAreas: [
     "Prosper",
@@ -158,7 +157,7 @@ export const business = {
         {
           question: "What exactly does Doodie Crew do?",
           answer:
-            "We're a professional dog waste removal service, also called a pooper scooper service. We come to your property on a regular schedule (weekly, bi-weekly, or monthly) and remove all dog waste from your yard, dog run, or outdoor area.",
+            "We're a professional dog waste removal service, also called a pooper scooper service. We come to your property on a regular schedule (weekly or bi-weekly) and remove all dog waste from your yard, dog run, or outdoor area.",
         },
         {
           question: "What areas do you serve?",
@@ -198,7 +197,7 @@ export const business = {
         {
           question: "What are your service hours?",
           answer:
-            "We work Monday through Friday from 7:30am to 6:00pm, and weekends from 9:00am to 5:00pm. Our office is available during those same hours for any questions.",
+            "We work Monday through Friday from 7:30am to 6:00pm. Our office is available during those same hours for any questions.",
         },
       ],
     },
@@ -208,7 +207,7 @@ export const business = {
         {
           question: "How much does it cost?",
           answer:
-            "Service starts at $52.31 per month. The exact price depends on your service frequency and yard size. Use our instant online quote tool to get a specific price for your property.",
+            "Service starts at $69.75 per month. The exact price depends on your service frequency and yard size. Use our instant online quote tool to get a specific price for your property.",
         },
         {
           question: "Are there any contracts or commitments?",
@@ -233,7 +232,7 @@ export const business = {
         {
           question: "What do you do with the waste?",
           answer:
-            "We bag and remove all waste from your property. We do not leave bags behind. Your yard is left completely clean after every visit.",
+            "We double bag all waste and place it in your trash can. We never leave bags on the ground, and your yard is completely clean after every visit.",
         },
         {
           question: "Do you sanitize your equipment between yards?",
